@@ -1,0 +1,80 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+<style>
+    
+    
+    .table-responsive {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+    }
+    h4{margin-left: 450px;
+        margin-top: 10px;}    
+</style>
+</head>
+
+<body>
+<h4 class="mb-3">PAYMENT INFORMATION</h4><hr>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Payee</th>
+                <th scope="col">C_payment</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Payno</th>
+                <th scope="col">currency</th>
+                <th scope=>Action</th>
+               
+            </tr>
+        </thead>
+       
+        <tbody>
+            
+            <tr>
+                <td>{{  payment_info.id }}</td>
+                <td>{{  payment_info.payee }}</td>
+                <td>{{  payment_info.c_payment }}</td>
+                <td>{{  payment_info.amount }}</td>
+                <td>{{  payment_info.payno }}</td>
+                <td>{{  payment_info.currency }}</td>
+                
+                <td>
+                    <div>
+                        <a href="{% url 'editpay' id=payment_info.id %}" class="btn btn-primary mb-3">Edit payment</a>
+
+                    </div>
+                </td>
+
+                
+            </tr>
+          
+        </tbody>
+    </table>
+</div>
+</body>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

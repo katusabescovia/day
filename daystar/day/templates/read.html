@@ -1,0 +1,89 @@
+
+
+
+
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content%}
+
+<style>
+    
+    
+    .table-responsive {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+    }
+</style>
+</head>
+<body>
+<h4 class="mb-3">Babie information</h4>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Categorystay</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Parents_name</th>
+                <th scope="col">Taker'sname</th>
+                <th scope="col">Location</th>
+                <th scope="col">Babysnumber</th>
+                <th scope="col">Comment </th>
+                <th scope="col">person that has taken the baby</th>
+                <th scope="col">Date</th>
+                <th scope="col">timein</th>
+                <th scope="col">timeout</th>
+                <th scope=>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+            <tr>
+                <td>{{ babies_info.id }}</td>
+                <td>{{ babies_info.c_stay}}</td>
+                <td>{{ babies_info.gender }}</td>
+                <td>{{ babies_info.name_of_the_baby }}</td>
+                <td>{{ babies_info.age }}</td>
+                <td>{{ babies_info.parents_name }}</td>
+                <td>{{ babies_info.name_of_the_person_brought_by_the_baby }}</td>
+                <td>{{ babies_info.location }}</td>
+                <td>{{ babies_info.babys_number}}</td>
+                <td>{{ babies_info.comment }}</td>
+                <td>{{ babies_info.name_of_the_person_that_has_taken_a_child }}</td>
+                <td>{{ babies_info.date }}</td>
+                <td>{{ babies_info.timein }}</td>
+                <td>{{ babies_info.timeout }}</td>
+               
+                <td>
+                    <div>
+                        <a href="{% url 'edit' id=babies_info.id %}" class="btn btn-primary mb-2">Edit babies</a>
+                    
+                    </div>
+                </td>
+            </tr>
+        
+        </tbody>
+
+    </table>
+    <a href="/sitterform"><button class="btn btn-primary">Go back</button></a>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

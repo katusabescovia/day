@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content%}
+
+<style>
+    
+    
+    .table-responsive {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+    }
+    h4{margin-left:490px;
+    margin-top:5px ;}
+</style>
+</head>
+<body>
+<h4 class="mb-3">LISTS OF SITTERS</h4><hr>
+<a href="/adds" class="btn btn-primary mb-3">Add new sitter</a>
+
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Location</th>
+                <th scope="col">Date of Birth</th>
+                <th scope="col">Next of Kin</th>
+                <th scope="col">NIN</th>
+                <th scope="col">Recommender's Name</th>
+                <th scope="col">Religion</th>
+                <th scope="col">Level of Education</th>
+                <th scope="col">Sitter's Number</th>
+                <th scope="col">Contacts</th>
+                <th scope=>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sitter in sitters %}
+            <tr>
+                <td>{{ sitter.id }}</td>
+                <td>{{ sitter.name }}</td>
+                <td>{{ sitter.gender }}</td>
+                <td>{{ sitter.location }}</td>
+                <td>{{ sitter.date_of_birth }}</td>
+                <td>{{ sitter.next_of_kin }}</td>
+                <td>{{ sitter.national_identification_number }}</td>
+                <td>{{ sitter.recommenders_name }}</td>
+                <td>{{ sitter.religon }}</td>
+                <td>{{ sitter.level_of_education }}</td>
+                <td>{{ sitter.sitter_number }}</td>
+                <td>{{ sitter.contacts }}</td>
+                <td>   
+                    <a href="{% url 'reads' id=sitter.id %}">Read</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

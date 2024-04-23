@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content  %}
+<style>
+
+    h3{margin-left: 490px;
+    font-family: sans-serif;}
+</style>
+<h3>Sitters information</h3><hr>
+    <table class="table table-bordered">
+        <thead>
+            <tr class=>
+               
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Location</th>
+                <th scope="col">Date of Birth</th>
+                <th scope="col">Next of Kin</th>
+                <th scope="col">NIN</th>
+                <th scope="col">Recommender's Name</th>
+                <th scope="col">Religion</th>
+                <th scope="col">Level of Education</th>
+                <th scope="col">Sitter's Number</th>
+                <th scope="col">Contacts</th>
+                <th scope=>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+            <tr >
+                <td> {{ sitters_info.id }}</td>
+               <td>{{sitters_info.name}}</td>
+                <td>{{sitters_inf.gender}}</td>
+                <td>{{sitters_info.location}}</td>
+                <td>{{sitters_info.date_of_birth}}</td>
+                <td>{{sitters_info.next_of_kin}}</td>
+                <td>{{ sitters_info.national_identification_number}}</td>
+                <td>{{sitters_info.recommenders_name}}</td>
+                <td>{{sitters_info.religon}}</td>
+                <td>{{sitters_info.level_of_education}}</td>
+                <td>{{sitters_info.sitter_number}}</td>
+                <td>{{ sitters_info.contacts}}</td>
+                <td>
+                    <div>
+                        <a href="{% url 'edits' id=sitters_info.id %}" class="btn btn-primary mb-3">Edit sitters</a>
+
+                    </div>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+<a href="/sitterform"><button class="btn btn-primary">Go back</button></a>
+</body>
+{% endblock %}
+
+
+
+

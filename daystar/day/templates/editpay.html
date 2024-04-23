@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<body>
+
+    <style>
+        h4{margin-left: 500px;
+            margin-top: 10px;}     
+
+            .payment{margin-left: 300px;
+                border: 13px solid black;
+            width: 50%;
+        padding-left: 90px;
+    padding-top: 10px;
+padding-bottom: 10px;
+border-radius: 8px;}
+            
+    </style>
+    <h4>Edit Payment</h4><hr>
+    <div class="container">
+      
+        <form action="" method="POST" class="payment">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+    </div>
+</body>
+
+
+{% endblock %}

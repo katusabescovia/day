@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+<body>
+<style>
+
+
+
+
+          
+                .payment{margin-left: 300px;
+                border: 13px solid black;
+            width: 50%;
+        padding-left: 90px;
+    padding-top: 10px;
+padding-bottom: 10px;
+border-radius: 8px;}
+                h4{margin-left: 520px;
+               font-family: sans-serif; 
+               text-shadow:  solid 4px 3px 4px hsl(207, 100%, 58%);
+               color:#0C356A;}
+            </style>
+    
+    
+        <h4>Add Payment</h4><hr>
+        <div class="container">
+        <form action="" method="POST" class="payment">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+    </div>
+</body>
+
+
+{% endblock  %}

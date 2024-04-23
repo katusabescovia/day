@@ -1,0 +1,38 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+<style>
+  h2{margin-left: 500px;}  
+  .container{margin-left: 400px;
+
+width: 40%;
+border: 10px solid black;
+padding-left: 9px;
+ padding-right: 9px;
+ padding-top: 9px;
+ padding-bottom: 9px;}
+input{width:90%;
+margin-bottom: 10px;}
+select{width:90%;}
+label{font-weight: bold; font-size:24; margin-top: 10px;}
+</style> 
+    <h2>ADD A NEW BABY</h2><hr>
+    <div class="container">
+    <form method="POST" action="" class="babe-form">
+        {% csrf_token %}
+        <!-- {{ form.as_p }} -->
+        {{ form|crispy}}
+        <button type="submit">Save</button>
+   
+    </form> 
+</div>
+</body>
+</html>

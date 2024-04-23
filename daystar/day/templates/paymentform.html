@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+    
+    
+    .table-responsive {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+    }
+h4{margin-left: 450px;
+margin-top: 10px;}    
+</style>
+</head>
+<body>
+<h4 class="mb-3">LISTS OF PAYMENT</h4><hr>
+<a href="/addpay" class="btn btn-primary mb-3">Add new payment</a>
+
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Payee</th>
+                <th scope="col">C_payment</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Payno</th>
+                <th scope="col">currency</th>
+                <th scope=>Action</th>
+               
+            </tr>
+        </thead>
+       
+        <tbody>
+            {% for payment  in payment %}
+            <tr>
+                <td>{{ payment.id }}</td>
+                <td>{{ payment.payee }}</td>
+                <td>{{ payment.c_payment }}</td>
+                <td>{{ payment.amount }}</td>
+                <td>{{ payment.payno }}</td>
+                <td>{{ payment.currency }}</td>
+
+                <td>
+                    <a href="{% url 'readpay' id=payment.id %}">Read</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

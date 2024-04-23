@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+<body>
+
+
+<style>
+
+
+    .babe-form{ display: grid;
+        grid-template-columns: 1fr 1fr;
+        }
+        .babe-formlabel{font-weight: bold;}
+        
+        h4{margin-left: 330px;
+       font-family: sans-serif; 
+       text-shadow:  solid 4px 3px 4px #279EFF;
+       color:#0C356A;}
+        button{width: auto;}
+           
+            
+            
+        
+    </style>  
+<h4 >Edit Sitter Registration</h4><hr>
+    <div class="container">
+        
+        <form action="" method="POST" class="babe-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+    </div>
+</body>
+
+
+{% endblock %}
+
+
+
+
+
+

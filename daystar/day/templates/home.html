@@ -1,0 +1,75 @@
+
+
+{% extends 'base.html' %}
+
+ {% load static %} 
+ <body>
+{% block content %}
+
+<Style>
+    h3{margin-left: 400px;}
+</Style>
+<h3 >WELCOME TO ADMINS DASHBOARB</h3><hr>   
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Payments</h5>
+                    <p class="card-text">Manage Payments</p>
+                    <a href="/paymentform" class="btn btn-primary">Go to Payments</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Sitters</h5>
+                    <p class="card-text">Manage Sitters</p>
+                    <a href="/sitterform" class="btn btn-primary">Go to Sitters</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Babies</h5>
+                    <p class="card-text">Manage Babies</p>
+                    <a href="/babiesform" class="btn btn-primary">Go to Babies</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Procurements</h5>
+                    <p class="card-text">Manage Procurements</p>
+                    <a href="procurements.html" class="btn btn-primary">Go to Procurements</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+

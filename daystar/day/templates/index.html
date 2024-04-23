@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daystarcare</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      height: 100vh; 
+      overflow: hidden; 
+    }
+
+    header {
+      background-color:#0C356A;;
+      color: white;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed; 
+      top: 0; 
+      width: 100%; 
+      z-index: 1; 
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 50px; 
+      height: auto;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+
+    .login-button {
+            border: none;
+      color: white;
+      padding: 10px 15px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+   
+    #welcome-message {
+      padding: 20px;
+      text-align: center;
+      background-color:darkgrey; 
+      margin-top: 50px; 
+      color: white;
+    }
+
+    main {
+      background-image: url("../static/Images/file-20220208-22-80f5sj.avif"); 
+      background-size: cover;
+      background-position: center;
+      padding-top: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-repeat: repeat;
+    }
+
+    footer {
+      background-color:#0C356A;
+      color: white;
+      padding: 6px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 1;
+    }
+    h2{ font-family: sans-serif;
+    text-shadow: 2px 2px 4px #000000;
+    text-shadow:  solid 4px 3px 4px #279EFF;
+    color:#0C356A;}
+    p{ font-family: sans-serif;
+    font-size: 20px;}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="{% static 'Images/badge.jpeg' %}" alt="Daystarcare Logo">
+      <span>Daystar daycare</span>
+    </div>
+    <a href="/login" class="login-button">Login</a>
+  </header>
+
+  <!-- Welcoming Message Section -->
+  <section id="welcome-message">
+    <h2>Welcome to Daystar daycare!</h2>
+    <p>Providing a nurturing and educational environment for your child.</p>
+  </section>
+
+  <main>
+    <!-- main content -->
+  </main>
+
+  <footer>
+    <p>&copy; copyright 2024 Katusabe Scovia. All rights reserved</p>
+  </footer>
+</body>
+
+</html>

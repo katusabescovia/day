@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+<body>
+
+<style>
+    .sitter-form{ display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap:6px;}
+        .babe-formlabel{font-weight: bold;}
+        
+</style>
+    
+    <div class="container">
+        <h4>Edit Baby Registration</h4>
+        <form action="" method="POST"class="sitter-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+    </div>
+</body>
+
+
+{% endblock  %}
