@@ -20,6 +20,7 @@ urlpatterns = [
     path('readpay/<int:id>/', views.readpay, name='readpay'),
     path('editpay/<int:id>/', views.editpay, name='editpay'),
     
+    
 
     
 

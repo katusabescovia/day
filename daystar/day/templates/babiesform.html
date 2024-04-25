@@ -6,11 +6,14 @@
 
 <style>
     
-    
+    input {width: 50%;}
     .table-responsive {
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
     }
-    h4 {margin-left: 500px;}
+    h4 {margin-left: 500px;
+        color:#0C356A;
+        text-shadow: 2px 2px 4px #000000;}
+        body{background-color: darkgray;}
 </style>
 </head>
 <body>
@@ -31,8 +34,7 @@
                 <th scope="col">Taker'sname</th>
                 <th scope="col">Location</th>
                 <th scope="col">Babysnumber</th>
-                <th scope="col">Comment </th>
-                <th scope="col">person that has taken the baby</th>
+                <th scope="col">Picker's name</th>
                 <th scope="col">Date</th>
                 <th scope="col">timein</th>
                 <th scope="col">timeout</th>
@@ -48,16 +50,15 @@
                 <td>{{ baby.name_of_the_baby }}</td>
                 <td>{{ baby.age }}</td>
                 <td>{{ baby.parents_name }}</td>
-                <td>{{ baby.name_of_the_person_brought_by_the_baby }}</td>
+                <td>{{ baby.care_taker}}</td>
                 <td>{{ baby.location }}</td>
                 <td>{{ baby.babys_number}}</td>
-                <td>{{ baby.comment }}</td>
-                <td>{{ baby.name_of_the_person_that_has_taken_a_child }}</td>
+                <td>{{ baby.pickers_name }}</td>
                 <td>{{ baby.date }}</td>
                 <td>{{ baby.timein }}</td>
                 <td>{{ baby.timeout }}</td>
                 <td>   
-                    <a href="{% url 'read' id=baby.id %}">Read</a>
+                    <a href="{% url 'read' id=baby.id %}"  class="btn btn-primary ">Read</a>
                 </td>
             </tr>
             {% endfor %}

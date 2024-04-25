@@ -1,21 +1,26 @@
 {% extends 'base.html' %}
-
 {% load static %}
-
 {% block content %}
 <body>
 
     <style>
         h4{margin-left: 500px;
-            margin-top: 10px;}     
+            
+            text-shadow: 2px 2px 4px #000000;
+            margin-top: 3px;
+            color:#0C356A;}     
 
             .payment{margin-left: 300px;
-                border: 13px solid black;
+                
             width: 50%;
         padding-left: 90px;
     padding-top: 10px;
 padding-bottom: 10px;
-border-radius: 8px;}
+border-radius: 8px;
+box-shadow: 0 0 90px rgba(0, 0, 0, 0.1);
+
+background-color:white;}
+body{background-color: darkgray;}
             
     </style>
     <h4>Edit Payment</h4><hr>
@@ -24,7 +29,7 @@ border-radius: 8px;}
         <form action="" method="POST" class="payment">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <button type="submit" class="btn btn-primary">update</button>
         </form>
     </div>
 </body>

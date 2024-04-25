@@ -1,22 +1,75 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags%}
 {% load static %}
+
 {% block content%}
 <body>
 
 <style>
-    .sitter-form{ display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap:6px;}
-        .babe-formlabel{font-weight: bold;}
+    h4{margin-left: 400px;
+        font-family: sans-serif; 
+        color:#0C356A;
+             text-shadow: 2px 2px 4px #000000;
+            width: 40%;
+        background-color: white;}
         
-</style>
+
+
+
+        .babe-form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+           max-width: 50%;
+            margin: auto;
+            border-radius: 5px;
+    border: solid black;
+        margin-bottom: 6px;
+        border-radius: 10px;
+        padding-left: 20px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        padding-right: 15px;
+        
+    
+        
+            
+           
+        }
+    
+    
+      
+        
+        
+        
+        
+    
+        label {
+            font-weight: bold;
+            margin-top: 7px;
+            margin-bottom:5px ;
+        }
+    
+        button[type="submit"] {
+        margin-top: 2px;
+           
+            background-color: #0C356A;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            
+        }
+    
+    </style>
     
     <div class="container">
-        <h4>Edit Baby Registration</h4>
-        <form action="" method="POST"class="sitter-form">
+        <h4>EDIT BABY REGISTRATION</h4><hr>
+        <form action="" method="POST"class="babe-form">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Save Changes</button>
+            {{ form |crispy }}
+            <button type="submit" class="btn btn-primary">update</button>
         </form>
     </div>
 </body>

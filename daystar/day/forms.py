@@ -34,3 +34,19 @@ class PaymentForm(ModelForm):
         model = Payment
         fields = '__all__'        
         
+class SalesrecordForm(ModelForm):
+    class Meta:
+        model = Salesrecord
+        fields = '__all__'
+class  Doll(ModelForm):
+    class Meta:
+        model = Doll
+        fields = '__all__'
+
+     
+class ProcurementForm(ModelForm):
+    class Meta:
+        model = Procurement
+        fields = '__all__'
+
+

@@ -10,15 +10,18 @@
 {% block content%}
 
 <style>
-    
+    h4{margin-left: 450px;
+        color:#0C356A;
+        text-shadow: 2px 2px 4px #000000;}
     
     .table-responsive {
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
     }
+    body{background-color: darkgray;}
 </style>
 </head>
 <body>
-<h4 class="mb-3">Babie information</h4>
+<h4 class="mb-3">Babie information</h4><hr>
 
 <div class="table-responsive">
     <table class="table table-bordered table-hover">
@@ -33,28 +36,28 @@
                 <th scope="col">Taker'sname</th>
                 <th scope="col">Location</th>
                 <th scope="col">Babysnumber</th>
-                <th scope="col">Comment </th>
-                <th scope="col">person that has taken the baby</th>
+
+                <th scope="col">Pickers name</th>
                 <th scope="col">Date</th>
                 <th scope="col">timein</th>
                 <th scope="col">timeout</th>
                 <th scope=>Action</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody style="background-color: white;">
            
-            <tr>
+            <tr>  
                 <td>{{ babies_info.id }}</td>
                 <td>{{ babies_info.c_stay}}</td>
                 <td>{{ babies_info.gender }}</td>
                 <td>{{ babies_info.name_of_the_baby }}</td>
                 <td>{{ babies_info.age }}</td>
                 <td>{{ babies_info.parents_name }}</td>
-                <td>{{ babies_info.name_of_the_person_brought_by_the_baby }}</td>
+                <td>{{ babies_info.care_taker }}</td>
                 <td>{{ babies_info.location }}</td>
                 <td>{{ babies_info.babys_number}}</td>
-                <td>{{ babies_info.comment }}</td>
-                <td>{{ babies_info.name_of_the_person_that_has_taken_a_child }}</td>
+                
+                <td>{{ babies_info.pickers_name }}</td>
                 <td>{{ babies_info.date }}</td>
                 <td>{{ babies_info.timein }}</td>
                 <td>{{ babies_info.timeout }}</td>
@@ -70,7 +73,7 @@
         </tbody>
 
     </table>
-    <a href="/sitterform"><button class="btn btn-primary">Go back</button></a>
+    <a href="/babiesform"><button class="btn btn-primary">Go back</button></a>
 </div>
 
 {% endblock %}

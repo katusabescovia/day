@@ -6,6 +6,9 @@ from django.urls import reverse
 from django.contrib.auth import authenticate,login
 from .forms import *
 from . models import *
+from django.contrib.postgres.search import SearchQuery, SearchVector
+from . filters import *
+
 # from .forms import BabiesformForm
 # from .models import Babiesfor
 
@@ -15,14 +18,16 @@ def index(request):
     return render(request,'index.html')
 def login(request):
     return render(request,'login.html')
+@login_required
 def home(request):
     return render(request,'home.html')
 
 def logout(request):
     return render(request,'logout.html')
+@login_required
 def sitterpayment(request):
     return render(request,'sitterpayment.html')
-
+@login_required
 def babiesform(request):
     babies= Babiesform.objects.all()
     return render(request,'babiesform.html',{'babies':babies})
@@ -45,7 +50,6 @@ def read(request,id):
    babies_info=Babiesform.objects.get(id=id)
    return render(request,'read.html',{'babies_info':babies_info})
 
-
 def edit(request,id):
     baby=get_object_or_404(Babiesform,id=id)
     if request.method == 'POST':
@@ -59,7 +63,7 @@ def edit(request,id):
         
     
 
-
+@login_required
 def sitterform(request):
     sitters=Sitterform.objects.all()
     return render(request,'sitterform.html',{'sitters':sitters})
@@ -133,7 +137,3 @@ def editpay(request,id):
         form=PaymentForm(instance=baby)
     return render(request,'editpay.html',{'form':form,'baby':baby})       
         
-
-    
-
- 

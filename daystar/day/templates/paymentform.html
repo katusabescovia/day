@@ -11,7 +11,10 @@
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
     }
 h4{margin-left: 450px;
-margin-top: 10px;}    
+margin-top: 10px;
+color:#0C356A;
+text-shadow: 2px 2px 4px #000000;}  
+body{background-color: darkgray;}  
 </style>
 </head>
 <body>
@@ -36,7 +39,7 @@ margin-top: 10px;}
        
         <tbody>
             {% for payment  in payment %}
-            <tr>
+            <tr style="background-color: white;">
                 <td>{{ payment.id }}</td>
                 <td>{{ payment.payee }}</td>
                 <td>{{ payment.c_payment }}</td>
@@ -45,7 +48,7 @@ margin-top: 10px;}
                 <td>{{ payment.currency }}</td>
 
                 <td>
-                    <a href="{% url 'readpay' id=payment.id %}">Read</a>
+                    <a href="{% url 'readpay' id=payment.id %}" class="btn btn-primary ">Read</a>
                 </td>
             </tr>
             {% endfor %}
