@@ -19,7 +19,29 @@ urlpatterns = [
     path('addpay/', views.addpay, name='addpay'),
     path('readpay/<int:id>/', views.readpay, name='readpay'),
     path('editpay/<int:id>/', views.editpay, name='editpay'),
+    path('doll/',views.doll,name='doll'),
+    path('dollscorner/<int:doll_id>/', views.dollscorner, name='dollscorner'),
+    path('add_to_stock/<str:pk>', views.add_to_stock, name='add_to_stock'),
+    path('all_sales/',views.all_sales,name='all_sales'),
+    path('issue_item/<str:pk>',views.issue_item,name='issue_item'),
+    path('receipt/',views.receipt,name='receipt'),
+    path('receipt_detail/<int:receipt_id>',views.receipt_detail,name='receipt_detail'),
+    path('arrival/', views.arrival, name='arrival'),
+    path('addsarrival/', views.addsarrival, name='addsarrival'),
+    path('readsarrival/<int:baby_id>/', views.readsarrival, name='readsarrival'),
+    path('editsarrival/<int:id>/', views.editsarrival, name='editsarrival'),
+    path('departure/', views.departure, name='departure'),
+    path('adddeparture/', views.adddeparture, name='adddeparture'),
+    path('readdeparture/<int:id>/', views.readdeparture, name='readdeparture'),
+    path('editdeparture/<int:id>/', views.editdeparture, name='editdeparture'),
+    path('onduty/', views.onduty, name='onduty'),
+    path('addonduty/', views.addonduty, name='addonduty'),
+    path('readonduty/<int:id>/', views.readonduty, name='readonduty'),
+    path('editdontudy/<int:id>/', views.editonduty, name='editonduty'),
     
+    
+    
+ 
     
 
     

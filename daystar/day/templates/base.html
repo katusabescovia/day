@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,92 +6,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/CSS/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="{% static 'CSS/bootstrap/css/bootstrap.css' %}">
     
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-text-light" style=" background-color:  #0C356A; font-family: sans-serif; font-size:16px ; color: light white;">
+    <nav class="navbar navbar-expand-lg navbar-text-light" style="background-color: #0C356A; font-family: sans-serif; font-size: 16px; color: white;">
         <div class="container-fluid">
-        
-       <h6 style="color: white;">   <img  style="border-radius: 99%;" src="{% static 'Images/badge.jpeg' %}" alt="datstardaycare logo" width="60px"> Daystar daycare</h6> 
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 200px;">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/home" style="color: white;">Dasboard</a>
-              </li>
-              
-              </li>
-              
-             
-             
-              
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/sitterform" style="color: white;">Sitter</a>
-              </li>   
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/babiesform" style="color: white;">Babies</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/paymentform" style="color: white;">Payment</a>
-              </li>  
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#" style="color: white;">Procurement</a> 
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#" style="color: white;">Dolls corner</a> 
+            <h6><img style="border-radius: 99%;" src="{% static 'Images/badge.jpeg' %}" alt="datstardaycare logo" width="60px"> Daystar daycare</h6>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 200px;">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" style="color: white;" href="/home">Dashboard</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSitters" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">Sitters</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownSitters">
+                            <a class="dropdown-item" href="/sitterform">Sitter 1</a>
+                            <a class="dropdown-item" href="#">Sitter 2</a>
+                            <a class="dropdown-item" href="#">Sitter 3</a>
+                            <!-- Add more items as needed -->
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBabies" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">Babies</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownBabies">
+                            <a class="dropdown-item" href="/babiesform">Babyregistration</a>
+                            <a class="dropdown-item" href="/arrival">Daily arrival baby register </a>
+                            <a class="dropdown-item" href="/departure">Daily depature baby rigister</a>
+                            <!-- Add more items as needed -->
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: white;">Payment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: white;">Procurement</a> 
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/doll" style="color: white;">Dolls corner</a> 
+                    </li>
                 </ul>
-              </li>
-            
-              </li>
-      
-             
-      
-             
-            
-              </li>
-            </ul>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: auto;">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="/" style="color: white;">Logout</a>
                     </li>
                 </ul>
-            </div><!-- <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form> -->
-          </div>
+            </div>
         </div>
-      </nav>
-      {% block content %}
+    </nav>
 
-      
-                                
-      {% endblock %}                 
-                  
-            
-    <footer class=" text-light text-center py-3 " style="margin-top: 8px; background-color:#0C356A;
-      margin-left: 0px; margin-right: 0px; padding-left: opx; padding-right: 0px;max-width: 100%;">
+    {% block content %}
+    {% endblock %}
 
-    <div class="container">
-      <p>&copy;copyright 2024 Katusabe Scovia.All rights reserved</p>
-    
-    </div>
-  </footer>
-  
-      
+    <footer class="text-light text-center py-3" style="margin-top: 8px; background-color: #0C356A; margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; max-width: 100%;">
+        <div class="container">
+            <p>&copy; copyright 2024 Katusabe Scovia. All rights reserved</p>
+        </div>
+    </footer>
 
-    
-      
-      
-<script src="../static/CSS/bootstrap/js/bootstrap.bundle.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+    <script src="{% static 'CSS/bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
