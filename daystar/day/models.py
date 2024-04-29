@@ -21,7 +21,7 @@ class Babiesform(models.Model):
         return self.name_of_the_baby
 
 class Departure(models.Model):
-    baby_name=models.ForeignKey(Babiesform,on_delete=models.CASCADE)
+    babys_name=models.ForeignKey(Babiesform,on_delete=models.CASCADE)
     
     baby_number=models.IntegerField(default=0) 
     date=models.DateField(default=timezone.now)
@@ -29,7 +29,7 @@ class Departure(models.Model):
     pickers_name=models.CharField(max_length=200)
     comment=models.CharField(max_length=200,null=True, blank=True)
     def __str__(self):
-        return self.baby_number
+        return self.babys_name
 class Arrival(models.Model):
     baby_name=models.ForeignKey(Babiesform, on_delete=models.CASCADE)
     baby_number=models.IntegerField(default=0)
@@ -53,16 +53,17 @@ class  Payment(models.Model):
     currency = models.CharField(max_length=10,null=True, blank=True,default='ugx')
     def __int__(self):
       return self.payee     
+
     
 class Sitterform(models.Model):  
      name=models.CharField(max_length=200)
      gender=models.CharField(choices=[('male', 'Male'),('female', 'Female')], max_length=100)
-     location=models.CharField(max_length=100) 
+     location=models.CharField(choices=[('kabalagala', 'kabalagala')], max_length=100)
      date_of_birth=models.DateField(default=timezone.now) 
      next_of_kin=models.CharField( max_length=200)
      national_identification_number=models.CharField(max_length=200)
      recommenders_name=models.CharField(max_length=200)
-     religon=models.CharField(max_length=200)
+     religon=models.CharField(max_length=200,null=True, blank=True)
      level_of_education=models.CharField( choices=[('diploma','Diploma'),('highschool certificate','Highschool certificate'),('others','Others')],max_length=200)
      sitter_number=models.IntegerField(default=0)
      contacts=models.CharField(max_length=200) 
@@ -73,24 +74,26 @@ class Sitterform(models.Model):
 class Sitter_arrival(models.Model):
      sitter_name=models.ForeignKey(Sitterform, on_delete=models.CASCADE) 
      sitter_number=models.IntegerField(default=0)
-     date_of_arrival=models.DateField() 
-     date=models.DateField(default=timezone.now)  
+     date_of_arrival=models.DateField(default=timezone.now)   
      timein=models.TimeField ()
-     Attendancestatus=models.CharField(max_length=100)
+     Attendancestatus=models.CharField(choices=[('onduty', 'onduty')], max_length=100)
      def __str__(self):
          return self.sitter_name
+class assignment(models.Model):
+     sitter_name=models.ForeignKey(Sitterform, on_delete=models.CASCADE)
+     baby_name=models.ForeignKey(Babiesform, on_delete=models.CASCADE)     
      
-    
+     def __str__(self):
+         return f"{self.baby_name} - {self.sitter_name}"
 class Category_doll(models.Model):  
      name = models.CharField(max_length=100,null=True, blank=True)
      def __str__(self):
-         return self.name   
+         return self.name 
+  
 class Doll(models.Model):
     c_doll=models.ForeignKey(Category_doll, on_delete=models.CASCADE,null=True, blank=True)
     name_of_the_doll =models.CharField(max_length=200,null=True, blank=True)
-    price=models.IntegerField(default=0)
     quantity=models.IntegerField(default=0)
-    category=models.CharField(max_length=200,null=True, blank=True)
     color=models.CharField(max_length=200, null=True,blank=True)
     size=models.CharField(max_length=200,null=True,blank=True)
     issued_quantity=models.IntegerField(default=0,blank=True,null=True) 
@@ -99,6 +102,8 @@ class Doll(models.Model):
     date=models.DateField(default=timezone.now)
     def __str__(self):
         return self.name_of_the_doll
+    
+
 class Salesrecord(models.Model):    
     doll=models.ForeignKey(Doll,  on_delete=models.CASCADE,null=False, blank=False)
     payee=models.ForeignKey(Babiesform, on_delete=models.CASCADE,null=False,blank=False)
@@ -130,14 +135,22 @@ class  Procurement(models.Model):
     category = models.ForeignKey(Category,on_delete=models.CASCADE,null=True, blank=True)
     item_name = models.CharField(max_length=200,)
     Quantity=models.IntegerField(default=0)
-    price=models.IntegerField(default=0)
     date=models.DateField(auto_now_add=True, null=True)
     Unit_price=models.IntegerField( null=True)
-    total_cost=models.IntegerField(default=0)
-    net_stock=models.IntegerField(default=0)
+    received_quantity=models.IntegerField(default=0,null=True,blank=True)
 
     def __str__(self):
         return self.item_name
+      
+class Usedlog(models.Model): 
+    item = models.ForeignKey(Procurement,on_delete=models.CASCADE) 
+    quantity_issued=models.IntegerField(default=0)
+    usage_date=models.DateField()
+    
+
+
+
+    
 
 
 

@@ -8,6 +8,8 @@ from .forms import *
 from .models import *
 from django.contrib.postgres.search import SearchQuery, SearchVector
 from . filters import *
+from django.http import HttpResponseBadRequest
+from django.db.models import Sum
 
 # from .forms import BabiesformForm
 # from .models import Babiesfor
@@ -76,6 +78,7 @@ def adds(request):
         form=SitterformForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Sitter added successfully')
             print(form)
             return redirect('sitterform')
     else:
@@ -170,19 +173,42 @@ def receipt_detail(request, receipt_id):
             receipt = Salesrecord.objects.get(id=receipt_id)
             return render(request,'receipt_detail.html',{'receipt':receipt})
 
+
+
+
 @login_required
-def add_to_stock(request,pk):
-    issued_item=Doll.objects.get(id=pk)
-    form=Addform(request.POST)
+def add_to_stock(request, pk):
+    issued_item = Doll.objects.get(id=pk)
     if request.method == 'POST':
+        form = Addform(request.POST)
         if form.is_valid():
-            added_quantity=int(request.POST['received_quantity'])
-            issued_item.quantity+=added_quantity
-            issued_item.save()
-            print(added_quantity)
-            print(issued_item.quantity)
-            return redirect('doll')
-    return render(request, 'add_to_stock.html',{'form':form})
+            received_quantity = request.POST.get('received_quantity')
+            if received_quantity:
+                try:
+                    added_quantity = int(received_quantity)
+                    issued_item.quantity += added_quantity
+                    issued_item.save()
+                    print(added_quantity)
+                    print(issued_item.quantity)
+                    return redirect('doll')
+                except ValueError:
+                    return HttpResponseBadRequest("Invalid quantity")
+    else:
+        form = Addform()
+    return render(request, 'add_to_stock.html', {'form': form})
+
+# def add_to_stock(request,pk):
+#     issued_item=Doll.objects.get(id=pk)
+#     form=Addform(request.POST)
+#     if request.method == 'POST':
+#         if form.is_valid():
+#             added_quantity=int(request.POST['received_quantity'])
+#             issued_item.quantity+=added_quantity
+#             issued_item.save()
+#             print(added_quantity)
+#             print(issued_item.quantity)
+#             return redirect('doll')
+#     return render(request, 'add_to_stock.html',{'form':form})
 
 @login_required
 def all_sales(request):
@@ -217,7 +243,7 @@ def readsarrival(request, baby_id):  # Add id parameter to the view function
 def editsarrival(request,id):
      arrivals=get_object_or_404(Arrival,id=id)
      if request.method == 'POST':  
-       form=ArrivalForm(request.POST,instance=arrival)
+       form=ArrivalForm(request.POST,instance=arrivals)
        if form.is_valid():
            form.save()
            return redirect('arrival')
@@ -226,8 +252,8 @@ def editsarrival(request,id):
      return render(request,'editsarrival.html',{'form':form,'arrivals':arrivals})     
 
 def departure(request):
-  departure=Departure.objects.all()
-  return render(request,'departure.html',{'departure':departure})
+  babys=Departure.objects.all()
+  return render(request,'departure.html',{'babys':babys})
 
 
 def adddeparture(request):
@@ -239,23 +265,23 @@ def adddeparture(request):
             return redirect('departure')
    else:
             form=DepartureForm()
-   return render(request,'addsarrival.html',{'form':form })      
+   return render(request,'adddeparture.html',{'form':form })      
   
 
-def readdeparture(request, id):  # Add id parameter to the view function
-    departure_info = Departure.objects.get(id=id)  # Retrieve Departure object using the provided id
+def readdeparture(request, baby_id):  # Add id parameter to the view function
+    departure_info = Departure.objects.get(id=baby_id)  # Retrieve Departure object using the provided id
     return render(request, 'readdeparture.html', {'departure_info': departure_info})  # Render 'readdeparture.html' template with departure_info
 
-def editdeparture(request):
+def editdeparture(request,id):
      departures=get_object_or_404(Departure,id=id)
      if request.method == 'POST':  
-       form=DepartureForm(request.POST,instance=arrival)
+       form=DepartureForm(request.POST,instance=departures) 
        if form.is_valid():
            form.save()
            return redirect('departure')
      else:
             form=DepartureForm(instance=departures) 
-     return render(request,'editsarrval.html',{'form':form,'departures':departure})     
+     return render(request,'editdeparture.html',{'form':form,'departures':departures})     
 
 
 
@@ -291,9 +317,81 @@ def editonduty(request):
             form=DepartureForm(instance=departures) 
     return render(request,'editsarrval.html',{'form':form,'departures':departure})     
 
+@login_required
+def add_to_stocks(request, pk):
+    issued_procurement = Procurement.objects.get(id=pk)
+    
+    if request.method == 'POST':
+        form = AddForm(request.POST)
+        if form.is_valid():
+            received_quantity = form.cleaned_data.get('received_quantity')
+            added_quantity = int(received_quantity)
+            issued_procurement.Quantity += added_quantity
+
+            issued_procurement.save()
+            return redirect('inventories')  
+    else:
+        form = AddForm()
+    
+    return render(request, 'add_to_stocks.html', {'form': form})
+
+# def add_to_stocks(request, pk):
+#     issued_procument = Procurement.objects.get(id=pk)
+#     if request.method == 'POST':
+#         form = AddForm(request.POST)
+#         if form.is_valid():
+#             received_quantity = request.POST.get('received_quantity')
+#             added_quantity = int(received_quantity)
+#             issued_procument.quantity += added_quantity
+#             issued_procument.save()
+#             return redirect('add_to_stocks')
+#     else:
+#         form = Addform()
+#     return render(request, 'add_to_stocks.html', {'form': form})
+# #views for procurements
+@login_required
+def inventories(request):
+    inventory=Procurement.objects.all()
+    return render(request,'inventories.html',{'inventory':inventory})
+def issue(request, pk):
+    issued_item = Procurement.objects.get(id=pk) 
+    issue_form = Usedlogform(request.POST)  
+
+    if request.method == 'POST':
+        if issue_form.is_valid():
+            new_issue = issue_form.save(commit=False)
+            new_issue.item = issued_item
+            new_issue.save()
+            issued_quantity = int(request.POST['quantity_issued'])
+            issued_item.Quantity -= issued_quantity
+
+            issued_item.save()
+            print(issued_item.item_name)
+            print(request.POST['quantity_issued'])
+            print(issued_item.Quantity)
+            return redirect('inventories')
+    return render(request, 'issue.html', {'issue_form': issue_form})
+
+def all_issue_items(request):
+    issued_items=Usedlog.objects.all()
+    return render(request,'all_issue_items.html',{'issued_items':issued_items})
+@login_required
+def all_issue_items(request):
+    issues = Usedlog.objects.all()
+    total_issued_quantity = issues.aggregate(total_issued_quantity=Sum('quantity_issued'))['total_issued_quantity'] or 0
+    
+    # Calculating total received quantity
+    total_received_quantity = Procurement.objects.aggregate(total_received_quantity=Sum('Quantity'))['total_received_quantity'] or 0
+    
+    # Calculating net quantity
+    net_quantity = total_received_quantity - total_issued_quantity
+
+    return render(request, 'all_issue_items.html', {'issues': issues, 'total_issued_quantity': total_issued_quantity, 'total_received_quantity': total_received_quantity, 'net_quantity': net_quantity})
+
+ 
 
 
-
+  
 
 
 

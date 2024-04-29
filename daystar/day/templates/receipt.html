@@ -1,31 +1,25 @@
 {% extends 'base.html'%} 
-{% block content%}
+{% block content %}
 <br /><br>
-<div class="container" style="background-color: aliceblue;">
-    <h1 class="card-header text-center" class="v">ALL RECEIPTS</h1><br>
+<div class="container" style="background-color: aliceblue; padding: 20px;">
+    <h1 class="text-center">ALL RECEIPTS</h1>
+    <br>
     {% for sale in sales %}
-    <div class="card" style="opacity: 90%;" >
-        
+    <div class="card mb-3" style="opacity: 0.9; border: 1px solid #ccc;">
         <div class="card-body">
-            <h5 style="text-align: right;"><h5>Date: {{ receipt.sale_date}}</h5>
-        </h5>
-            <h2 class="v">DAYSTAR DAYCARE</h2>
-            <h3 class="card-title" style="color:#FB667A; ">Child name : {{sale.payee | title}}</h3>
-        
-            <h6 class="card-text">Doll Name : {{sale.doll}}</h6>
-            <h6 class="card-text">Amount Paid: UGX{{ sale.amount_received }}</h6>
-            <h6 class="card-text">Quantity: {{sale.quantity_sold }}</h6>
-            <h2>Total Price : UGX{{ sales.get_total }}</h2>
-            <div style="flex: 1">
-                <h6 class="card-text">Amount Due: UGX{{ sale.get_change }}</h6>
-                <a href="{% url 'receipt_detail' sale.id %}">
-                   
-                    <button class="button" type="submit"style="width:auto;">Print Receipt</button> <br>
-                </a>
+            <h5 class="text-right">Date: {{ sale.sale_date }}</h5>
+            <h4 >DAYSTAR DAYCARE</h4>
+            <h3 class="card-title" style="color: #FB667A;">Child Name: {{ sale.payee | title }}</h3>
+            <p class="card-text">Doll Name: {{ sale.doll }}</p>
+            <p class="card-text">Amount Paid: UGX{{ sale.amount_received }}</p>
+            <p class="card-text">Quantity: {{ sale.quantity_sold }}</p>
+            <h4 class="mb-4">Total Price: UGX{{ sale.get_total }}</h4>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <p class="card-text">Amount Due: UGX{{ sale.get_change }}</p>
+                <a href="{% url 'receipt_detail' sale.id %}" class="btn btn-primary">Print Receipt</a>
             </div>
         </div>
     </div>
-    <br />
     {% endfor %}
 </div>
 {% endblock %}

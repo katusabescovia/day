@@ -63,7 +63,17 @@ class Sitter_arrivalForm(ModelForm):
      class Meta:
          model=Sitter_arrival
          fields='__all__'
-           
+
+class AddForm(ModelForm):
+     class Meta:
+         model=Procurement
+         fields=['received_quantity']  
+
+class Usedlogform(ModelForm):
+     class Meta:
+         model=Usedlog
+         fields='__all__'
+
 
 
 

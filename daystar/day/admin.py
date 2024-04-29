@@ -14,3 +14,4 @@ admin.site.register(Category_doll)
 admin.site.register(Arrival)
 admin.site.register(Departure)
 admin.site.register( Sitter_arrival)
+

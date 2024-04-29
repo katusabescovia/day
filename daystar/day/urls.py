@@ -32,7 +32,7 @@ urlpatterns = [
     path('editsarrival/<int:id>/', views.editsarrival, name='editsarrival'),
     path('departure/', views.departure, name='departure'),
     path('adddeparture/', views.adddeparture, name='adddeparture'),
-    path('readdeparture/<int:id>/', views.readdeparture, name='readdeparture'),
+    path('readdeparture/<int:baby_id>/', views.readdeparture, name='readdeparture'),
     path('editdeparture/<int:id>/', views.editdeparture, name='editdeparture'),
     path('onduty/', views.onduty, name='onduty'),
     path('addonduty/', views.addonduty, name='addonduty'),
@@ -40,8 +40,11 @@ urlpatterns = [
     path('editdontudy/<int:id>/', views.editonduty, name='editonduty'),
     
     
-    
- 
+    #procurement
+    path('inventories/', views.inventories, name='inventories'),
+    path('add_to_stocks/<str:pk>', views.add_to_stocks, name='add_to_stocks'),
+    path('all_issue_items/',views.all_issue_items,name='all_issue_items'),
+    path('issue/<str:pk>',views.issue,name='issue'),
     
 
     

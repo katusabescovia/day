@@ -1,17 +1,25 @@
 {%extends 'base.html' %}
 {%load static %}
 {% block content %}
+<style>
+    h4{ color:#0C356A;
+        text-shadow: 2px 2px 4px #000000;
+    margin-left: 580px;}
 
+</style>
+<br>
 <div>
-    <a href="{% url 'issue_item'  doll.id %}" class="hover_button" ><input type="submit" value="sell doll" class="btn btn-dark" placeholder="sell doll"/></a>
-    <a href="{% url 'add_to_stock' doll.id %}"  class="hover-button"><input type= "submit" value="Add to Stock" class="btn btn-dark" type="button"/></a>
+    <a href="{% url 'issue_item'  doll.id %}" class="hover_button" ><input type="submit" value="sell doll" class="btn btn-primary" placeholder="sell doll"/></a>
+    <a href="{% url 'add_to_stock' doll.id %}"  class="hover-button"><input type= "submit" value="Add to Stock" class="btn btn-primary" type="button"/></a>
 </div>
 
 <br><br>
 
-<div class="card-header" style="background-color:white;">
-    <h4> Dolls Details </h4>
-</div>
+
+
+
+    <h4> DOLLS  DETAILS </h4><hr>
+
 
 
 <table class="table ">

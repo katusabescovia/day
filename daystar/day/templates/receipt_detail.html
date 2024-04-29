@@ -1,76 +1,47 @@
-{% extends 'base.html'%}
-{% load static%}
-{% block content%}
-<br />
+{% extends 'base.html' %}
+{% load static %}
 
+{% block content %}
+<br />
+<style>
+.card-header{font-family: sans-serif;}
+</style>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="card" style="background-color: white;">
-
-
-                <div class="card-header" style="width:95%;">
-                    <table style="width: 100%; border-collapse: collapse;">
-                        <tr>
-                            <td style="vertical-align: top;">
-    
-                        
-                            </td>
-                            <td style="text-align: right;">
-
-                                <h4 class="v">DAYSTAR DAYCARE, Kabalagala </h4>
-                                <h4 class="v">Kampala,Uganda.</h4>
-                                <h5>Contact us: +256789728298</h5>
-                                <h5>Date: {{ receipt.sale_date }}</h5>
-
-                                <h6 style="padding-top: 20px;"> DOLL-RECEIPT-0{{receipt.id}}</h6>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" style="text-align: left; padding-top: 30px; padding-left: 10px;">
-                                <h4 style="color: lightslategray;">Bill To</h4>
-                                <h3 style="color:#FB667A;">Child Name: {{receipt.payee | title}}</h3>
-                            
-                            </td>
-                        </tr>
-                    </table>
-
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="text-center">DAYSTAR DAYCARE, Kabalagala</h4>
+                    <p class="text-center">Kampala, Uganda</p>
+                    <p class="text-center">Contact us: +256789728298</p>
+                    <p class="text-center">Date: {{ receipt.sale_date }}</p>
+                    <p class="text-center">Receipt Number: DOLL-RECEIPT-0{{ receipt.id }}</p>
                 </div>
-
-                <div class="card-block" style="width: 96%;">
-                    <!-- <div class="table-responsive"> -->
-                    <table class="table table-sm">
-                        <thead>
-                            <tr>
-                                <td><strong style="color:black;">Doll Name</strong></td>
-                                <td class="text-xs-center"><strong>Doll Quantity</strong></td>
-                                <td class="text-xs-right"><strong>Total Bill(Ugx)</strong></td>
-                                <td class="text-xs-right"><strong>Amount Paid(Ugx)</strong></td>
-                                <td class="text-xs-right">
-                                    <strong>Amount Due(UgX)</strong>
-                                </td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="v">
-                                <td>{{receipt.doll| title}}</td>
-                                <td class="text-xs-center">{{receipt.quantity_sold }}</td>
-                                <td class="text-xs-center">Ugx{{receipt.get_total | title}}
-                                </td>
-                                <td class="text-xs-right">Ugx{{ receipt.amount_received }}
-                                </td>
-                                <td class="text-xs-right">Ugx{{ receipt.get_change }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-
-                    <h5 class="text-center" id="A">Thank You For choosing Daystar daycare</h5>
-                    <!-- <h6 class="text-center" id="D">Designed by Nalugya Vanessa</h6> -->
-                     <!-- </div> -->
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Doll Name</th>
+                                    <th class="text-center">Quantity</th>
+                                    <th class="text-right">Total Bill (Ugx)</th>
+                                    <th class="text-right">Amount Paid (Ugx)</th>
+                                    <th class="text-right">Amount Due (Ugx)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="font-family: sans-serif;">
+                                    <td>{{ receipt.doll | title }}</td>
+                                    <td class="text-center">{{ receipt.quantity_sold }}</td>
+                                    <td class="text-right">Ugx{{ receipt.get_total }}</td>
+                                    <td class="text-right">Ugx{{ receipt.amount_received }}</td>
+                                    <td class="text-right">Ugx{{ receipt.get_change }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-center" style="font-family: sans-serif;">Thank you for choosing Daystar daycare</p>
                 </div>
-
             </div>
         </div>
     </div>

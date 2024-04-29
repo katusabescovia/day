@@ -60,6 +60,20 @@ border: solid black;
 </style>  
 
 <h4 >ADD NEW SITTERS</h4><hr>
+
+{% for message in messages %}
+
+ <div class="alert alert-warning alert-dismissible fade show" role="alert"
+    style="background-color: #4caf50; width: 40%; margin-left: 40px;">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+
+{% endfor %}
+
+
+
 <div class="container">
     <form method="POST" class="sitter-form">
 

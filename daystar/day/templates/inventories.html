@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+ <style>
+    h4{ color:#0C356A;
+        text-shadow: 2px 2px 4px #000000;
+     margin-left: 490px;
+    }
+ </style>
+
+
+  
+    <a href="/all_issue_items"  class="hover-button"><input type= "submit" value="All_items_issued" class="btn btn-primary" type="button"/></a>
+
+
+<div class="table-container">
+    
+        <h4 >PRODUCTS  IN  STOCK</h4><hr>
+
+    
+</div>
+<table class="table table-bordered">
+    
+    <thead class="thead-dark table-bordered">
+        <tr>
+            <th scope="col" class="project-h1">Category</th>
+            <th scope="col" class="project-h1">Item name</th>
+            <th scope="col" class="project-h1">Quantity</th>
+            <th scope="col" class="project-h1">Unit Price(UGX)</th>
+            <th scope="col" class="project-h1">Detail</th>
+        </tr>
+    </thead>
+    {% for product  in inventory %}
+    <tbody>
+        <tr style="font-family: sans-serif;">
+            <td>{{product.category}}</td>
+            <td>{{product.item_name}}</td>
+             <td>{{product.Quantity}}</td>
+            <td>UGX{{product.Unit_price}}</td>
+           <div> <!-- here we are hadling the buy item link n its handled by product_detail view -->
+            
+            <td >
+                <a href="{% url 'issue' pk=product.id %}" class="btn btn-primary">ISSUE ITEM</a>
+
+                <a href="{% url 'add_to_stocks' pk=product.id %}" class="btn btn-primary">ADD STOCK</a>
+
+
+            </td>
+        </div>
+
+
+        </tr>
+    </tbody>
+    {% endfor %}
+</table>
+</div>
+</div>
+</div>
+{% endblock %}

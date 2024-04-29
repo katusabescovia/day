@@ -7,6 +7,8 @@
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'CSS/bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-RyE6PwX0uk7usyfMmcJcbCWTnNk5u76ViM9nt2LInHd/aEnq5AOM9te9EzBONy3nPlm3KDP0k8TgMlYD1LoAfA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     
 </head>
 
@@ -25,8 +27,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSitters" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">Sitters</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownSitters">
-                            <a class="dropdown-item" href="/sitterform">Sitter 1</a>
-                            <a class="dropdown-item" href="#">Sitter 2</a>
+                            <a class="dropdown-item" href="/sitterform">Registration Form</a>
+                            <a class="dropdown-item" href="#">Onduty</a>
                             <a class="dropdown-item" href="#">Sitter 3</a>
                             <!-- Add more items as needed -->
                         </div>
@@ -41,14 +43,24 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: white;">Payment</a>
+                        <a class="nav-link" href="/paymentform" style="color: white;">Payment</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBabies" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">Procurement</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownBabies">
+                            <a class="dropdown-item" href="/doll">Dollscorner</a>
+                            <a class="dropdown-item" href="/inventories">Inventories </a>
+                        
+                        
+                            <!-- Add more items as needed -->
+                        </div>
+                    </li>
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="#" style="color: white;">Procurement</a> 
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/doll" style="color: white;">Dolls corner</a> 
-                    </li>
+                    </li> -->
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">

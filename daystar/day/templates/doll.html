@@ -1,17 +1,23 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block content %}
 
-<div>
-    <a href="{% url 'receipt' %}" class="hover_button" ><input type="submit" value="Receipts" class="btn btn-dark" placeholder="Receipts"/></a>
-    <a href="{% url 'all_sales' %}"  class="hover-button"><input type= "submit" value="All_sales" class="btn btn-dark" type="button"/></a>
-</div>
+{% block content %}
+ <style>
+    h4{ color:#0C356A;
+        text-shadow: 2px 2px 4px #000000;
+     margin-left: 490px;
+    }
+ </style>
+
+<br>
+    <a  href="{% url 'receipt' %}" class="hover_button" ><input type="submit" value="Receipts" class="btn btn-primary " placeholder="Receipts"/></a>
+    <a href="{% url 'all_sales' %}"  class="hover-button"><input type= "submit" value="All_sales" class="btn btn-primary" type="button"/></a>
+
 
 <div class="table-container">
-    <div class="card-header" style="width:30%; margin: 0 auto; background-color:white;">
-        <h3 class="text-center" style="color: rgb(5, 10, 11); padding-top: 20px;">DOLLS IN STOCKS</h3>
+    
+        <h4 >DOLLS IN  STOCK</h4><hr>
 
-    </div>
     
 </div>
 <table class="table table-bordered">
@@ -29,7 +35,7 @@
     </thead>
     {% for dolls in dolls %}
     <tbody>
-        <tr>
+        <tr style="font-family: sans-serif;">
             <td>{{dolls.c_doll}}</td>
             <td>{{dolls.name_of_the_doll}}</td>
             <td>{{dolls.size}}</td>
@@ -38,7 +44,9 @@
             <td>UGX{{dolls.Unit_price}}</td>
            <div> <!-- here we are hadling the buy item link n its handled by product_detail view -->
             
-            <td><a href="{% url 'dollscorner' doll_id=dolls.id %}"><input type="button" value="SELL DOLL"></a></td>
+            <td >
+                <a href="{% url 'dollscorner' doll_id=dolls.id %}" class="btn btn-primary">SELL DOLL</a>
+            </td>
 
 
 
