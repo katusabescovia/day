@@ -391,7 +391,27 @@ def all_issue_items(request):
  
 
 
-  
+def create_payment(request):
+    if request.method == 'POST':
+        form = SitterpaymentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # Redirect to the payment list page upon successful form submission
+            return redirect('payment_list')
+    else:
+        form = SitterpaymentForm()
+    
+
+    return render(request, 'create_payment.html', {'form': form})
+
+
+def payment_list(request):
+  payments=Sitterpayment.objects.all()
+  return render(request,'payment_list.html',{'payments':payments})
+
+
+
+ 
 
 
 

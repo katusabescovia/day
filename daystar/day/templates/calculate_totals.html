@@ -1,0 +1,13 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+<title>Total Payment</title>
+</head>
+<body>
+    <h1>Total Payment</h1>
+    <p>Total Payments: {{ total_payments }}</p>
+    <a href="{% url 'payment_list' %}">Back to Payment List</a>
+</body>
+</html>

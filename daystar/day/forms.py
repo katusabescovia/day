@@ -75,5 +75,10 @@ class Usedlogform(ModelForm):
          fields='__all__'
 
 
+class SitterpaymentForm(ModelForm):
+     class Meta:
+         model=Sitterpayment
+         fields='__all__'
+
 
 

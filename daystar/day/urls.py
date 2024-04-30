@@ -46,7 +46,10 @@ urlpatterns = [
     path('all_issue_items/',views.all_issue_items,name='all_issue_items'),
     path('issue/<str:pk>',views.issue,name='issue'),
     
-
+#sitterpayment
+    path('create_payment/', views.create_payment, name='create_payment'),
+    path('payment_list/', views.payment_list, name='payment_list'),
+    # path('calculate_totals/', views.calculate_totals, name='calculate_totals'),
+]
     
 
-]

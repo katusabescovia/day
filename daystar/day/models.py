@@ -56,39 +56,41 @@ class  Payment(models.Model):
 
     
 class Sitterform(models.Model):  
-     name=models.CharField(max_length=200)
-     gender=models.CharField(choices=[('male', 'Male'),('female', 'Female')], max_length=100)
-     location=models.CharField(choices=[('kabalagala', 'kabalagala')], max_length=100)
-     date_of_birth=models.DateField(default=timezone.now) 
-     next_of_kin=models.CharField( max_length=200)
-     national_identification_number=models.CharField(max_length=200)
-     recommenders_name=models.CharField(max_length=200)
-     religon=models.CharField(max_length=200,null=True, blank=True)
-     level_of_education=models.CharField( choices=[('diploma','Diploma'),('highschool certificate','Highschool certificate'),('others','Others')],max_length=200)
-     sitter_number=models.IntegerField(default=0)
-     contacts=models.CharField(max_length=200) 
-     date=models.DateField()
-     def __str__(self):
-         return self.name
+    name=models.CharField(max_length=200)
+    gender=models.CharField(choices=[('male', 'Male'),('female', 'Female')], max_length=100)
+    location=models.CharField(choices=[('kabalagala', 'kabalagala')], max_length=100)
+    date_of_birth=models.DateField(default=timezone.now) 
+    next_of_kin=models.CharField( max_length=200)
+    national_identification_number=models.CharField(max_length=200)
+    recommenders_name=models.CharField(max_length=200)
+    religon=models.CharField(max_length=200,null=True, blank=True)
+    level_of_education=models.CharField( choices=[('diploma','Diploma'),('highschool certificate','Highschool certificate'),('others','Others')],max_length=200)
+    sitter_number=models.IntegerField(default=0)
+    contacts=models.CharField(max_length=200) 
+    date=models.DateField()
+    def __str__(self):
+        return self.name
 
 class Sitter_arrival(models.Model):
-     sitter_name=models.ForeignKey(Sitterform, on_delete=models.CASCADE) 
-     sitter_number=models.IntegerField(default=0)
-     date_of_arrival=models.DateField(default=timezone.now)   
-     timein=models.TimeField ()
-     Attendancestatus=models.CharField(choices=[('onduty', 'onduty')], max_length=100)
-     def __str__(self):
-         return self.sitter_name
+    sitter_name=models.ForeignKey(Sitterform, on_delete=models.CASCADE) 
+    sitter_number=models.IntegerField(default=0)
+    date_of_arrival=models.DateField(default=timezone.now)   
+    timein=models.TimeField ()
+    Attendancestatus=models.CharField(choices=[('onduty', 'onduty')], max_length=100)
+    def __str__(self):
+        return self.sitter_name
 class assignment(models.Model):
-     sitter_name=models.ForeignKey(Sitterform, on_delete=models.CASCADE)
-     baby_name=models.ForeignKey(Babiesform, on_delete=models.CASCADE)     
-     
-     def __str__(self):
-         return f"{self.baby_name} - {self.sitter_name}"
+    sitter_name=models.ForeignKey(Sitterform, on_delete=models.CASCADE)
+    baby_name=models.ForeignKey(Babiesform, on_delete=models.CASCADE) 
+    date=models.DateField(default=timezone.now)
+    day=models.CharField(max_length=100,choices=[('fullday', 'fullday'),('halfday','halfday' )])   
+    
+    def __str__(self):
+        return f"{self.baby_name} - {self.sitter_name}"
 class Category_doll(models.Model):  
-     name = models.CharField(max_length=100,null=True, blank=True)
-     def __str__(self):
-         return self.name 
+    name = models.CharField(max_length=100,null=True, blank=True)
+    def __str__(self):
+        return self.name 
   
 class Doll(models.Model):
     c_doll=models.ForeignKey(Category_doll, on_delete=models.CASCADE,null=True, blank=True)
@@ -131,7 +133,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name 
     
-class  Procurement(models.Model):
+class Procurement(models.Model):
     category = models.ForeignKey(Category,on_delete=models.CASCADE,null=True, blank=True)
     item_name = models.CharField(max_length=200,)
     Quantity=models.IntegerField(default=0)
@@ -148,17 +150,15 @@ class Usedlog(models.Model):
     usage_date=models.DateField()
     
 
+class Sitterpayment(models.Model):
+    sitter_name=models.ForeignKey(Sitterform, on_delete=models.CASCADE)
+    amount=models.IntegerField(default=0)
+    date=models.DateField(default=timezone.now)
+    numbers_of_babies_attended_to=models.IntegerField(default=0)
+    def __str__(self):
+        return f"Sitter Payment - {self.sitter_name}"
 
 
-    
-
-
-
-
-
-
-
-
-     
-     
-     
+    def total_amount(self):
+        total= self.amount * self.numbers_of_babies_attended_to
+        return int(total)

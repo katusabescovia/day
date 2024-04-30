@@ -42,9 +42,19 @@
                             <!-- Add more items as needed -->
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/paymentform" style="color: white;">Payment</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBabies" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">Payment</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownBabies">
+                            <a class="dropdown-item" href="/payment_list">payment for sitters</a>
+                            <a class="dropdown-item" href="/paymentform">payment for babies </a>
+                        
+                        
+                            <!-- Add more items as needed -->
+                        </div>
                     </li>
+                    {% comment %} <li class="nav-item">
+                        <a class="nav-link" href="/paymentform" style="color: white;">Payment</a>
+                    </li> {% endcomment %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBabies" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">Procurement</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownBabies">
