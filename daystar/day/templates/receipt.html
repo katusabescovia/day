@@ -1,15 +1,26 @@
 {% extends 'base.html'%} 
 {% block content %}
+<style>
+    h4 {
+        font-family: sans-serif;
+        color: #0C356A;
+        text-shadow: 2px 2px 4px #000000;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+      body {background-color: darkgrey; }
+</style>
 <br /><br>
 <div class="container" style="background-color: aliceblue; padding: 20px;">
     <h1 class="text-center">ALL RECEIPTS</h1>
     <br>
     {% for sale in sales %}
-    <div class="card mb-3" style="opacity: 0.9; border: 1px solid #ccc;">
+    <div class="card mb-3" style="background-color:white;">
         <div class="card-body">
             <h5 class="text-right">Date: {{ sale.sale_date }}</h5>
             <h4 >DAYSTAR DAYCARE</h4>
-            <h3 class="card-title" style="color: #FB667A;">Child Name: {{ sale.payee | title }}</h3>
+            <h3 class="card-title" >Child Name: {{ sale.payee | title }}</h3>
             <p class="card-text">Doll Name: {{ sale.doll }}</p>
             <p class="card-text">Amount Paid: UGX{{ sale.amount_received }}</p>
             <p class="card-text">Quantity: {{ sale.quantity_sold }}</p>

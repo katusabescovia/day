@@ -15,10 +15,10 @@ urlpatterns = [
     path('adds/', views.adds, name='adds'),
     path('reads/<int:id>/', views.reads, name='reads'),
     path('edits/<int:id>/', views.edits, name='edits'),
-    path('paymentform/', views.paymentform, name='paymentform'),
-    path('addpay/', views.addpay, name='addpay'),
-    path('readpay/<int:id>/', views.readpay, name='readpay'),
-    path('editpay/<int:id>/', views.editpay, name='editpay'),
+   
+    # path('addpay/', views.addpay, name='addpay'),
+    # path('readpay/<int:id>/', views.readpay, name='readpay'),
+    # path('editpay/<int:id>/', views.editpay, name='editpay'),
     path('doll/',views.doll,name='doll'),
     path('dollscorner/<int:doll_id>/', views.dollscorner, name='dollscorner'),
     path('add_to_stock/<str:pk>', views.add_to_stock, name='add_to_stock'),
@@ -34,6 +34,7 @@ urlpatterns = [
     path('adddeparture/', views.adddeparture, name='adddeparture'),
     path('readdeparture/<int:baby_id>/', views.readdeparture, name='readdeparture'),
     path('editdeparture/<int:id>/', views.editdeparture, name='editdeparture'),
+    #sitteronduty
     path('onduty/', views.onduty, name='onduty'),
     path('addonduty/', views.addonduty, name='addonduty'),
     path('readonduty/<int:id>/', views.readonduty, name='readonduty'),
@@ -50,6 +51,12 @@ urlpatterns = [
     path('create_payment/', views.create_payment, name='create_payment'),
     path('payment_list/', views.payment_list, name='payment_list'),
     # path('calculate_totals/', views.calculate_totals, name='calculate_totals'),
+
+
+#payment for babies    
+ path('paymentform/', views.paymentform, name='paymentform'),
+ path('payment_lists/', views.payment_lists, name='payment_lists'),
+
 ]
     
 

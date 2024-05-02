@@ -9,16 +9,18 @@
     input {width: 50%;}
     .table-responsive {
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+        margin-top: 20px;
     }
     h4 {margin-left: 500px;
         color:#0C356A;
         text-shadow: 2px 2px 4px #000000;}
-        body{background-color: darkgray;}
+        body{background-color: darkgray;
+        margin-top: 20px;}
 </style>
 </head>
 <body>
-<h4 class="mb-3">PAYMENT LIST</h4><hr>
-<a href="{% url 'create_payment' %}">Create Payment</a>
+<h4 class="mb-3">PAYMENT LIST FOR SITTERS</h4><hr>
+<a href="{% url 'create_payment' %}" class="btn btn-primary">Create Payment</a>
 
 </td>
 
@@ -40,17 +42,17 @@
             <tr>
     
                 <td>{{ payment.sitter_name}}</td>
-                <td>{{ payment.amount }}</td>
+                <td>UGX{{ payment.amount }}</td>
                 <td>{{ payment.date }}</td>
                 <td>{{ payment.numbers_of_babies_attended_to}}</td>
-                <td>{{ payment.total_amount}}</td>
+                <td>UGX{{ payment.total_amount}}</td>
                   
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
-
+<br><br>
 
 
 

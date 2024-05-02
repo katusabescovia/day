@@ -27,11 +27,12 @@
         <thead class="table-dark">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
+                <th scope="col">Name of the baby</th>
                 <th scope="col">Babysnumber</th>
                 <th scope="col">Date</th>
                 <th scope="col">Timein</th>
                 <th scope="col">Name of care_taker</th>
+                <th scope=>Assigning babies to sitters</th>
                 <th scope=>Action</th>
             </tr>
         </thead>
@@ -46,6 +47,8 @@
                 <td>{{ arrival_info.date }}</td>
                 <td>{{ arrival_info.timein }}</td>
                 <td>{{ arrival_info.care_taker}}</td>
+                <td>{{ arrival_info.Assigned_to}}</td>
+
                 <td>
                     <div>
                         <a href="{% url 'editsarrival' id=arrival_info.id %}" class="btn btn-primary mb-3">Edit </a>

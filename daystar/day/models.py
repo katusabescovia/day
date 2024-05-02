@@ -30,29 +30,25 @@ class Departure(models.Model):
     comment=models.CharField(max_length=200,null=True, blank=True)
     def __str__(self):
         return self.babys_name
-class Arrival(models.Model):
-    baby_name=models.ForeignKey(Babiesform, on_delete=models.CASCADE)
-    baby_number=models.IntegerField(default=0)
-    date=models.DateField(default=timezone.now)
-    timein=models.TimeField()
-    care_taker=models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.baby_number
-
-
-
-   
-    
-
 class  Payment(models.Model):
     payee = models.ForeignKey(Babiesform,on_delete=models.CASCADE ,null=True, blank=True)
-    c_payment = models.ForeignKey(Categorystay, on_delete=models.CASCADE,null=True, blank=True) 
-    amount=models.IntegerField(null=True, blank=True)
+    payment_type =models.CharField(choices=[('halfday', 'halfday'),('fullday', 'fullday'),('monthlyhalfday','monthlyhalfday') ,('monthlyfullfday','monthlyfullday')], max_length=100)
     payno = models.IntegerField(null=True, blank=True)
-    currency = models.CharField(max_length=10,null=True, blank=True,default='ugx')
+    actual_amount = models.IntegerField(default=0,)
+    amount_paid = models.IntegerField(default=0)
+    date=models.DateField(default=timezone.now)
     def __int__(self):
-      return self.payee     
+      return self.payee   
+    
+    def amount(self):
+        halfday=10000
+        fullday=15000
+        amount=(self.payment_type['monthlyfullday']*30, self.payment_type['monthlyhalfday']*30)
+        return int(amount)
+
+
+    def get_balance(self):
+        return self.actual_amount - self.amount_paid  
 
     
 class Sitterform(models.Model):  
@@ -78,15 +74,19 @@ class Sitter_arrival(models.Model):
     timein=models.TimeField ()
     Attendancestatus=models.CharField(choices=[('onduty', 'onduty')], max_length=100)
     def __str__(self):
-        return self.sitter_name
-class assignment(models.Model):
-    sitter_name=models.ForeignKey(Sitterform, on_delete=models.CASCADE)
-    baby_name=models.ForeignKey(Babiesform, on_delete=models.CASCADE) 
+        return str(self.sitter_name)
+
+class Arrival(models.Model):
+    baby_name=models.ForeignKey(Babiesform, on_delete=models.CASCADE)
+    baby_number=models.IntegerField(default=0)
     date=models.DateField(default=timezone.now)
-    day=models.CharField(max_length=100,choices=[('fullday', 'fullday'),('halfday','halfday' )])   
-    
+    timein=models.TimeField()
+    care_taker=models.CharField(max_length=200)
+    Assigned_to=models.ForeignKey(Sitter_arrival,on_delete=models.CASCADE)
+
     def __str__(self):
-        return f"{self.baby_name} - {self.sitter_name}"
+        return self.baby_name    
+
 class Category_doll(models.Model):  
     name = models.CharField(max_length=100,null=True, blank=True)
     def __str__(self):

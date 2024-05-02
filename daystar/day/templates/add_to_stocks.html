@@ -14,7 +14,7 @@
   }
 
   .container {
-    width: 50%;
+    width: 40%;
     margin: 0 auto;
   }
 
@@ -37,7 +37,7 @@
   button[type="submit"] {
     width: 30%;
     padding: 10px;
-    background-color: #0C356A;
+  
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -55,7 +55,7 @@
   <form method="POST" action="">
     {% csrf_token %}
     {{ form|crispy }}
-    <button type="submit">Add</button>
+    <button type="submit" class="btn btn-primary">Add</button>
   </form>
 </div>
 

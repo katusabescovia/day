@@ -69,7 +69,7 @@
                 <td>{{ sitter.sitter_number }}</td>
                 <td>{{ sitter.contacts }}</td>
                 <td>   
-                    <a href="{% url 'reads' id=sitter.id %}">Read</a>
+                    <a href="{% url 'reads' id=sitter.id %}" class="btn btn-primary">Read</a>
                 </td>
             </tr>
             {% endfor %}

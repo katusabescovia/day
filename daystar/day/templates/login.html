@@ -63,7 +63,7 @@
 
 <br><br><br><br><br><br>
 
-    <h2> LOGIN</h2><hr>
+    <h2> LOGIN</h2> <hr>
     <form method="POST" class="login-form">
       <div class="container">
        {% csrf_token %}
@@ -71,7 +71,7 @@
         <br>
       </div>
       <div class="button_container">
-        <button type="submit"class="btn-primary" >Login</button>
+        <button type="submit"class="btn btn-primary" >Login</button>
         </div>
 
         
@@ -85,6 +85,7 @@
     </footer>
 
 <style>
+  
   header {
     display: flex;
     justify-content: space-between;
@@ -142,14 +143,15 @@ body{ background-color: darkgray}
 
 
   .login-form {
-    width: 40%;
+    width: 30%;
     margin: 0 auto;
     padding: 20px;
-    border: 6px solid black;
+    border: solid black;
+
     border-radius: 5px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     background-color:white;
-    border-radius: 10px;
+    border-radius: 6px;
   }
 
   .form-group {
@@ -179,13 +181,7 @@ body{ background-color: darkgray}
       margin: 0;
       padding: 0;
     }
-  h2{margin-left: 600px;
-  color: white;}
-  .button-container {
-    display: flex;
-    justify-content: center; 
-    width: 100px;
-  }
+  
   .container{margin-top: 10px;
   font-family: sans-serif;}
 
@@ -199,18 +195,25 @@ body{ background-color: darkgray}
   
   .btn-primary {
     
-    background-color:lightblue; 
+    
     color: white; 
     padding: 15px 30px; 
     border-radius: 5px; 
     border: none; 
     font-weight: bold; 
+    background-color :blue; 
    
   }
   
   .btn-primary:hover {
     background-color:blue;
-    cursor: pointer; }
+    cursor: pointer;
+  margin-top:2px; }
+  
+h2{margin-left:580px;
+  font-family: sans-serif;
+  color: #0C356A;
+  text-shadow: 2px 2px 4px #000000;}    
 </style>
 
 

@@ -106,39 +106,39 @@ def edits(request,id):
         form=SitterformForm(instance=sitter)
     return render(request,'edits.html',{'form':form,'sitter':sitter})     
 
-def paymentform(request):
-    payment= Payment.objects.all()
-    return render(request,'paymentform.html',{'payment':payment})
+# def paymentform(request):
+#     payment= Payment.objects.all()
+#     return render(request,'paymentform.html',{'payment':payment})
     
 
-def addpay(request):
-    if request.method=='POST':
-        form=PaymentForm(request.POST)
-        if form.is_valid():
-            form.save()
-            print(form)
-            return redirect('paymentform')
-    else:
-        form=PaymentForm()
-    return render(request,'addpay.html',{'form':form})
+# # def addpay(request):
+#     if request.method=='POST':
+#         form=PaymentForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             print(form)
+#             return redirect('paymentform')
+#     else:
+#         form=PaymentForm()
+#     return render(request,'addpay.html',{'form':form})
     
         
 
-def readpay(request,id):
-   payment_info=Payment.objects.get(id=id)
-   return render(request,'readpay.html',{'payment_info':payment_info})
+# def readpay(request,id):
+#    payment_info=Payment.objects.get(id=id)
+#    return render(request,'readpay.html',{'payment_info':payment_info})
 
 
-def editpay(request,id):
-    baby=get_object_or_404(Payment,id=id)
-    if request.method == 'POST':
-       form=PaymentForm(request.POST,instance=baby)
-       if form.is_valid():
-           form.save()
-           return redirect('paymentform')
-    else:
-        form=PaymentForm(instance=baby)
-    return render(request,'editpay.html',{'form':form,'baby':baby})  
+# def editpay(request,id):
+#     baby=get_object_or_404(Payment,id=id)
+#     if request.method == 'POST':
+#        form=PaymentForm(request.POST,instance=baby)
+#        if form.is_valid():
+#            form.save()
+#            return redirect('paymentform')
+#     else:
+#         form=PaymentForm(instance=baby)
+#     return render(request,'editpay.html',{'form':form,'baby':baby})  
  
 def dollscorner(request, doll_id):
     doll = get_object_or_404(Doll, id=doll_id)
@@ -197,18 +197,7 @@ def add_to_stock(request, pk):
         form = Addform()
     return render(request, 'add_to_stock.html', {'form': form})
 
-# def add_to_stock(request,pk):
-#     issued_item=Doll.objects.get(id=pk)
-#     form=Addform(request.POST)
-#     if request.method == 'POST':
-#         if form.is_valid():
-#             added_quantity=int(request.POST['received_quantity'])
-#             issued_item.quantity+=added_quantity
-#             issued_item.save()
-#             print(added_quantity)
-#             print(issued_item.quantity)
-#             return redirect('doll')
-#     return render(request, 'add_to_stock.html',{'form':form})
+
 
 @login_required
 def all_sales(request):
@@ -288,7 +277,7 @@ def editdeparture(request,id):
 def onduty(request):
   onduty=Sitter_arrival.objects.all()
   return render(request,'onduty.html',{'onduty':onduty})
-  return render(request,'onduty.html')
+  
 
 def addonduty(request):
    if request.method=='POST':
@@ -298,24 +287,24 @@ def addonduty(request):
             print(form)
             return redirect('onduty')
    else:
-            form=DepartureForm()
-   return render(request,'addsonduty.html',{'form':form })      
+            form=Sitter_arrivalForm()
+   return render(request,'addonduty.html',{'form':form })      
   
 
-def readonduty(request):
-   baby_info=Payment.objects.get(id=id)
-   return render(request,'readonduty.html')
+def readonduty(request ,id):
+   sitter_info=Sitter_arrival.objects.get(id=id)
+   return render(request,'readonduty.html',{'sitter_info':sitter_info})
 
-def editonduty(request):
-    departures=get_object_or_404(Departure,id=id)
+def editonduty(request, id):
+    onduty=get_object_or_404(Sitter_arrival,id=id)
     if request.method == 'POST':  
-       form=DepartureForm(request.POST,instance=arrival)
+       form=Sitter_arrivalForm(request.POST,instance=onduty)
        if form.is_valid():
            form.save()
            return redirect('onduty')
     else:
-            form=DepartureForm(instance=departures) 
-    return render(request,'editsarrval.html',{'form':form,'departures':departure})     
+            form=Sitter_arrivalForm(instance=onduty) 
+    return render(request,'editonduty.html',{'form':form,'onduty':onduty})     
 
 @login_required
 def add_to_stocks(request, pk):
@@ -410,7 +399,23 @@ def payment_list(request):
   return render(request,'payment_list.html',{'payments':payments})
 
 
+def payment_lists(request):
+    if request.method == 'POST':
+        form = PaymentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # Redirect to the payment list page upon successful form submission
+            return redirect('paymentform')
+    else:
+        form = PaymentForm()
+    
 
+    return render(request, 'payment_lists.html', {'form': form})
+
+
+def paymentform(request):
+  payment_list=Payment.objects.all()
+  return render(request,'paymentform.html',{'payment_list':payment_list})
  
 
 
