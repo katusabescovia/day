@@ -20,6 +20,7 @@ urlpatterns = [
     # path('readpay/<int:id>/', views.readpay, name='readpay'),
     # path('editpay/<int:id>/', views.editpay, name='editpay'),
     path('doll/',views.doll,name='doll'),
+    path('dolladd/',views.dolladd,name='dolladd'),
     path('dollscorner/<int:doll_id>/', views.dollscorner, name='dollscorner'),
     path('add_to_stock/<str:pk>', views.add_to_stock, name='add_to_stock'),
     path('all_sales/',views.all_sales,name='all_sales'),
@@ -46,6 +47,7 @@ urlpatterns = [
     path('add_to_stocks/<str:pk>', views.add_to_stocks, name='add_to_stocks'),
     path('all_issue_items/',views.all_issue_items,name='all_issue_items'),
     path('issue/<str:pk>',views.issue,name='issue'),
+    path('inventoryform/', views.inventoryform, name='inventoryform'),
     
 #sitterpayment
     path('create_payment/', views.create_payment, name='create_payment'),
@@ -57,6 +59,13 @@ urlpatterns = [
  path('paymentform/', views.paymentform, name='paymentform'),
  path('payment_lists/', views.payment_lists, name='payment_lists'),
 
+
+ #sitterdeparture
+ path('sitterdeparture/', views.sitterdeparture, name='sitterdeparture'),
+ path('addsitter/', views.addsitter, name='addsitter'),
+ path('reasitter/<int:id>/', views.readsitter, name='readsitter'),
+path('editsitter/<int:id>/', views.editsitter, name='editsitter'),
+    
 ]
     
 

@@ -1,92 +1,84 @@
-
-
-
-
-
 {% extends 'base.html' %}
-
 {% load static %}
 
-{% block content%}
+{% block content %}
 
 <style>
-    h4{margin-left: 450px;
-        color:#0C356A;
-        text-shadow: 2px 2px 4px #000000;}
-    
-    .table-responsive {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+    h4 {
+        text-align: center;
+        color: #0C356A;
+        text-shadow: 2px 2px 4px #000000;
     }
-    body{background-color: darkgray;}
+
+    .card {
+        width: 70%;
+        margin: auto;
+        margin-top: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+        background-color: #ffffff;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    body {
+        background-color:darkgray;
+        font-family: Arial, sans-serif;
+    }
+
+    .card-body p {
+        margin-bottom: 8px;
+        font-size: 16px;
+        color: #333333;
+    }
+
+    .card-body strong {
+        
+    }
+
+    .btn-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        background-color: blue;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-right: 10px;
+        text-decoration: none;
+    }
+
+    .btn:hover {
+        background-color: blue;
+    }
 </style>
-</head>
-<body>
+
 <h4 class="mb-3">BABIES INFORMATION </h4><hr>
 
-<div class="table-responsive">
-    <table class="table table-bordered table-hover">
-        <thead class="table-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Categorystay</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Name</th>
-                <th scope="col">Age</th>
-                <th scope="col">Parents_name</th>
-                <th scope="col">Taker'sname</th>
-                <th scope="col">Location</th>
-                <th scope="col">Babysnumber</th>
-
-                <th scope="col">Pickers name</th>
-                <th scope="col">Date</th>
-                <th scope="col">timein</th>
-                <th scope="col">timeout</th>
-                <th scope=>Action</th>
-            </tr>
-        </thead>
-        <tbody style="background-color: white;">
-           
-            <tr>  
-                <td>{{ babies_info.id }}</td>
-                <td>{{ babies_info.c_stay}}</td>
-                <td>{{ babies_info.gender }}</td>
-                <td>{{ babies_info.name_of_the_baby }}</td>
-                <td>{{ babies_info.age }}</td>
-                <td>{{ babies_info.parents_name }}</td>
-                <td>{{ babies_info.care_taker }}</td>
-                <td>{{ babies_info.location }}</td>
-                <td>{{ babies_info.babys_number}}</td>
-                
-                <td>{{ babies_info.pickers_name }}</td>
-                <td>{{ babies_info.date }}</td>
-                <td>{{ babies_info.timein }}</td>
-                <td>{{ babies_info.timeout }}</td>
-               
-                <td>
-                    <div>
-                        <a href="{% url 'edit' id=babies_info.id %}" class="btn btn-primary mb-2">Edit babies</a>
-                    
-                    </div>
-                </td>
-            </tr>
-        
-        </tbody>
-
-    </table>
-    <a href="/babiesform"><button class="btn btn-primary">Go back</button></a>
+<div class="card">
+    <div class="card-body">
+        <p><strong>#:</strong> {{ babies_info.id }}</p>
+        <p><strong>Category Stay:</strong> {{ babies_info.c_stay }}</p>
+        <p><strong>Gender:</strong> {{ babies_info.gender }}</p>
+        <p><strong>Name:</strong> {{ babies_info.name_of_the_baby }}</p>
+        <p><strong>Age:</strong> {{ babies_info.age }}</p>
+        <p><strong>Parents Name:</strong> {{ babies_info.parents_name }}</p>
+        <p><strong>Location:</strong> {{ babies_info.location }}</p>
+        <p><strong>Baby's Number:</strong> {{ babies_info.babys_number }}</p>
+        <p><strong>Date:</strong> {{ babies_info.date }}</p>
+        <div class="btn-container">
+            <a href="{% url 'edit' id=babies_info.id %}" class="btn btn-primary mb-2">Edit Babies</a>
+            <a href="/babiesform" class="btn btn-primary mb-2">Go back</a>
+        </div>
+    </div>
 </div>
 
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -19,6 +19,8 @@
     
         <h4 >DOLLS IN  STOCK</h4><hr>
 
+        <a href="/dolladd" class="btn btn-primary mb-3">Add doll</a>
+
     
 </div>
 <table class="table table-bordered">
@@ -31,6 +33,7 @@
             <th scope="col" class="project-h1">Color</th>
             <th scope="col" class="project-h1">Quantity</th>
             <th scope="col" class="project-h1">Unit Price(UGX)</th>
+            <th scope="col" class="project-h1">Date</th>
             <th scope="col" class="project-h1">Detail</th>
         </tr>
     </thead>
@@ -43,10 +46,12 @@
             <td>{{dolls.color}}</td>
             <td>{{dolls.quantity}}</td>
             <td>UGX{{dolls.Unit_price}}</td>
-           <div> <!-- here we are hadling the buy item link n its handled by product_detail view -->
+            <td>{{dolls.date}}</td>
+           
+            <div> <!-- here we are hadling the buy item link n its handled by product_detail view -->
             
             <td >
-                <a href="{% url 'dollscorner' doll_id=dolls.id %}" class="btn btn-primary">SELL DOLL</a>
+                <a href="{% url 'dollscorner' doll_id=dolls.id %}" class="btn btn-primary">View doll</a>
             </td>
 
 

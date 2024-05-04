@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% load static %}
-
 {% block content%}
 
 <style>
@@ -17,8 +16,8 @@
 </style>
 </head>
 <body>
-<h4 class="mb-3">LISTS OF BABIES</h4><hr>
-
+<h4 class="mb-3">LIST OF SITTERS </h4><hr>
+<a href="/addsitter" class="btn btn-primary mb-3">Add new Sitter</a>
 <!-- <a style="margin-left: 900px;" href="/arrival" class="btn btn-primary mb-3">DAILY DEPARTURE REGISTER</a> -->
 
 
@@ -31,29 +30,28 @@
                 <th scope="col">Sitter Number</th>
                 <th scope="col">Date</th>
                 <th scope="col">Timeout</th>
-                <th scope="col">pickers_name</th>
-                <th scope="col">Comment</th>
                 <th scope=>Action</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>{{ departure_info.id }}</td>
-                <td>{{ departure_info.babys_name}}</td>
-                <td>{{ departure_info.baby_number }}</td>
-                <td>{{departure_info.date }}</td>
-                <td>{{ departure_info.timeout }}</td>
-                <td>{{ departure_info.pickers_name}}</td>
-                <td>{{ departure_info.comment}}</td>
-                
-                <td>
-                    <div>
-                        <a href="{% url 'editdeparture' id=departure_info.id %}" class="btn btn-primary mb-3">Edit </a>
 
-                    </div>
+          
+   
+           
+         
+            {% for sitter in sitters %}
+            <tr>
+                <td>{{ sitter.id }}</td>
+                <td>{{ sitter.sitters_name}}</td>
+                <td>{{ sitter.sitter_number }}</td>
+                <td>{{ sitter.date_of_departure }}</td>
+                <td>{{ sitter.timeout }}</td>
+
+                <td>
+                    <a href="{% url 'readsitter' id=sitter.id  %}"  class="btn btn-primary ">Read</a>
                 </td>
             </tr>
-          
+            {% endfor %}
         </tbody>
     </table>
 </div>

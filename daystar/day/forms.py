@@ -69,16 +69,41 @@ class AddForm(ModelForm):
          model=Procurement
          fields=['received_quantity']  
 
+
+
 class Usedlogform(ModelForm):
      class Meta:
          model=Usedlog
          fields='__all__'
+class Add_form(ModelForm):
+     class Meta:
+         model=Procurement
+         fields=['category', 'item_name','Quantity', 'Unit_price','date' ]
+       
+         
 
 
 class SitterpaymentForm(ModelForm):
      class Meta:
          model=Sitterpayment
          fields='__all__'
+class Sitter_departureform(ModelForm):
+     class Meta:
+      model=Sitter_departure
+      fields='__all__'   
+
+
+
+
+class Address_form(ModelForm):
+     class Meta:
+         model=Doll  
+         fields=['c_doll','name_of_the_doll','quantity','color','size','date','Unit_price',]
+
+
+
+   
+
 
 
 

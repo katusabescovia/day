@@ -10,16 +10,17 @@
     body{background-color: darkgray}
  </style>
 
-
+<br>
   
     <a href="/all_issue_items"  class="hover-button"><input type= "submit" value="All_items_issued" class="btn btn-primary" type="button"/></a>
-
-
+    
 <div class="table-container">
     
         <h4 >PRODUCTS  IN  STOCK</h4><hr>
 
-    
+        <a href="/inventoryform" class="btn btn-primary mb-3">Add Items</a>
+
+        <div class="table-container">
 </div>
 <table class="table table-bordered">
     
@@ -29,6 +30,7 @@
             <th scope="col" class="project-h1">Item name</th>
             <th scope="col" class="project-h1">Quantity</th>
             <th scope="col" class="project-h1">Unit Price(UGX)</th>
+            <th scope="col" class="project-h1">Date</th>
             <th scope="col" class="project-h1">Detail</th>
         </tr>
     </thead>
@@ -38,6 +40,7 @@
             <td>{{product.category}}</td>
             <td>{{product.item_name}}</td>
              <td>{{product.Quantity}}</td>
+             <td>{{product.date}}</td>
             <td>UGX{{product.Unit_price}}</td>
            <div> <!-- here we are hadling the buy item link n its handled by product_detail view -->
             

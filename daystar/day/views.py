@@ -144,6 +144,7 @@ def dollscorner(request, doll_id):
     doll = get_object_or_404(Doll, id=doll_id)
     return render(request, 'dollscorner.html', {'doll': doll})
 
+
 @login_required
 def receipt(request):
     sales= Salesrecord.objects.all().order_by('-id') 
@@ -209,6 +210,17 @@ def all_sales(request):
 def doll(request):
     dolls=Doll.objects.all()
     return render(request,'doll.html',{'dolls':dolls})
+
+def dolladd(request):
+    if request.method=='POST':
+        form=Address_form(request.POST)
+        if form.is_valid():
+            form.save()
+            print(form)
+            return redirect('doll')
+    else:
+        form=Address_form()
+    return render(request,'dolladd.html',{'form':form})
 
 def arrival(request):
     arrivals=Arrival.objects.all()
@@ -377,6 +389,15 @@ def all_issue_items(request):
 
     return render(request, 'all_issue_items.html', {'issues': issues, 'total_issued_quantity': total_issued_quantity, 'total_received_quantity': total_received_quantity, 'net_quantity': net_quantity})
 
+def inventoryform(request):
+    if request.method == 'POST':
+        form = Add_form(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('inventories')
+    else:
+        form = Add_form()
+    return render(request, 'inventoryform.html', {'form': form})
  
 
 
@@ -416,8 +437,37 @@ def payment_lists(request):
 def paymentform(request):
   payment_list=Payment.objects.all()
   return render(request,'paymentform.html',{'payment_list':payment_list})
- 
 
+#views for Sitters departure
+def sitterdeparture(request):
+    sitters=Sitter_departure.objects.all()
+    return render(request,'sitterdeparture.html',{'sitters':sitters})
+def addsitter(request):
+    if request.method == 'POST':
+        form=Sitter_departureform(request.POST)
+        if form.is_valid():
+            form.save()
+            print(form)
+            return redirect('sitterdeparture')
+    else:
+        form=Sitter_departureform()    
+    return render(request,'addsitter.html',{'form': form})
+
+ 
+def readsitter(request,id):
+    sitter_info=Sitter_departure.objects.get(id=id)
+    return render(request,'readsitter.html',{'sitter_info':sitter_info})
+
+def editsitter(request,id):
+    sitter=get_object_or_404(Sitter_departure,id=id)
+    if request.method == 'POST':  
+       form=Sitter_departureform(request.POST,instance=sitter)
+       if form.is_valid():
+           form.save()
+           return redirect('sitterdeparture')
+    else:
+            form=Sitter_departureform(instance=sitter) 
+    return render(request,'editsitter.html',{'form':form,'sitter':sitter})     
 
 
 

@@ -75,6 +75,15 @@ class Sitter_arrival(models.Model):
     Attendancestatus=models.CharField(choices=[('onduty', 'onduty')], max_length=100)
     def __str__(self):
         return str(self.sitter_name)
+class Sitter_departure(models.Model):
+    sitters_name=models.ForeignKey(Sitter_arrival, on_delete=models.CASCADE) 
+    sitter_number=models.IntegerField(default=0)
+    date_of_departure=models.DateField(default=timezone.now)   
+    timeout=models.TimeField ()  
+    def __str__(self):
+       return self.sitters_name
+   
+
 
 class Arrival(models.Model):
     baby_name=models.ForeignKey(Babiesform, on_delete=models.CASCADE)
@@ -137,7 +146,7 @@ class Procurement(models.Model):
     category = models.ForeignKey(Category,on_delete=models.CASCADE,null=True, blank=True)
     item_name = models.CharField(max_length=200,)
     Quantity=models.IntegerField(default=0)
-    date=models.DateField(auto_now_add=True, null=True)
+    date=models.DateField()
     Unit_price=models.IntegerField( null=True)
     received_quantity=models.IntegerField(default=0,null=True,blank=True)
 
