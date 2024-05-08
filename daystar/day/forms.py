@@ -48,10 +48,10 @@ class SalesrecordForm(ModelForm):
         fields = [ 'quantity_sold', 'amount_received', 'payee']  
 
 
-class ArrivalForm(ModelForm):
-     class Meta:
-         model=Arrival
-         fields='__all__'
+# class ArrivalForm(ModelForm):
+#      class Meta:
+#          model=Arrival
+#          fields='__all__'
 
 
 class   DepartureForm(ModelForm):
@@ -87,6 +87,11 @@ class SitterpaymentForm(ModelForm):
      class Meta:
          model=Sitterpayment
          fields='__all__'
+
+     def _init_(self, *args, **kwargs):
+        super()._init_(*args, **kwargs)
+        self.fields['amount'].disabled = True
+
 class Sitter_departureform(ModelForm):
      class Meta:
       model=Sitter_departure

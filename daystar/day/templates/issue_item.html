@@ -21,7 +21,7 @@ margin-bottom: 6px;
 border-radius: 10px;
 padding-left: 20px;
 padding-bottom: 15px;
-padding-top: 15px;
+padding-top: 20px;
 padding-right: 15px;
 margin-bottom: 10px;
 background-color:white;
@@ -47,20 +47,27 @@ label {
 }
 
 button[type="submit"] {
-margin-top: 30px;
-   
-    background-color: #0C356A;
+    margin-top: 30px;
+    background-color:#0c356a ;
     color: white;
     border: none;
+    width:110%;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     max-width: 200px;
-    height: 50px;
-    
-    
+    height: 40px;
+    padding: 10px;
+    transition: background-color 0.8s, color 0.7s; /* Adding transition effect */
 }
+
+button[type="submit"]:hover {
+    /* Changing background color on hover */
+  background-color: #094f9f; /* Changing text color on hover */
+}
+
 body {background-color: darkgray;}
+.container{margin-top:12px;}
     
 </style>
 
@@ -80,7 +87,7 @@ body {background-color: darkgray;}
        
         
     </form>
-
+<br>
 
 
 {% endblock %}

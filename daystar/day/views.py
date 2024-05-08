@@ -16,23 +16,27 @@ from django.db.models import Sum
 
 
 # Create your views here.
+
 def index(request):
     return render(request,'index.html')
-def login(request):
-    return render(request,'login.html')
+
 @login_required
 def home(request):
     return render(request,'home.html')
 
-def logout(request):
-    return render(request,'logout.html')
+
 @login_required
 def sitterpayment(request):
     return render(request,'sitterpayment.html')
+#Babies registrations
 @login_required
 def babiesform(request):
-    babies= Babiesform.objects.all()
-    return render(request,'babiesform.html',{'babies':babies})
+    babies= Babiesform.objects.all().order_by('id')
+    baby_filters=Baby_Filter(request.GET,queryset=babies)
+    babies=baby_filters.qs
+    return render(request,'babiesform.html',{'babies':babies, 'baby_filters':baby_filters})
+ 
+    
     
 @login_required
 def add(request):
@@ -64,11 +68,14 @@ def edit(request,id):
     return render(request,'edit.html',{'form':form,'baby':baby})       
         
     
-
+#sittersregistrations
 @login_required
 def sitterform(request):
-    sitters=Sitterform.objects.all()
-    return render(request,'sitterform.html',{'sitters':sitters})
+    sitters=Sitterform.objects.all().order_by('id')
+    sitter_filters=SitterFilter(request.GET,queryset=sitters)
+    sitters=sitter_filters.qs
+    return render(request,'sitterform.html',{'sitters':sitters,'sitter_filters':sitter_filters})
+    
     
 
 
@@ -78,7 +85,6 @@ def adds(request):
         form=SitterformForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Sitter added successfully')
             print(form)
             return redirect('sitterform')
     else:
@@ -106,40 +112,9 @@ def edits(request,id):
         form=SitterformForm(instance=sitter)
     return render(request,'edits.html',{'form':form,'sitter':sitter})     
 
-# def paymentform(request):
-#     payment= Payment.objects.all()
-#     return render(request,'paymentform.html',{'payment':payment})
-    
 
-# # def addpay(request):
-#     if request.method=='POST':
-#         form=PaymentForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             print(form)
-#             return redirect('paymentform')
-#     else:
-#         form=PaymentForm()
-#     return render(request,'addpay.html',{'form':form})
-    
-        
-
-# def readpay(request,id):
-#    payment_info=Payment.objects.get(id=id)
-#    return render(request,'readpay.html',{'payment_info':payment_info})
-
-
-# def editpay(request,id):
-#     baby=get_object_or_404(Payment,id=id)
-#     if request.method == 'POST':
-#        form=PaymentForm(request.POST,instance=baby)
-#        if form.is_valid():
-#            form.save()
-#            return redirect('paymentform')
-#     else:
-#         form=PaymentForm(instance=baby)
-#     return render(request,'editpay.html',{'form':form,'baby':baby})  
- 
+ #dollscorner
+@login_required
 def dollscorner(request, doll_id):
     doll = get_object_or_404(Doll, id=doll_id)
     return render(request, 'dollscorner.html', {'doll': doll})
@@ -147,7 +122,7 @@ def dollscorner(request, doll_id):
 
 @login_required
 def receipt(request):
-    sales= Salesrecord.objects.all().order_by('-id') 
+    sales= Salesrecord.objects.all().order_by('id') 
     return render(request,'receipt.html',{'sales':sales})  
 @login_required
 def issue_item(request,pk):
@@ -207,10 +182,15 @@ def all_sales(request):
     change=sum([items.get_change() for items in sales])
     net=total-change
     return render(request,'all_sales.html',{'sales':sales,'total':total,'change':change,'net':net})
+@login_required
 def doll(request):
-    dolls=Doll.objects.all()
-    return render(request,'doll.html',{'dolls':dolls})
+    dolls=Doll.objects.all().order_by('id')
+    doll_filters=DollFilter(request.GET,queryset=dolls)
+    dolls=doll_filters.qs
+    return render(request,'doll.html',{'dolls':dolls,'doll_filters':doll_filters})
+   
 
+@login_required
 def dolladd(request):
     if request.method=='POST':
         form=Address_form(request.POST)
@@ -221,10 +201,15 @@ def dolladd(request):
     else:
         form=Address_form()
     return render(request,'dolladd.html',{'form':form})
-
+#babies arrival
 def arrival(request):
-    arrivals=Arrival.objects.all()
-    return render(request,'arrival.html',{'arrivals':arrivals})
+    arrivals=Arrival.objects.all().order_by('-id')
+    baby_filters=ArrivalFilter(request.GET,queryset=arrivals)
+    arrivals=baby_filters.qs
+    return render(request,'arrival.html',{'arrivals':arrivals,'baby_filters':baby_filters})
+ 
+ 
+    
   
 def addsarrival(request):
       if request.method=='POST':
@@ -251,12 +236,17 @@ def editsarrival(request,id):
      else:
             form=ArrivalForm(instance=arrivals) 
      return render(request,'editsarrival.html',{'form':form,'arrivals':arrivals})     
-
+#babies departure
+@login_required
 def departure(request):
-  babys=Departure.objects.all()
-  return render(request,'departure.html',{'babys':babys})
+  babys=Departure.objects.all().order_by('id')
+  baby_filters=Departure_Filter(request.GET,queryset=babys)
+  babys=baby_filters.qs
+  return render(request,'departure.html',{'babys':babys,'baby_filters':baby_filters})
 
 
+
+@login_required
 def adddeparture(request):
    if request.method=='POST':
         form=DepartureForm(request.POST)
@@ -268,7 +258,7 @@ def adddeparture(request):
             form=DepartureForm()
    return render(request,'adddeparture.html',{'form':form })      
   
-
+@login_required
 def readdeparture(request, baby_id):  # Add id parameter to the view function
     departure_info = Departure.objects.get(id=baby_id)  # Retrieve Departure object using the provided id
     return render(request, 'readdeparture.html', {'departure_info': departure_info})  # Render 'readdeparture.html' template with departure_info
@@ -285,12 +275,16 @@ def editdeparture(request,id):
      return render(request,'editdeparture.html',{'form':form,'departures':departures})     
 
 
-
+#sitter onduty
+@login_required
 def onduty(request):
-  onduty=Sitter_arrival.objects.all()
-  return render(request,'onduty.html',{'onduty':onduty})
+  onduty=Sitter_arrival.objects.all().order_by('id')
+  onduty_filters=Sitter_arrivalFilter(request.GET,queryset=onduty)
+  onduty=onduty_filters.qs
+  return render(request,'onduty.html',{'onduty':onduty,'onduty_filters':onduty_filters})
   
 
+    
 def addonduty(request):
    if request.method=='POST':
         form=Sitter_arrivalForm(request.POST)
@@ -317,7 +311,7 @@ def editonduty(request, id):
     else:
             form=Sitter_arrivalForm(instance=onduty) 
     return render(request,'editonduty.html',{'form':form,'onduty':onduty})     
-
+#inventories
 @login_required
 def add_to_stocks(request, pk):
     issued_procurement = Procurement.objects.get(id=pk)
@@ -352,8 +346,11 @@ def add_to_stocks(request, pk):
 # #views for procurements
 @login_required
 def inventories(request):
-    inventory=Procurement.objects.all()
-    return render(request,'inventories.html',{'inventory':inventory})
+    inventory=Procurement.objects.all().order_by('id')
+    product_filters=ProcurementFilter(request.GET,queryset=inventory)
+    inventory=product_filters.qs
+    return render(request,'inventories.html',{'inventory':inventory,'product_filters':product_filters})
+   
 def issue(request, pk):
     issued_item = Procurement.objects.get(id=pk) 
     issue_form = Usedlogform(request.POST)  
@@ -400,7 +397,7 @@ def inventoryform(request):
     return render(request, 'inventoryform.html', {'form': form})
  
 
-
+#sitterpayment
 def create_payment(request):
     if request.method == 'POST':
         form = SitterpaymentForm(request.POST)
@@ -440,8 +437,13 @@ def paymentform(request):
 
 #views for Sitters departure
 def sitterdeparture(request):
-    sitters=Sitter_departure.objects.all()
-    return render(request,'sitterdeparture.html',{'sitters':sitters})
+    sitters=Sitter_departure.objects.all().order_by('id')
+    sitter_filters=Sitter_departureFilter(request.GET,queryset=sitters)
+    sitters=sitter_filters.qs
+    return render(request,'sitterdeparture.html',{'sitters':sitters,'sitter_filters':sitter_filters})
+
+
+    
 def addsitter(request):
     if request.method == 'POST':
         form=Sitter_departureform(request.POST)

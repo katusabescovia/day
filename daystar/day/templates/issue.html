@@ -6,7 +6,7 @@
 
     h4{ color:#0C356A;
         text-shadow: 2px 2px 4px #000000;
-    margin-left: 580px;
+    margin-left: 556px;
 font-family: sans-serif;}
 
 .sales-form {
@@ -24,6 +24,7 @@ padding-bottom: 15px;
 padding-top: 15px;
 padding-right: 15px;
 margin-bottom: 10px;
+background-color:white;
 
 
 
@@ -46,19 +47,27 @@ label {
 }
 
 button[type="submit"] {
-margin-top: 30px;
-   
-    background-color: #0C356A;
+    margin-top: 33px;
+    background-color:#0c356a ;
     color: white;
     border: none;
+    width:110%;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     max-width: 200px;
-    height: 50px;
-    
-    
+    height: 40px;
+    padding: 10px;
+    transition: background-color 0.8s, color 0.7s; /* Adding transition effect */
 }
+
+button[type="submit"]:hover {
+    /* Changing background color on hover */
+  background-color: #094f9f; /* Changing text color on hover */
+}
+
+.container {margin-top:16px;}
+body {background-color:darkgray;}
     
 </style>
 
@@ -78,7 +87,5 @@ margin-top: 30px;
        
         
     </form>
-
-
-
+<br>
 {% endblock %}

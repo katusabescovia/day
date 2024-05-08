@@ -16,6 +16,7 @@
   .container {
     width: 40%;
     margin: 0 auto;
+    margin-top:20px;
   }
 
   form {
@@ -23,7 +24,7 @@
     padding: 20px;
     border-radius: 10px;
     background-color: white;
-
+    margin-top: 100px;
   }
 
   input[type="text"],
@@ -35,22 +36,29 @@
     border-radius: 5px;
     box-sizing: border-box;
   }
-
   button[type="submit"] {
-    width: 30%;
-    padding: 10px;
-  
-    color: #fff;
+    margin-top: 33px;
+    background-color:#0c356a ;
+    color: white;
     border: none;
+    width:110%;
     border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
-  }
+    max-width: 200px;
+    height: 40px;
+    padding: 10px;
+    transition: background-color 0.8s, color 0.7s; /* Adding transition effect */
+}
 
-  button[type="submit"]:hover {
-    
-  }
-  body{background-color: darkgray;}
-  label{font-family:sans-serif; }
+button[type="submit"]:hover {
+    /* Changing background color on hover */
+  background-color: #094f9f; /* Changing text color on hover */
+}
+
+  
+  
+  body {background-color:darkgrey;}
 </style>
 
 <h4>ADD TO STOCK</h4>
@@ -62,5 +70,5 @@
     <button type="submit" class="btn btn-primary">Add</button>
   </form>
 </div>
-
+<br><br><br><br>
 {% endblock %}

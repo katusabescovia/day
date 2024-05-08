@@ -8,6 +8,26 @@
      margin-left: 490px;
     }
     body{background-color: darkgray}
+
+
+    button {
+        background-color: #0c356a;
+      }
+      .btn-primary {
+        background-color: #094f9f;
+      }
+      .btn {
+          background-color: #0c356a;
+          color: white;
+          transition: background-color 0.7s;
+          text-decoration: none;
+          padding: 8px 16px;
+          border-radius: 4px;
+      }
+  
+      .btn:hover {
+          background-color: #094f9f; /* Change to a darker shade for hover */
+      }    
  </style>
 
 <br>
@@ -18,7 +38,11 @@
 <div class="table-container">
     
         <h4 >DOLLS IN  STOCK</h4><hr>
-
+        <form action="" method="GET"style="margin-right:450px;">
+            {{doll_filters.form}}
+            <input type="submit" value="Search dollname" class="btn btn-primary" style="width:170px"/>
+            </form>        
+<br>
         <a href="/dolladd" class="btn btn-primary mb-3">Add doll</a>
 
     

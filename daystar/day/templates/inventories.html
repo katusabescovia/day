@@ -7,16 +7,38 @@
         text-shadow: 2px 2px 4px #000000;
      margin-left: 490px;
     }
+    button {
+        background-color: #0c356a;
+      }
+      .btn-primary {
+        background-color: #094f9f;
+      }
+      .btn {
+          background-color: #0c356a;
+          color: white;
+          transition: background-color 0.7s;
+          text-decoration: none;
+          padding: 8px 16px;
+          border-radius: 4px;
+      }
+  
+      .btn:hover {
+          background-color: #094f9f; /* Change to a darker shade for hover */
+      }
+
     body{background-color: darkgray}
  </style>
 
-<br>
-  
     <a href="/all_issue_items"  class="hover-button"><input type= "submit" value="All_items_issued" class="btn btn-primary" type="button"/></a>
     
 <div class="table-container">
     
         <h4 >PRODUCTS  IN  STOCK</h4><hr>
+        <form action="" method="GET"style="margin-right:450px;">
+            {{product_filters.form}}
+            <input type="submit" value="Search item name" class="btn btn-primary" style="width:170px"/>
+            </form>
+         <br>       
 
         <a href="/inventoryform" class="btn btn-primary mb-3">Add Items</a>
 
@@ -40,19 +62,19 @@
             <td>{{product.category}}</td>
             <td>{{product.item_name}}</td>
              <td>{{product.Quantity}}</td>
-             <td>{{product.date}}</td>
-            <td>UGX{{product.Unit_price}}</td>
+             <td>UGX{{product.Unit_price}}</td>
+             <td> {{product.date}}</td>
+           
            <div> <!-- here we are hadling the buy item link n its handled by product_detail view -->
             
             <td >
-                <a href="{% url 'issue' pk=product.id %}" class="btn btn-primary">ISSUE ITEM</a>
+                <a href="{% url 'issue' pk=product.id %}" class="btn btn-primary">Issue item</a>
 
-                <a href="{% url 'add_to_stocks' pk=product.id %}" class="btn btn-primary">ADD STOCK</a>
+                <a href="{% url 'add_to_stocks' pk=product.id %}" class="btn btn-primary">Add to stock</a>
 
 
             </td>
         </div>
-
 
         </tr>
     </tbody>

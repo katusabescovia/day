@@ -1,109 +1,103 @@
+{% extends 'base.html' %} {% load static %}
+<body>
+  {% block content %}
 
+  <style>
+    body {
+      background-color: darkgray;
+    }
 
-{% extends 'base.html' %}
-
- {% load static %} 
- <body>
-{% block content %}
-
-<Style>
-    
-        
-    
-        
-    body{background-color: darkgray;}
-    
     h3 {
-        margin-left: 440px;
-        color:#0C356A;
-        text-shadow: 2px 2px 4px #000000;
-        
+      margin-left: 440px;
+      color: #0c356a;
+      text-shadow: 2px 2px 4px #000000;
     }
 
     .card {
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        transition: 0.3s;
-        border-radius: 5px; 
-        width: 400px; 
-        background-color: white;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+      border-radius: 5px;
+      width: 400px;
+      background-color: white;
     }
 
     .card:hover {
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     }
 
     .card-title {
-        color:#0C356A;
-        box-shadow: 0 4px 8px 0 aliceblue;
-        
+      
+      box-shadow: 0 4px 8px 0 aliceblue;
     }
-    .card-text{font-family: sans-serif;}
-        
-        button{background-color: #0C356A;}
-</Style>
+    .card-text {
+      font-family: sans-serif;
+    }
 
+    button {
+      background-color: #0c356a;
+    }
+    .btn-primary {
+      background-color: #094f9f;
+    }
+    .btn {
+        background-color: #0c356a;
+        color: white;
+        transition: background-color 0.7s;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+    }
 
-<h3 > ADMINS DASHBOARB</h3><hr>   
-<div class="container mt-5">
+    .btn:hover {
+        background-color: #094f9f; /* Change to a darker shade for hover */
+    }
+  </style>
+
+  <h3> DASHBOARD</h3>
+  <hr />
+  <div class="container mt-5">
     <div class="row">
-        <div class="col-md-6 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Payments</h5>
-                    <p class="card-text">Manage Payments</p>
-                    <a href="/paymentform" class="btn btn-primary">Go to Payments</a>
-                </div>
-            </div>
+      <div class="col-md-6 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Payments</h5>
+            <p class="card-text">Manage Payments</p>
+            <a href="/paymentform" class="btn btn-primary">Go to Payments</a>
+          </div>
         </div>
-        <div class="col-md-6 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Sitters</h5>
-                    <p class="card-text">Manage Sitters</p>
-                    <a href="/sitterform" class="btn btn-primary">Go to Sitters</a>
-                </div>
-            </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Sitters</h5>
+            <p class="card-text">Manage Sitters</p>
+            <a href="/sitterform" class="btn btn-primary">Go to Sitters</a>
+          </div>
+
         </div>
+      </div>
     </div>
     <div class="row">
-        <div class="col-md-6 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Babies</h5>
-                    <p class="card-text">Manage Babies</p>
-                    <a href="/babiesform" class="btn btn-primary">Go to Babies</a>
-                </div>
-            </div>
+      <div class="col-md-6 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Babies</h5>
+            <p class="card-text">Manage Babies</p>
+            <a href="/babiesform" class="btn btn-primary">Go to Babies</a>
+          </div>
         </div>
-        <div class="col-md-6 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Procurements</h5>
-                    <p class="card-text">Manage Procurements</p>
-                    <a href="/doll" class="btn btn-primary">Go to Procurements</a>
-                </div>
-            </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Procurements</h5>
+            <p class="card-text">Manage Procurements</p>
+            <a href="/doll" class="btn btn-primary">Go to Procurements</a>
+          </div>
         </div>
+      </div>
     </div>
-</div>   
-
+  </div>
 </body>
 
-
-
-
-
-
-
-
-
-
-
 {% endblock %}
-
-
-
-
-
-
-

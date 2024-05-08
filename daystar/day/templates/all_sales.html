@@ -7,6 +7,25 @@
 margin-left: 466px;
 font-family: sans-serif;}
 body{ background-color: darkgray;}
+
+button {
+  background-color: #0c356a;
+}
+.btn-primary {
+  background-color: #094f9f;
+}
+.btn {
+    background-color: #0c356a;
+    color: white;
+    transition: background-color 0.7s;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+.btn:hover {
+    background-color: #094f9f; /* Change to a darker shade for hover */
+}
 </style>
 
   
@@ -62,7 +81,7 @@ body{ background-color: darkgray;}
     {% endfor %}
   </table>
 </div>
-<br><br>
+<a href="{% url 'doll'  %}"  class="hover-button"><input type= "submit" value="Go back" class="btn btn-primary" type="button"/></a>
 {% endblock%}
 
 

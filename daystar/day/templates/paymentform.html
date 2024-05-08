@@ -15,6 +15,24 @@
         color:#0C356A;
         text-shadow: 2px 2px 4px #000000;}
         body{background-color: darkgray;}
+        button {
+            background-color: #0c356a;
+          }
+          .btn-primary {
+            background-color: #094f9f;
+          }
+          .btn {
+              background-color: #0c356a;
+              color: white;
+              transition: background-color 0.7s;
+              text-decoration: none;
+              padding: 8px 16px;
+              border-radius: 4px;
+          }
+      
+          .btn:hover {
+              background-color: #094f9f; /* Change to a darker shade for hover */
+          }
 </style>
 </head>
 <body>
@@ -34,9 +52,9 @@
                 <th scope="col"> Baby Name</th>
                 <th scope="col">Payment Type</th>
                 <th scope="col">Payno</th>
+                <th scope="col">Date</th>
                 <th scope="col">Actual Amount</th>
                 <th scope="col">Amount Paid</th>
-                <th scope="col">Date</th>
                 <th scope="col">Total Balance</th>
            
         </thead>
@@ -47,9 +65,9 @@
                 <td>{{ payment.payee}}</td>
                 <td>{{ payment.payment_type }}</td>
                 <td>{{ payment.payno }}</td>
+                <td> {{ payment.date }}</td>
                 <td> UGX{{ payment.actual_amount }}</td>
                 <td>UGX{{ payment.amount_paid }}</td>
-                <td> {{ payment.date }}</td>
                 <td>UGX{{ payment.get_balance}}</td>
                 
                   

@@ -8,6 +8,7 @@ margin-left: 466px;
 font-family: sans-serif;
 }
 body{background-color: darkgray;}
+.btn{background-color:#0C356A;}
 </style>
 
   
@@ -48,11 +49,13 @@ body{background-color: darkgray;}
       <tr> 
         <td>{{issue.item | title}}</td>
         <td>{{issue.quantity_issued}}</td>
-        <td>{{issue.issued_date}}</td>  
+        <td>{{issue.usage_date}}</td>  
       </tr>
     </tbody>
     {% endfor %}
   </table>
+</div>
+<a href="{% url 'inventories'  %}"  class="hover-button"><input type= "submit" value="Go back" class="btn btn-primary" type="button"/></a>
 </div>
 {% endblock%}
 

@@ -139,7 +139,7 @@
   .home{margin-left: 10px;color:white;}
 
 
-body{ background-color: darkgray}
+body{ background-color: darkgrey}
 
 
   .login-form {
@@ -205,10 +205,25 @@ body{ background-color: darkgray}
    
   }
   
-  .btn-primary:hover {
-    background-color:blue;
+  button[type="submit"] {
+    margin-top: 5px;
+    background-color:#0c356a ;
+    color: white;
+    border: none;
+    width:50%;
+    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
-  margin-top:2px; }
+    max-width: 200px;
+    height: 33px;
+    padding: 10px;
+    transition: background-color 0.8s, color 0.7s; /* Adding transition effect */
+}
+
+button[type="submit"]:hover {
+    /* Changing background color on hover */
+  background-color: #094f9f; /* Changing text color on hover */
+}
   
 h2{margin-left:580px;
   font-family: sans-serif;

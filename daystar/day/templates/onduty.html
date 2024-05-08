@@ -14,10 +14,34 @@
         color:#0C356A;
         text-shadow: 2px 2px 4px #000000;}
         body{background-color: darkgray;}
+
+        button {
+            background-color: #0c356a;
+          }
+          .btn-primary {
+            background-color: #094f9f;
+          }
+          .btn {
+              background-color: #0c356a;
+              color: white;
+              transition: background-color 0.7s;
+              text-decoration: none;
+              padding: 8px 16px;
+              border-radius: 4px;
+          }
+      
+          .btn:hover {
+              background-color: #094f9f; /* Change to a darker shade for hover */
+          }        
 </style>
 </head>
 <body>
 <h4 class="mb-3">ATTEDANCE LIST OF SITTERS  </h4><hr>
+<form action="" method="GET"style="margin-right:450px;">
+    {{onduty_filters.form}}
+    <input type="submit" value="Search sitter name" class="btn btn-primary" style="width:150px;"/>
+    </form>
+<br>
 <a href="/addonduty" class="btn btn-primary mb-3">Add new  sitter </a>
 <!-- <a style="margin-left: 900px;" href="/arrival" class="btn btn-primary mb-3">DAILY DEPARTURE REGISTER</a> -->
 
