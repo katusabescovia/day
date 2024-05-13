@@ -3,7 +3,7 @@ from django .contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 from .forms import *
 from .models import *
 from django.contrib.postgres.search import SearchQuery, SearchVector
@@ -19,6 +19,10 @@ from django.db.models import Sum
 
 def index(request):
     return render(request,'index.html')
+@login_required
+def log_out(request):
+    logout(request)
+    return redirect('/')
 
 @login_required
 def home(request):
@@ -201,41 +205,7 @@ def dolladd(request):
     else:
         form=Address_form()
     return render(request,'dolladd.html',{'form':form})
-#babies arrival
-def arrival(request):
-    arrivals=Arrival.objects.all().order_by('-id')
-    baby_filters=ArrivalFilter(request.GET,queryset=arrivals)
-    arrivals=baby_filters.qs
-    return render(request,'arrival.html',{'arrivals':arrivals,'baby_filters':baby_filters})
- 
- 
-    
-  
-def addsarrival(request):
-      if request.method=='POST':
-        form=ArrivalForm(request.POST)
-        if form.is_valid():
-            form.save()
-            print(form)
-            return redirect('arrival')
-      else:
-        form=ArrivalForm()
-      return render(request,'addsarrival.html',{'form':form })         
-  
-def readsarrival(request, baby_id):  # Add id parameter to the view function
-    arrival_info = Arrival.objects.get(id=baby_id)  # Retrieve Departure object using the provided id
-    return render(request, 'readsarrival.html', {'arrival_info': arrival_info})  # Render 'readdeparture.html' template with departure_info
 
-def editsarrival(request,id):
-     arrivals=get_object_or_404(Arrival,id=id)
-     if request.method == 'POST':  
-       form=ArrivalForm(request.POST,instance=arrivals)
-       if form.is_valid():
-           form.save()
-           return redirect('arrival')
-     else:
-            form=ArrivalForm(instance=arrivals) 
-     return render(request,'editsarrival.html',{'form':form,'arrivals':arrivals})     
 #babies departure
 @login_required
 def departure(request):
@@ -330,20 +300,6 @@ def add_to_stocks(request, pk):
     
     return render(request, 'add_to_stocks.html', {'form': form})
 
-# def add_to_stocks(request, pk):
-#     issued_procument = Procurement.objects.get(id=pk)
-#     if request.method == 'POST':
-#         form = AddForm(request.POST)
-#         if form.is_valid():
-#             received_quantity = request.POST.get('received_quantity')
-#             added_quantity = int(received_quantity)
-#             issued_procument.quantity += added_quantity
-#             issued_procument.save()
-#             return redirect('add_to_stocks')
-#     else:
-#         form = Addform()
-#     return render(request, 'add_to_stocks.html', {'form': form})
-# #views for procurements
 @login_required
 def inventories(request):
     inventory=Procurement.objects.all().order_by('id')
@@ -413,10 +369,24 @@ def create_payment(request):
 
 
 def payment_list(request):
-  payments=Sitterpayment.objects.all()
-  return render(request,'payment_list.html',{'payments':payments})
+  payments=Sitterpayment.objects.all().order_by('id')
+  payment_filter=SitterpaymentFilter(request.GET,queryset=payments)
+  payments=payment_filter.qs
+  return render(request,'payment_list.html',{'payments':payments,'payment_filter':payment_filter})
+ 
 
+def edit_paymentsitter(request,id):
+    payment=get_object_or_404(Sitterpayment,id=id)
+    if request.method == 'POST':  
+       form=SitterpaymentForm(request.POST,instance=payment)
+       if form.is_valid():
+           form.save()
+           return redirect('payment_list')
+    else:
+            form=SitterpaymentForm(instance=payment) 
+    return render(request,'edit_paymentsitter.html',{'form':form,'paymentsitter':payment})
 
+#payment for babies
 def payment_lists(request):
     if request.method == 'POST':
         form = PaymentForm(request.POST)
@@ -432,8 +402,25 @@ def payment_lists(request):
 
 
 def paymentform(request):
-  payment_list=Payment.objects.all()
-  return render(request,'paymentform.html',{'payment_list':payment_list})
+  payment_list=Payment.objects.all().order_by('id')
+  payment_filter=payment_Filter(request.GET,queryset=payment_list)
+  payment_list=payment_filter.qs
+  return render(request,'paymentform.html',{'payment_list':payment_list, 'payment_filter':payment_filter})
+
+
+ 
+
+def edit_payment(request,id):
+    payment=get_object_or_404(Payment,id=id)
+    if request.method == 'POST':  
+       form=PaymentForm(request.POST,instance=payment)
+       if form.is_valid():
+           form.save()
+           return redirect('paymentform')
+    else:
+            form=PaymentForm(instance=payment) 
+    return render(request,'edit_payment.html',{'form':form,'payment':payment})
+
 
 #views for Sitters departure
 def sitterdeparture(request):

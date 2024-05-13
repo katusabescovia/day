@@ -31,10 +31,10 @@ class Baby_Filter (django_filters.FilterSet):
         fields=['name_of_the_baby'] 
 
 
-# class ArrivalFilter(django_filters.FilterSet):
-#     class Meta:
-#         model = Arrival
-#         fields = ['baby_name']     
+class payment_Filter(django_filters.FilterSet):
+    class Meta:
+        model = Payment
+        fields = ['payee']     
 
 
 
@@ -48,7 +48,14 @@ class ProcurementFilter(django_filters.FilterSet):
         model = Procurement
         fields = ['item_name']   
 
+class SitterpaymentFilter(django_filters.FilterSet):
+    class Meta:
+        model = Sitterpayment
+        fields = ['sitter_name'] 
+
 class DollFilter(django_filters.FilterSet):
+
     class Meta:
         model = Doll
-        fields = ['name_of_the_doll']                               
+        fields = ['name_of_the_doll']
+

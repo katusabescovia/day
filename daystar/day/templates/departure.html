@@ -48,14 +48,13 @@
 
 
 <div class="table-responsive">
-    <table class="table table-bordered table-hover">
-        <thead class="table-dark">
-            <tr>
+    <table class="table table-bordered table-hover" >
+        <thead>
+            <tr style="background-color:red;">
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Babysnumber</th>
-                <th scope="col">Date</th>
-                <th scope="col">Timeout</th>
+                <th scope="col">Departure Time and Date</th>
                 <th scope="col">pickers_name</th>
                 <th scope="col">Comment</th>
                 <th scope=>Action</th>
@@ -70,8 +69,7 @@
                 <td>{{ baby.id }}</td>
                 <td>{{ baby.babys_name}}</td>
                 <td>{{ baby.baby_number }}</td>
-                <td>{{ baby.date }}</td>
-                <td>{{ baby.timeout }}</td>
+                <td>{{ baby.date_of_departure }}</td>
                 <td>{{ baby.pickers_name}}</td>
                 <td>{{ baby.comment}}</td>
                 <td>

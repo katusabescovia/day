@@ -1,102 +1,151 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content%}
+{% extends 'base.html' %} {% load static %} 
+{% block content %}
 
 <style>
-    .table-responsive {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
-    }
-    h4{margin-left:490px;
-    margin-top:5px ;}
+  .table-responsive {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
 
-    .table-container {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        overflow-x: auto; /* Ensure horizontal scroll when needed */
-        max-width: 100%; /* Ensure the table container doesn't overflow its parent */
-    }
-    .table-responsive {
-        overflow-x: auto; /* Ensure horizontal scroll when needed */
-    }
-    h4 {
-        margin-left: 490px;
-        margin-top: 5px;
-        color:#0C356A;
-        text-shadow: 2px 2px 4px #000000;}
-        body {background-color: darkgray;}
-        button {
-            background-color: #0c356a;
-          }
-          .btn-primary {
-            background-color: #094f9f;
-          }
-          .btn {
-              background-color: #0c356a;
-              color: white;
-              transition: background-color 0.7s;
-              text-decoration: none;
-              padding: 8px 16px;
-              border-radius: 4px;
-          }
-      
-          .btn:hover {
-              background-color: #094f9f; /* Change to a darker shade for hover */
-          }
-        
+  h4 {
+    margin-left: 520px;
+    margin-top: 6rem;
+    color: #0c356a;
+    text-shadow: 2px 2px 4px #000000;
+  }
+
+  body {
+    background-color: darkgray;
+  }
+
+  button {
+    background-color: #0c356a;
+  }
+
+  .btn-primary {
+    background-color: #094f9f;
+  }
+
+  .btn {
+    background-color: #0c356a;
+    color: white;
+    transition: background-color 0.7s;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+  }
+
+  .btn:hover {
+    background-color: #094f9f;
+  }
+
+  .table-container {
+    box-shadow: 1px 0px 20px -1px rgba(0,0,0,0.65);
+    overflow-x: auto;
+    max-width: 100%;
+    border-radius: i5px;
+    background-color: white;
+    border-radius: 15px;
+    font-family:sans-serif;
+
+  
+  }
+
+  .frame th {
+    background-color: #0c356a;
+    color:white;
+}
+
+  .search {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 450px;
+  }
+
+  .search form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0; /* Remove default margin */
+  }
+
+  .search form input[type="submit"] {
+    margin-left: 10px; /* Adjust spacing between input and button */
+    
+  }
+  input[type="text"] {
+    border: 3px solid rgba(0, 128, 255, 0.2);
+    box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    border-radius: 4px;
+    padding:0.4rem 0;
+}
+
+input[type="text"]:focus {
+    border-color: rgba(0, 128, 255, 0.5);
+    box-shadow: 0 0 0.2rem rgba(0, 128, 255, 0.5);
+}
 </style>
-</head>
-<body>
-<h4 class="mb-3">LIST OF SITTERS</h4><hr>
 
-<form action="" method="GET"style="margin-right:450px;">
-{{sitter_filters.form}}
-<input type="submit" value="Search sitter name" class="btn btn-primary"/>
-</form>
-<br>
-<a href="/adds" class="btn btn-primary mb-3">Add new sitter</a>
+<h4>LIST OF SITTERS</h4>
+<hr >
+<div class="search">
+  <form action="" method="GET" >
+    {{ sitter_filters.form }}
+    <input type="submit" value="Search sitter name" class="btn btn-primary" />
+  </form>         
+</div>
+<div class="container">
 
-<div class="table_container">
-<div class="table-responsive">
-    <table class="table table-bordered table-hover">
-        <thead class="table-dark">
-            <tr class="table-dark">
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Location</th>
-                <th scope="col">Date of Birth</th>
-                <th scope="col">Next of Kin</th>
-                <th scope="col">NIN</th>
-                <th scope="col">Recommender's Name</th>
-                <th scope="col">Religion</th>
-                <th scope="col">Level of Education</th>
-                <th scope="col">Sitter's Number</th>
-                <th scope="col">Contacts</th>
-                <th scope=>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for sitter in sitters %}
-            <tr style="background-color: white;">
-                <td>{{ sitter.id }}</td>
-                <td>{{ sitter.name }}</td>
-                <td>{{ sitter.gender }}</td>
-                <td>{{ sitter.location }}</td>
-                <td>{{ sitter.date_of_birth }}</td>
-                <td>{{ sitter.next_of_kin }}</td>
-                <td>{{ sitter.national_identification_number }}</td>
-                <td>{{ sitter.recommenders_name }}</td>
-                <td>{{ sitter.religon }}</td>
-                <td>{{ sitter.level_of_education }}</td>
-                <td>{{ sitter.sitter_number }}</td>
-                <td>{{ sitter.contacts }}</td>
-                <td>   
-                    <a href="{% url 'reads' id=sitter.id %}" class="btn btn-primary">Read</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
+<a href="/adds" class="btn btn-primary mb-3" style="margin-left:25px;">Add new sitter</a>
+
+<div class="table-container">
+  <div class="table-responsive">
+    <table id="dataTable" class="table table-stripped table-hover">
+      <thead class="frame">
+        
+        <tr >
+          <th scope="col" >#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Location</th>
+          {% comment %} <th scope="col">Date of Birth</th> {% endcomment %}
+          {% comment %} <th scope="col">Next of Kin</th> {% endcomment %}
+          {% comment %} <th scope="col">NIN</th> {% endcomment %}
+          {% comment %} <th scope="col">Recommender's Name</th> {% endcomment %}
+         <th scope="col">Religion</th>
+          <th scope="col">Level of Education</th>
+          <th scope="col">Sitter's Number</th>
+          <th scope="col">Contacts</th> 
+          <th scope="col">Action</th>
+        </tr>
+        
+      </thead>
+      <tbody>
+        {% for sitter in sitters %}
+        <tr style="background-color:white;">
+          <td>{{ sitter.id }}</td>
+          <td>{{ sitter.name }}</td>
+          <td>{{ sitter.gender }}</td>
+          <td>{{ sitter.location }}</td>
+          {% comment %} <td>{{ sitter.date_of_birth }}</td> {% endcomment %}
+          {% comment %} <td>{{ sitter.next_of_kin }}</td> {% endcomment %}
+          {% comment %} <td>{{ sitter.national_identification_number }}</td> {% endcomment %}
+          {% comment %} <td>{{ sitter.recommenders_name }}</td> {% endcomment %}
+          <td>{{ sitter.religon }}</td>
+          <td class="text-center">{{ sitter.level_of_education }}</td>
+          <td class="text-center">{{ sitter.sitter_number }}</td> 
+        <td>{{ sitter.contacts }}</td>
+          <td>
+            <a href="{% url 'reads' id=sitter.id %}" class="btn btn-primary"
+              > Details</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
     </table>
+  </div>
+</div>
+</div>
 
-</div>
-</div>
 {% endblock %}

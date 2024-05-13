@@ -3,89 +3,105 @@
 {% load static %}
 {% block content %}
 <style>
-
-    h4{ color:#0C356A;
+    h4 {
+        color: #0C356A;
         text-shadow: 2px 2px 4px #000000;
-    margin-left: 556px;
-font-family: sans-serif;}
+        margin-left: 543px;
+        font-family: sans-serif;
+        margin-top: 90px;
+    }
 
-.sales-form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-   max-width: 50%;
-    margin: auto;
-    border-radius: 5px;
-border: solid black;
-margin-bottom: 6px;
-border-radius: 10px;
-padding-left: 20px;
-padding-bottom: 15px;
-padding-top: 15px;
-padding-right: 15px;
-margin-bottom: 10px;
-background-color:white;
+    .sales-form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        max-width: 50%;
+        margin: auto;
+        border-radius: 5px;
+        border-radius: 10px;
+        padding-left: 20px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        padding-right: 15px;
+        margin-bottom: 10px;
+        background-color: white;
+        margin-top: 52px;
+        border: 5px solid rgba(0, 128, 255, 0.2);
+        box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s, box-shadow 0.3s;
+        margin-bottom: 50px;
+    }
 
 
+    label {
+        font-weight: bold;
+        margin-top: 7px;
+        margin-bottom: 5px;
+    }
 
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    select {
+        border: 2px solid rgba(0, 128, 255, 0.2);
+        box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s, box-shadow 0.3s;
+        padding: 10px; /* Added padding */
+        border-radius: 5px; /* Added border radius */
+        width: 100%; /* Make input fields fill the available space */
+        max-width: 100%; /* Ensure input fields don't overflow their container */
+    }
+
+    .container select[name="item"] {
+        border: 2px solid rgba(0, 128, 255, 0.2);
+        box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s, box-shadow 0.3s; 
+    }
     
-   
-}
 
+    button[type="submit"] {
+        margin-top: 33px;
+        background-color: #0c356a;
+        color: white;
+        border: none;
+       max-width: 200%;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        height: 40px;
+        padding: 10px;
+        transition: background-color 0.8s, color 0.7s;
+    }
 
+    button[type="submit"]:hover {
+        background-color: #094f9f;
+    }
 
+    .container {
+        margin-top: 16px;
+    }
 
+    body {
+        background-color: darkgray;
+    }
 
-
-
-
-
-label {
-    font-weight: bold;
-    margin-top: 7px;
-    margin-bottom:5px ;
-}
-
-button[type="submit"] {
-    margin-top: 33px;
-    background-color:#0c356a ;
-    color: white;
-    border: none;
-    width:110%;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    max-width: 200px;
-    height: 40px;
-    padding: 10px;
-    transition: background-color 0.8s, color 0.7s; /* Adding transition effect */
-}
-
-button[type="submit"]:hover {
-    /* Changing background color on hover */
-  background-color: #094f9f; /* Changing text color on hover */
-}
-
-.container {margin-top:16px;}
-body {background-color:darkgray;}
-    
+    #item {
+        border: 2px solid rgba(0, 128, 255, 0.2);
+        box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
 </style>
 
-<h4> ISSUE  FORM</h4><hr> 
+<h4> ISSUE FORM</h4>
+<hr>
 <div class="back-container">
-
-  
-       
-        <div class="container">
-            <form method="POST" class="sales-form">
-        
-                {% csrf_token %}
-                {{ issue_form | crispy }}
-                <button type="submit" class="btn btn-primary" >ISSUE</button>
-            </form>
-        </div>
-       
-        
-    </form>
+    <div class="container">
+        <form method="POST" class="sales-form">
+            {% csrf_token %}
+            {{ issue_form | crispy }}
+            <button type="submit" class="btn btn-primary">ISSUE</button>
+        </form>
+    </div>
+</div>
 <br>
 {% endblock %}

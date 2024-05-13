@@ -6,7 +6,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('login/',auth_views.LoginView.as_view(template_name ='login.html'), name = 'login'),
     path('home/', views.home, name='home'),
-    path('logout/',auth_views.LogoutView.as_view(template_name ='logout.html'), name = 'logout'),
+    path('logout/',views.log_out, name = 'logout'),
     path('babiesform/', views.babiesform, name='babiesform'),
     path('add/', views.add, name='add'),
     path('read/<int:id>/', views.read, name='read'),
@@ -16,9 +16,7 @@ urlpatterns = [
     path('reads/<int:id>/', views.reads, name='reads'),
     path('edits/<int:id>/', views.edits, name='edits'),
    
-    # path('addpay/', views.addpay, name='addpay'),
-    # path('readpay/<int:id>/', views.readpay, name='readpay'),
-    # path('editpay/<int:id>/', views.editpay, name='editpay'),
+    #dollscorner
     path('doll/',views.doll,name='doll'),
     path('dolladd/',views.dolladd,name='dolladd'),
     path('dollscorner/<int:doll_id>/', views.dollscorner, name='dollscorner'),
@@ -27,10 +25,8 @@ urlpatterns = [
     path('issue_item/<str:pk>',views.issue_item,name='issue_item'),
     path('receipt/',views.receipt,name='receipt'),
     path('receipt_detail/<int:receipt_id>',views.receipt_detail,name='receipt_detail'),
-    path('arrival/', views.arrival, name='arrival'),
-    path('addsarrival/', views.addsarrival, name='addsarrival'),
-    path('readsarrival/<int:baby_id>/', views.readsarrival, name='readsarrival'),
-    path('editsarrival/<int:id>/', views.editsarrival, name='editsarrival'),
+
+
     path('departure/', views.departure, name='departure'),
     path('adddeparture/', views.adddeparture, name='adddeparture'),
     path('readdeparture/<int:baby_id>/', views.readdeparture, name='readdeparture'),
@@ -52,19 +48,21 @@ urlpatterns = [
 #sitterpayment
     path('create_payment/', views.create_payment, name='create_payment'),
     path('payment_list/', views.payment_list, name='payment_list'),
-    # path('calculate_totals/', views.calculate_totals, name='calculate_totals'),
+    path('edit_paymentsitter/<int:id>/', views.edit_paymentsitter, name='edit_paymentsitter'),
 
+   
 
 #payment for babies    
  path('paymentform/', views.paymentform, name='paymentform'),
  path('payment_lists/', views.payment_lists, name='payment_lists'),
+ path('edit_payment/<int:id>/', views.edit_payment, name='edit_payment'),
 
 
  #sitterdeparture
  path('sitterdeparture/', views.sitterdeparture, name='sitterdeparture'),
  path('addsitter/', views.addsitter, name='addsitter'),
  path('reasitter/<int:id>/', views.readsitter, name='readsitter'),
-path('editsitter/<int:id>/', views.editsitter, name='editsitter'),
+ path('editsitter/<int:id>/', views.editsitter, name='editsitter'),
     
 ]
     

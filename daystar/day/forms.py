@@ -5,11 +5,13 @@ from .models import Doll
 from django.contrib.auth.forms import PasswordChangeForm,PasswordResetForm
 from django.forms import CharField, PasswordInput,TextInput,EmailField, PasswordInput
 
-class BabiesformForm(ModelForm):
+class BabiesformForm(forms.ModelForm):
     class Meta:
         model = Babiesform
         fields = '__all__'
-      
+        widgets={
+             'arrival_time':forms.DateTimeInput(attrs={'type':'datetime-local'}),
+         }
            
         
 
@@ -17,6 +19,7 @@ class SitterformForm(ModelForm):
     class Meta:
         model = Sitterform
         fields = '__all__'
+       
 
 class PaymentForm(ModelForm):
     class Meta:
@@ -54,16 +57,21 @@ class SalesrecordForm(ModelForm):
 #          fields='__all__'
 
 
-class   DepartureForm(ModelForm):
+class   DepartureForm(forms.ModelForm):
      class Meta:
          model=Departure
          fields='__all__'
+         widgets={
+             'date_of_departure':forms.DateTimeInput(attrs={'type':'datetime-local'}),
+         }
 
-class Sitter_arrivalForm(ModelForm):
+class Sitter_arrivalForm(forms.ModelForm):
      class Meta:
          model=Sitter_arrival
          fields='__all__'
-
+         widgets={
+             'date_of_arrival':forms.DateTimeInput(attrs={'type':'datetime-local'}),
+         }
 class AddForm(ModelForm):
      class Meta:
          model=Procurement
@@ -92,11 +100,13 @@ class SitterpaymentForm(ModelForm):
         super()._init_(*args, **kwargs)
         self.fields['amount'].disabled = True
 
-class Sitter_departureform(ModelForm):
+class Sitter_departureform(forms.ModelForm):
      class Meta:
       model=Sitter_departure
       fields='__all__'   
-
+      widgets={
+             'date_of_departure':forms.DateTimeInput(attrs={'type':'datetime-local'}),
+         }
 
 
 

@@ -9,31 +9,40 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
-       max-width: 50%;
+       max-width: 45%;
         margin: auto;
         border-radius: 5px;
-border: solid black;
-    margin-bottom: 6px;
+
     border-radius: 10px;
     padding-left: 20px;
     padding-bottom: 15px;
     padding-top: 15px;
     padding-right: 15px;
     background-color:white;
-
-    
+    border: 5px solid rgba(0, 128, 255, 0.2);
+     box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+     transition: border-color 0.3s, box-shadow 0.3s;
+     
+       
         
        
     }
 
     h4 {
-        text-align: center;
+        margin-left: 520px;
         font-family: sans-serif;
         color: #0C356A;
         text-shadow: 2px 2px 4px #000000;
+        margin-top: 86px;
     }
 
-  
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    select {
+        border: 2px solid rgba(0, 128, 255, 0.2);
+        box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s, box-shadow 0.3s;}
     
     
     body {background-color: darkgray;}
@@ -44,17 +53,20 @@ border: solid black;
         margin-top: 7px;
         margin-bottom:5px ;
     }
+    .container select[name="c_doll"] {
+        border: 2px solid rgba(0, 128, 255, 0.2);
+        box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s, box-shadow 0.3s; }
 
     button[type="submit"] {
         margin-top: 33px;
         background-color:#0c356a ;
         color: white;
         border: none;
-        width:110%;
         border-radius: 5px;
         font-size: 16px;
         cursor: pointer;
-        max-width: 200px;
+        max-width: 100%;
         height: 40px;
         padding: 10px;
         transition: background-color 0.8s, color 0.7s; /* Adding transition effect */
@@ -69,7 +81,7 @@ border: solid black;
     
 </style>  
 
-<h4 > INVENTORY FORM</h4><hr>
+<h4 > ADD  NEW DOLL</h4><hr>
 <div class="container">
     <form method="POST" class="sitter-form">
 

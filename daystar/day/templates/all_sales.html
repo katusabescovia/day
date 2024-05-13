@@ -26,13 +26,28 @@ button {
 .btn:hover {
     background-color: #094f9f; /* Change to a darker shade for hover */
 }
+.frame th {
+  background-color: #0c356a;
+  color:white;
+}
+.table-container{
+  box-shadow: 1px 0px 20px -1px rgba(0,0,0,0.65);
+  overflow-x: auto;
+  max-width: 100%;
+  border-radius: 15px;
+  background-color: white;
+  border-radius: 15px;
+  font-family:sans-serif;
+
+
+}
 </style>
 
   
     <h4 >TOTAL SALES MADE</h4><hr>
 
 
-  <table class="table">
+  <table class="table" style="margin-top:40px;">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Total Amount Received</th>
@@ -51,11 +66,12 @@ button {
 </div>
 <br><br>
 
-
-  <table class="table">
-    <thead class="thead-dark">
+<div class="container">
+  <div class="table-container">
+  <table class=" table">
+    <thead class="frame">
       <tr>
-        <th scope="col">child's name</th>
+        <th scope="col">Baby name</th>
         <th scope="col">Doll Bought</th>
         <th scope="col">Quantity</th>
         <th scope="col">Unit Price(UGX)</th>
@@ -69,7 +85,7 @@ button {
       <tr>
 
         
-        <td style="color:#FB667A;">{{sale.payee | title}}</td>
+        <td style="font-weight:bolder; color: #0c356a;">{{sale.payee | title}}</td>
         <td>{{sale.doll | title}}</td>
         <td>{{sale.quantity_sold}}</td>
         <td>UGX{{sale.unit_price}}</td>
@@ -80,8 +96,13 @@ button {
     </tbody>
     {% endfor %}
   </table>
+
 </div>
-<a href="{% url 'doll'  %}"  class="hover-button"><input type= "submit" value="Go back" class="btn btn-primary" type="button"/></a>
+
+<a href="{% url 'doll'  %}"  class="hover-button "><input type= "submit" value="Go back" class="btn btn-primary mt-2" type="button"/></a>
+</div>
+</div>
+
 {% endblock%}
 
 

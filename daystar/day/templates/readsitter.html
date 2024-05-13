@@ -32,6 +32,13 @@
           .btn:hover {
               background-color: #094f9f; /* Change to a darker shade for hover */
           }        
+
+          /* Adjusting table columns */
+          .table th:nth-child(5),
+          .table td:nth-child(5) {
+              width: 150px; /* Adjust this width as needed */
+          }
+
 </style>
 </head>
 <body>
@@ -47,27 +54,23 @@
                 <th scope="col">#</th>
                 <th scope="col"> Sitter Name</th>
                 <th scope="col">Sitter Number</th>
-                <th scope="col">Date</th>
-                <th scope="col">Timeout</th>
-                <th scope=>Action</th> 
+                <th scope="col"> Departure Date and Time</th>
+                <th scope=>Action</th>
+                 
             </tr>
         </thead>
         <tbody>
 
-           
            
             <tr>
                 <td>{{ sitter_info.id }}</td>
                 <td>{{ sitter_info.sitters_name}}</td>
                 <td>{{ sitter_info.sitter_number }}</td>
                 <td>{{ sitter_info.date_of_departure }}</td>
-                <td>{{ sitter_info.timeout }}</td>
-                <td>
-                    <div>
-                        <a href="{% url 'editsitter' id=sitter_info.id %}" class="btn btn-primary mb-3">Edit </a>
+                <td>   
+                    <a href="{% url 'editsitter' id=sitter_info.id %}" class="btn btn-primary mb-3">Edit </a></td>
 
-                    </div>
-                </td>
+                
             </tr>
           
         </tbody>

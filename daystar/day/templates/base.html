@@ -7,13 +7,24 @@
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'CSS/bootstrap/css/bootstrap.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-RyE6PwX0uk7usyfMmcJcbCWTnNk5u76ViM9nt2LInHd/aEnq5AOM9te9EzBONy3nPlm3KDP0k8TgMlYD1LoAfA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     
+<style>
+footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #0C356A;
+    color: white;
+    text-align: center;
+}
+
+</style>    
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-text-light" style="background-color: #0C356A; font-family: sans-serif; font-size: 16px; color: white;">
+    <nav class="navbar navbar-expand-lg navbar-text-light fixed-top" style="background-color: #0C356A; font-family: sans-serif; font-size: 16px; color: white;">
         <div class="container-fluid">
             <h6><img style="border-radius: 99%;" src="{% static 'Images/badge.jpeg' %}" alt="datstardaycare logo" width="60px"> Daystar daycare</h6>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,13 +49,13 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBabies" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">Babies</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownBabies">
                             <a class="dropdown-item" href="/babiesform">Babyregistration</a>
-                            {% comment %} <a class="dropdown-item" href="/arrival">Daily arrival baby register </a> {% endcomment %}
+
                             <a class="dropdown-item" href="/departure">Daily baby departure register</a>
                             <!-- Add more items as needed -->
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBabies" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">Payment</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBabies" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">Payments</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownBabies">
                             <a class="dropdown-item" href="/payment_list">payment for sitters</a>
                             <a class="dropdown-item" href="/paymentform">payment for babies </a>
@@ -76,7 +87,7 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/" style="color: white;">Logout</a>
+                        <a class="nav-link" href="/logout/" style="color: white;">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -86,7 +97,7 @@
     {% block content %}
     {% endblock %}
 
-    <footer class="text-light text-center py-3" style="margin-top: 8px; background-color: #0C356A; margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; max-width: 100%;">
+    <footer class="text-light text-center py-3" style="margin-top: 8px; background-color: #0C356A; margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; max-width: 100%; bottom:0;">
         <div class="container">
             <p>&copy; copyright 2024 Katusabe Scovia. All rights reserved</p>
         </div>

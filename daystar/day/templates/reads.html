@@ -2,83 +2,77 @@
 {% load static %}
 {% block content  %}
 <style>
+    .card {
+        background-color: white;
+        box-shadow: 0 11px 34px 0 rgba(0, 0, 0, 0.2);
+        max-width: 500px; /* Adjust max-width as needed */
+        margin: 0 auto; /* Center the card horizontally */
+        margin-top: 20px; /* Add some top margin */
+        padding: 20px; /* Add padding for content */
+        border-radius: 10px; /* Add border radius for rounded corners */
+        border: 5px solid rgba(0, 128, 255, 0.2);
+        box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s, box-shadow 0.3s;
+        font-family: sans-serif;
+    }
 
-    h3{margin-left: 490px;
-    font-family: sans-serif;
-    color:#0C356A;
-    text-shadow: 2px 2px 4px #000000;}
-    body {background-color: darkgray;}
-
+    h3 {
+        font-family: sans-serif;
+        color: #0C356A;
+        text-shadow: 2px 2px 4px #000000;
+        text-align: center; /* Center the heading */
+        margin-top:85px;
+    }
 
     button {
         background-color: #0c356a;
-      }
-      .btn-primary {
+    }
+
+    .btn-primary {
         background-color: #094f9f;
-      }
-      .btn {
-          background-color: #0c356a;
-          color: white;
-          transition: background-color 0.7s;
-          text-decoration: none;
-          padding: 8px 16px;
-          border-radius: 4px;
-      }
-  
-      .btn:hover {
-          background-color: #094f9f; /* Change to a darker shade for hover */
-      }    
+    }
+
+    .btn {
+        background-color: #0c356a;
+        color: white;
+        transition: background-color 0.7s;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+    }
+
+    .btn:hover {
+        background-color: #094f9f;
+    }
+
+    .info-item {
+        margin-bottom: 10px;
+    }
+body { background-color: darkgray;}    
 </style>
-<h3>SITTERS  INFORMATION </h3><hr>
-    <table class="table table-bordered">
-        <thead class="table-dark">
-            <tr class=>
-               
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Location</th>
-                <th scope="col">Date of Birth</th>
-                <th scope="col">Next of Kin</th>
-                <th scope="col">NIN</th>
-                <th scope="col">Recommender's Name</th>
-                <th scope="col">Religion</th>
-                <th scope="col">Level of Education</th>
-                <th scope="col">Sitter's Number</th>
-                <th scope="col">Contacts</th>
-                <th scope=>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-           
-            <tr >
-                <td> {{ sitters_info.id }}</td>
-               <td>{{sitters_info.name}}</td>
-                <td>{{sitters_inf.gender}}</td>
-                <td>{{sitters_info.location}}</td>
-                <td>{{sitters_info.date_of_birth}}</td>
-                <td>{{sitters_info.next_of_kin}}</td>
-                <td>{{ sitters_info.national_identification_number}}</td>
-                <td>{{sitters_info.recommenders_name}}</td>
-                <td>{{sitters_info.religon}}</td>
-                <td>{{sitters_info.level_of_education}}</td>
-                <td>{{sitters_info.sitter_number}}</td>
-                <td>{{ sitters_info.contacts}}</td>
-                <td>
-                    <div>
-                        <a href="{% url 'edits' id=sitters_info.id %}" class="btn btn-primary mb-3">Edit sitters</a>
+<h3 style="text-transform:uppercase;">{{ sitters_info.name }}'S DETAILS</h3><hr>
 
-                    </div>
-                </td>
-            </tr>
-            
-        </tbody>
-    </table>
+<div class="card">
+    <div class="info-item"><strong>#:</strong> {{ sitters_info.id }}</div>
+    <div class="info-item"><strong>Name:</strong> {{ sitters_info.name }}</div>
+    <div class="info-item"><strong>Gender:</strong> {{ sitters_info.gender }}</div>
+    <div class="info-item"><strong>Location:</strong> {{ sitters_info.location }}</div>
+    <div class="info-item"><strong>Date of Birth:</strong> {{ sitters_info.date_of_birth }}</div>
+    <div class="info-item"><strong>Next of Kin:</strong> {{ sitters_info.next_of_kin }}</div>
+    <div class="info-item"><strong>NIN:</strong> {{ sitters_info.national_identification_number }}</div>
+    <div class="info-item"><strong>Recommender's Name:</strong> {{ sitters_info.recommenders_name }}</div>
+    <div class="info-item"><strong>Religion:</strong> {{ sitters_info.religon }}</div>
+    <div class="info-item"><strong>Level of Education:</strong> {{ sitters_info.level_of_education }}</div>
+    <div class="info-item"><strong>Sitter's Number:</strong> {{ sitters_info.sitter_number }}</div>
+    <div class="info-item"><strong>Contacts:</strong> {{ sitters_info.contacts }}</div>
+    
+    <div class="text-center d-flex" >
+        <a  href="{% url 'edits' id=sitters_info.id %}" class="btn btn-primary m-2 ">Edit Sitters</a>
+        <a href="/sitterform"><button class="btn btn-primary m-2">Go back</button></a>
+    </div>
+    
+    
+        
+   
 </div>
-<a href="/sitterform"><button class="btn btn-primary">Go back</button></a>
-</body>
 {% endblock %}
-
-
-
-

@@ -9,6 +9,7 @@
     input {width: 50%;}
     .table-responsive {
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+        margin-bottom: 65px;
     }
     h4 {margin-left: 500px;
         color:#0C356A;
@@ -53,8 +54,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Sitters number</th>
-                <th scope="col">Date</th>
-                <th scope="col">Timein</th>
+                <th scope="col">Arrival Date and Time</th>
                 <th scope="col">Attendancestatus</th>
                 <th scope=>Action</th>
             </tr>
@@ -69,7 +69,6 @@
                 <td>{{ sitter.sitter_name}}</td>
                 <td>{{ sitter.sitter_number }}</td>
                 <td>{{ sitter.date_of_arrival }}</td>
-                <td>{{ sitter.timein }}</td>
                 <td>{{ sitter.Attendancestatus}}</td>
                 
                 <td>

@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
-
 {% load static %}
-
 {% block content%}
 
 <style>
@@ -39,6 +37,12 @@
 </head>
 <body>
 <h4 class="mb-3">PAYMENT LIST FOR SITTERS</h4><hr>
+
+<form action="" method="GET"style="margin-right:450px;">
+    {{payment_filter.form}}
+    <input type="submit" value="Search sitter name" class="btn btn-primary" style="width:170px"/>
+    </form>
+<br>
 <a href="{% url 'create_payment' %}" class="btn btn-primary">Create Payment</a>
 
 </td>
@@ -48,30 +52,34 @@
         <thead class="table-dark">
             <tr>
               
-              
+                <th scope="col">#</th>
                 <th scope="col"> Sitter Name</th>
                 <th scope="col">Amount</th>
                 <th scope="col">Date</th>
                 <th scope="col">Babies Attended</th>
-                <th scope="col">Total Amount</th>
+                <th scope="col">Total Amount paid</th>
+                <th scope="col">Action</th>
            
         </thead>
         <tbody>
             {% for payment in payments %}
             <tr>
-    
+                <td>{{ payment.id }}</td>
                 <td>{{ payment.sitter_name}}</td>
-                <td>UGX{{ payment.amount }}</td>
+                <td>UGX{{ payment.amount_paid }}</td>
                 <td>{{ payment.date }}</td>
                 <td>{{ payment.numbers_of_babies_attended_to}}</td>
                 <td>UGX{{ payment.total_amount}}</td>
-                  
+               <td> <a href="{% url 'edit_paymentsitter' id=payment.id %}" class="btn btn-primary">Edit</a>
+
+
+            </td> 
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
-<br><br>
+
 
 
 

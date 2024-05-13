@@ -1,24 +1,27 @@
-{% extends 'base.html' %} {% load static %}
+{% extends 'base.html' %} 
+{% load static %}
+
 <body>
   {% block content %}
-
   <style>
     body {
       background-color: darkgray;
     }
 
     h3 {
-      margin-left: 440px;
+      margin-left: 527px;
       color: #0c356a;
       text-shadow: 2px 2px 4px #000000;
+      margin-top: 79px;
     }
 
     .card {
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       transition: 0.3s;
       border-radius: 5px;
-      width: 400px;
       background-color: white;
+      width: 70%;
+  
     }
 
     .card:hover {
@@ -26,39 +29,41 @@
     }
 
     .card-title {
-      
-      box-shadow: 0 4px 8px 0 aliceblue;
+      font-size: 20px;
+      margin-bottom: 0; /* Remove default margin */
     }
+
     .card-text {
       font-family: sans-serif;
     }
 
-    button {
-      background-color: #0c356a;
+    .card-body {
+      padding: 20px; /* Add padding to the card body */
     }
+
     .btn-primary {
       background-color: #094f9f;
     }
+
     .btn {
-        background-color: #0c356a;
-        color: white;
-        transition: background-color 0.7s;
-        text-decoration: none;
-        padding: 8px 16px;
-        border-radius: 4px;
+      background-color: #0c356a;
+      color: white;
+      transition: background-color 0.7s;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 4px;
     }
 
     .btn:hover {
-        background-color: #094f9f; /* Change to a darker shade for hover */
+      background-color: #094f9f; /* Change to a darker shade for hover */
     }
   </style>
 
-  <h3> DASHBOARD</h3>
-  <hr />
+  <h3> DASHBOARD</h3><hr>
   <div class="container mt-5">
     <div class="row">
       <div class="col-md-6 mb-4">
-        <div class="card">
+        <div class="card" style="margin-left:120px;">
           <div class="card-body">
             <h5 class="card-title">Payments</h5>
             <p class="card-text">Manage Payments</p>
@@ -73,13 +78,12 @@
             <p class="card-text">Manage Sitters</p>
             <a href="/sitterform" class="btn btn-primary">Go to Sitters</a>
           </div>
-
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6 mb-4">
-        <div class="card">
+        <div class="card" style="margin-left:120px;">
           <div class="card-body">
             <h5 class="card-title">Babies</h5>
             <p class="card-text">Manage Babies</p>
@@ -98,6 +102,5 @@
       </div>
     </div>
   </div>
+  {% endblock %}
 </body>
-
-{% endblock %}

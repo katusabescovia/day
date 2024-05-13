@@ -4,23 +4,42 @@
 <style>
     h4{ color:#0C356A;
         text-shadow: 2px 2px 4px #000000;
-    margin-left: 580px;}
+    margin-left: 540px;
+margin-top: 80px;}
 body{background-color:darkgray;}
+
+  button {
+        background-color: #0c356a;
+    }
+
+    .btn-primary {
+        background-color: #094f9f;
+    }
+
+    .btn {
+        background-color: #0c356a;
+        color: white;
+        transition: background-color 0.7s;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+    }
+
+    .btn:hover {
+        background-color: #094f9f; /* Change to a darker shade for hover */
+    }
+
 </style>
 <br>
-<div>
-    <a href="{% url 'issue_item'  doll.id %}" class="hover_button" ><input type="submit" value="sell doll" class="btn btn-primary" placeholder="sell doll"/></a>
-    <a href="{% url 'add_to_stock' doll.id %}"  class="hover-button"><input type= "submit" value="Add to Stock" class="btn btn-primary" type="button"/></a>
-</div>
-
-<br><br>
-
 
 
 
     <h4> DOLLS  DETAILS </h4><hr>
-
-
+    <div style="margin-top:50px; margin-bottom:50px;">
+        <a href="{% url 'issue_item'  doll.id %}" class="hover_button" ><input type="submit" value="sell doll" class="btn btn-primary" placeholder="sell doll"/></a>
+        <a href="{% url 'add_to_stock' doll.id %}"  class="hover-button"><input type= "submit" value="Add to Stock" class="btn btn-primary" type="button"/></a>
+    </div>
+    
 
 <table class="table ">
     <thead class="thead-dark table-">
@@ -56,5 +75,7 @@ body{background-color:darkgray;}
 </div>
 </div>
 </div>
-<a href="{% url 'doll' %}"  class="hover-button"><input type= "submit" value="Go back" class="btn btn-primary" type="button"/></a>
+<div style=" margin-top:50px; margin-bottom:50px;">
+    <a  href="{% url 'doll' %}"  class="hover-button"><input type= "submit" value="Go back" class="btn btn-primary" type="button"/></a>
+</div>
 {% endblock %}

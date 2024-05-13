@@ -5,9 +5,11 @@
  <style>
     h4{ color:#0C356A;
         text-shadow: 2px 2px 4px #000000;
-     margin-left: 490px;
+     margin-left: 510px;
+     margin-top: 80px;
     }
     body{background-color: darkgray}
+    
 
 
     button {
@@ -27,29 +29,99 @@
   
       .btn:hover {
           background-color: #094f9f; /* Change to a darker shade for hover */
-      }    
+      } 
+      
+      input[type="text"] {
+        border: 3px solid rgba(0, 128, 255, 0.2);
+        box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s, box-shadow 0.3s;
+        border-radius: 2px;
+        margin-top: 33px;
+    }
+    
+    input[type="text"]:focus {
+        border-color: rgba(0, 128, 255, 0.5);
+        box-shadow: 0 0 0.2rem rgba(0, 128, 255, 0.5);
+    }
+
+    .button-container {
+        display: flex;
+    }
+    
+    .button-container a {
+        margin-right: 11px; /* Adjust spacing between buttons */
+        width
+        margin-bottom:2px;
+    }
+    .search {
+    
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-right: 300px;
+            margin-top:0px; 
+          
+    }
+    .search form {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0; 
+        margin-top: 0;
+        
+      }
+      .search form input[type="submit"] {
+        margin-left: 10px; /* Adjust spacing between input and button */
+        
+      }
+      input[type="text"] {
+        border: 3px solid rgba(0, 128, 255, 0.2);
+        box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s, box-shadow 0.3s;
+        border-radius: 4px;
+        padding:0.2rem 0;
+    }
+
+    .frame th {
+        background-color: #0c356a;
+        color:white;
+    }
+    .table-container {
+        box-shadow: 0 11px 34px 0 rgba(0, 0, 0, 0.2);
+        overflow-x: auto;
+        max-width: 100%;
+        border-radius: i5px;
+        background-color: white;
+        border-radius: 15px;
+    
+      
+      }
  </style>
 
-<br>
-    <a  href="{% url 'receipt' %}" class="hover_button" ><input type="submit" value="Receipts" class="btn btn-primary " placeholder="Receipts"/></a>
-    <a href="{% url 'all_sales' %}"  class="hover-button"><input type= "submit" value="All_sales" class="btn btn-primary" type="button"/></a>
+
+  
 
 
-<div class="table-container">
     
         <h4 >DOLLS IN  STOCK</h4><hr>
-        <form action="" method="GET"style="margin-right:450px;">
+        <div class="search">
+        <form action="" method="GET">
             {{doll_filters.form}}
-            <input type="submit" value="Search dollname" class="btn btn-primary" style="width:170px"/>
-            </form>        
-<br>
-        <a href="/dolladd" class="btn btn-primary mb-3">Add doll</a>
+            <input type="submit" value="Search doll" class="btn btn-primary" style="width:130px;margin-top:28px;padding:6px;"/>
+            </form> 
+        </div>            
+
+<div class="button-container" style="margin-bottom:5px;">
+    <a style="margin-left:10px;" href="/dolladd" class="btn btn-primary hover_button">Add doll</a>
+    <a href="{% url 'receipt' %}" class="btn btn-primary hover_button">Receipts</a>
+    <a href="{% url 'all_sales' %}" class="btn btn-primary hover-button">All Sales</a>
+</div>
 
     
 </div>
-<table class="table table-bordered">
+<div class="table-container">
+<table  id="dataTable" class="table table-stripped table-hover">
     
-    <thead class="thead-dark table-bordered">
+    <thead  class="frame">
         <tr>
             <th scope="col" class="project-h1">Category</th>
             <th scope="col" class="project-h1">Dolls name</th>
@@ -87,6 +159,7 @@
     </tbody>
     {% endfor %}
 </table>
+</div>
 </div>
 </div>
 </div>

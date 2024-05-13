@@ -2,9 +2,8 @@
 
 {% load static %}
 {% block content%}
-
 <style>
-    
+
     input {width: 50%;}
     .table-responsive {
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
@@ -13,7 +12,6 @@
         color:#0C356A;
         text-shadow: 2px 2px 4px #000000;}
         body{background-color: darkgray;}
-
         button {
             background-color: #0c356a;
           }
@@ -32,7 +30,14 @@
           .btn:hover {
               background-color: #094f9f; /* Change to a darker shade for hover */
           }        
+
+          /* Adjusting table columns */
+          .table th:nth-child(5),
+          .table td:nth-child(5) {
+              width: 150px; /* Adjust this width as needed */
+          }
 </style>
+
 </head>
 <body>
 <h4 class="mb-3">LIST OF SITTERS </h4><hr>
@@ -40,8 +45,7 @@
     {{sitter_filters.form}}
     <input type="submit" value="Search sitter name" class="btn btn-primary" style="width:150px"/>
     </form>
- <br>   
-
+<br>
 <a href="/addsitter" class="btn btn-primary mb-3">Add new Sitter</a>
 <!-- <a style="margin-left: 900px;" href="/arrival" class="btn btn-primary mb-3">DAILY DEPARTURE REGISTER</a> -->
 
@@ -53,40 +57,27 @@
                 <th scope="col">#</th>
                 <th scope="col"> Sitter Name</th>
                 <th scope="col">Sitter Number</th>
-                <th scope="col">Date</th>
-                <th scope="col">Timeout</th>
-                <th scope=>Action</th>
+                <th scope="col"> Departure Date and Time </th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
 
-          
-   
-           
-         
+      
             {% for sitter in sitters %}
             <tr>
                 <td>{{ sitter.id }}</td>
                 <td>{{ sitter.sitters_name}}</td>
                 <td>{{ sitter.sitter_number }}</td>
                 <td>{{ sitter.date_of_departure }}</td>
-                <td>{{ sitter.timeout }}</td>
+                <td>{{ sitter.status }}</td>
 
                 <td>
-                    <a href="{% url 'readsitter' id=sitter.id  %}"  class="btn btn-primary ">Read</a>
-                </td>
+                    <a href="{% url 'readsitter' id=sitter.id  %}"  class="btn btn-primary ">Read</a></td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
-
-
-
-
-
-
-
-
-
 {% endblock %}

@@ -6,17 +6,39 @@
 <style>
 .card-header{font-family: sans-serif;}
 body{background-color: darkgray;}
+button {
+    background-color: #0c356a;
+}
+
+.btn-primary {
+    background-color: #094f9f;
+}
+
+.btn {
+    background-color: #0c356a;
+    color: white;
+    transition: background-color 0.7s;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-bottom: 30px;
+}
+
+.btn:hover {
+    background-color: #094f9f; /* Change to a darker shade for hover */
+}
+
 </style>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card" style="margin-top:80px;">
                 <div class="card-header">
-                    <h4 class="text-center">Daystar Daycare, Kabalagala</h4>
-                    <p class="text-center">Kampala, Uganda</p>
-                    <p class="text-center">Contact us: +256789728298</p>
-                    <p class="text-center">Date: {{ receipt.sale_date }}</p>
-                    <p class="text-center">Receipt Number: DOLL-RECEIPT-0{{ receipt.id }}</p>
+                    <h4 class="">Daystar Daycare, Kabalagala</h4>
+                    <p class="">Kampala, Uganda</p>
+                    <p class="">Contact us: +256789728298</p>
+                    <p class="">Date: {{ receipt.sale_date }}</p>
+                    <p class="">Receipt Number: DOLL-RECEIPT-0{{ receipt.id }}</p>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -46,7 +68,8 @@ body{background-color: darkgray;}
             </div>
         </div>
     </div>
+    <a href="{% url 'doll'  %}"  class="hover-button"><input type= "submit" value="Go back" class="btn btn-primary" style="margin-bottom:20px;" type="button"/></a>
 </div>
-<a href="{% url 'doll'  %}"  class="hover-button"><input type= "submit" value="Go back" class="btn btn-primary" type="button"/></a>
+
 </div>
 {% endblock %}

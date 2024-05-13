@@ -4,22 +4,23 @@
 
 {% block content %}
 <style>
+    
     .sitter-form {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
        max-width: 50%;
         margin: auto;
-        border-radius: 5px;
-border: solid black;
-    margin-bottom: 6px;
     border-radius: 10px;
     padding-left: 20px;
     padding-bottom: 15px;
     padding-top: 15px;
     padding-right: 15px;
     background-color:white;
-
+    border: 5px solid rgba(0, 128, 255, 0.2);
+    box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+  
     
         
        
@@ -30,6 +31,7 @@ border: solid black;
         font-family: sans-serif;
         color: #0C356A;
         text-shadow: 2px 2px 4px #000000;
+        margin-top:86px;
     }
 
   
@@ -43,8 +45,48 @@ border: solid black;
         margin-top: 7px;
         margin-bottom:5px ;
     }
+
+   
+    
+   body {background-color: darkgray;}   
+   
+   
+   input[type="text"],
+input[type="number"],
+input[type="datetime-local"],
+select {
+    border: 2px solid rgba(0, 128, 255, 0.2);
+    box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    border-radius: 5px; /* Added border radius */
+    margin-bottom: 0px}
+
+    .container select[name="sitter_name"] {
+        border: 2px solid rgba(0, 128, 255, 0.2);
+        box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s, box-shadow 0.3s; }
+        .container select[name="location"] {
+            border: 2px solid rgba(0, 128, 255, 0.2);
+            box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s, box-shadow 0.3s; }
+
+            .container select[name="Attendancestatus"] {
+                border: 2px solid rgba(0, 128, 255, 0.2);
+                box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+                transition: border-color 0.3s, box-shadow 0.3s; }
+  
+    
+    
+    
+    
+
+    label {
+        font-weight: bold;
+        margin-top: 7px;
+        margin-bottom:3px ;
+    }
     button[type="submit"] {
-        margin-top: 33px;
+        margin-top: 10px;
         background-color:#0c356a ;
         color: white;
         border: none;
@@ -52,7 +94,7 @@ border: solid black;
         border-radius: 5px;
         font-size: 16px;
         cursor: pointer;
-        max-width: 200px;
+        max-width: 250px;
         height: 40px;
         padding: 10px;
         transition: background-color 0.8s, color 0.7s; /* Adding transition effect */
@@ -72,7 +114,7 @@ border: solid black;
 </style>  
 
 <h4 > EDIT SITTERS INFORMATION </h4><hr>
-<div class="container">
+<div class="container" style="margin-top:49px; margin-bottom:49px;">
     <form method="POST" class="sitter-form">
 
         {% csrf_token %}

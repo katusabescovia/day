@@ -19,33 +19,37 @@ def NINvalidate(value):
     
 class Sitterform(models.Model):  
     name=models.CharField(max_length=200)
-    gender=models.CharField(choices=[('male', 'Male'),('female', 'Female')], max_length=100)
+    gender=models.CharField(choices=[('male', 'Male'),('Female', 'Female')], max_length=100)
     location=models.CharField(choices=[('kabalagala', 'kabalagala')], max_length=100)
     date_of_birth=models.DateField(default=timezone.now) 
     next_of_kin=models.CharField( max_length=200)
     national_identification_number=models.CharField(max_length=200,validators=[NINvalidate])
     recommenders_name=models.CharField(max_length=200)
     religon=models.CharField(max_length=200,null=True, blank=True)
-    level_of_education=models.CharField( choices=[('diploma','Diploma'),('highschool certificate','Highschool certificate'),('others','Others')],max_length=200)
+    level_of_education=models.CharField( choices=[('Diploma','Diploma'),('Highschool certificate','Highschool certificate'),('Others','Others')],max_length=200)
     sitter_number=models.CharField(unique=True,max_length=100)
     contacts=models.CharField(max_length=100,validators=[contactvalidate]) 
-    date=models.DateField()
+    date=models.DateField(default=timezone.now)
     def __str__(self):
         return self.name
 
 class Sitter_arrival(models.Model):
     sitter_name=models.ForeignKey(Sitterform, on_delete=models.CASCADE) 
     sitter_number=models.CharField(max_length=100,unique=True)
-    date_of_arrival=models.DateField(default=timezone.now)   
-    timein=models.TimeField ()
+    date_of_arrival=models.DateTimeField()   
     Attendancestatus=models.CharField(choices=[('onduty', 'onduty')], max_length=100)
+    created_at=models.DateTimeField(auto_now_add=True, null=True)
     def __str__(self):
         return str(self.sitter_name)
+    
+
 class Sitter_departure(models.Model):
     sitters_name=models.ForeignKey(Sitter_arrival, on_delete=models.CASCADE) 
     sitter_number=models.CharField(max_length=100,unique=True)
-    date_of_departure=models.DateField(default=timezone.now)   
-    timeout=models.TimeField ()  
+    date_of_departure=models.DateTimeField()   
+    created_at=models.DateTimeField(auto_now_add=True, null=True)
+    status=models.CharField(choices=[('Offduty', 'Offduty')], max_length=100,null=True)
+    
     def __str__(self):
        return str(self.sitters_name)
    
@@ -62,10 +66,10 @@ class Babiesform(models.Model):
     parents_name=models.CharField(max_length=200)
     location=models.CharField(max_length=50)
     babys_number=models.CharField(max_length=100,unique=True)
-    date=models.DateTimeField(default=timezone.now)
-    timein=models.TimeField()
+    arrival_time=models.DateTimeField()
     care_taker=models.CharField(max_length=200)
     Assigned_to=models.ForeignKey(Sitter_arrival,on_delete=models.CASCADE)
+    created_at=models.DateTimeField(auto_now_add=True, null=True)
     
 
 
@@ -76,40 +80,27 @@ class Babiesform(models.Model):
 class Departure(models.Model):
     babys_name=models.ForeignKey(Babiesform,on_delete=models.CASCADE)
     baby_number=models.CharField(max_length=100,unique=True) 
-    date=models.DateField(default=timezone.now)
-    timeout=models.TimeField()
+    date_of_departure=models.DateTimeField(null=True)
     pickers_name=models.CharField(max_length=200)
     comment=models.CharField(max_length=200,null=True, blank=True)
+    created_at=models.DateTimeField(auto_now_add=True, null=True)
     def __str__(self):
         return self.babys_name
 class  Payment(models.Model):
     payee = models.ForeignKey(Babiesform,on_delete=models.CASCADE)
+    Period_of_stay=models.ForeignKey(Categorystay,on_delete=models.CASCADE,null=True)
     payment_type =models.CharField(choices=[('halfday', 'halfday'),('fullday', 'fullday'),('monthlyhalfday','monthlyhalfday') ,('monthlyfullfday','monthlyfullday')], max_length=100)
     payno = models.CharField(max_length=100, unique=True)
     date=models.DateField(default=timezone.now)
-    actual_amount = models.IntegerField(default=0,)
+    actual_amount = models.IntegerField(default=0,choices=[(10000, '10000'),(15000, '15000'),(300000, '300000'),(450000, '450000')])
     amount_paid = models.IntegerField(default=0)
    
     def __int__(self):
       return self.payee   
-    
-    def amount(self):
-        halfday=10000
-        fullday=15000
-        amount=(self.payment_type['monthlyfullday']*30, self.payment_type['monthlyhalfday']*30)
-        return int(amount)
-
-
     def get_balance(self):
         return self.actual_amount - self.amount_paid  
 
-
-# class Arrival(models.Model):
-#     baby_name=models.ForeignKey(Babiesform, on_delete=models.CASCADE)
-#     baby_number=models.CharField(max_length=100,unique=True)
-#     date=models.DateField(default=timezone.now)
-#     def __str__(self):
-#         return str(self.baby_name )   
+  
 
 class Category_doll(models.Model):  
     name = models.CharField(max_length=100,null=True, blank=True)
@@ -133,7 +124,7 @@ class Doll(models.Model):
 class Salesrecord(models.Model):    
     doll=models.ForeignKey(Doll,  on_delete=models.CASCADE,null=False, blank=False)
     payee=models.ForeignKey(Babiesform, on_delete=models.CASCADE,null=True,blank=True)
-    quantity_sold=models.IntegerField(default=0)
+    quantity_sold=models.IntegerField(default=0,null=True, blank=True)
     amount_received=models.IntegerField(default=0,null=True,blank=True)
     sale_date=models.DateField(default=timezone.now)
     unit_price=models.IntegerField(default=0)
@@ -161,7 +152,7 @@ class Procurement(models.Model):
     category = models.ForeignKey(Category,on_delete=models.CASCADE,null=True, blank=True)
     item_name = models.CharField(max_length=200,)
     Quantity=models.IntegerField(default=0)
-    date=models.DateField()
+    date=models.DateField(default=timezone.now)
     Unit_price=models.IntegerField( null=True)
     received_quantity=models.IntegerField(default=0,null=True,blank=True)
 
@@ -171,12 +162,12 @@ class Procurement(models.Model):
 class Usedlog(models.Model): 
     item = models.ForeignKey(Procurement,on_delete=models.CASCADE, null=True,blank=True) 
     quantity_issued=models.IntegerField(default=0, null=True,blank=True)
-    usage_date=models.DateField(null=True,blank=True)
+    usage_date=models.DateField(null=True,blank=True ,default=timezone.now)
     
 
 class Sitterpayment(models.Model):
     sitter_name=models.ForeignKey(Sitter_arrival, on_delete=models.CASCADE)
-    amount=models.IntegerField(default=3000)
+    amount_paid=models.IntegerField(default=3000)
     date=models.DateField(default=timezone.now)
     numbers_of_babies_attended_to=models.IntegerField(default=0)
     def __str__(self):
@@ -184,5 +175,5 @@ class Sitterpayment(models.Model):
 
 
     def total_amount(self):
-        total= self.amount * self.numbers_of_babies_attended_to
+        total= self.amount_paid * self.numbers_of_babies_attended_to
         return int(total)

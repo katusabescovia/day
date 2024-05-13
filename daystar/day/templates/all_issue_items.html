@@ -4,15 +4,16 @@
 <style>
   h4{ color:#0C356A;
     text-shadow: 2px 2px 4px #000000;
-margin-left: 466px;
+margin-left: 467px;
 font-family: sans-serif;
+margin-top:60px;
 }
 body{background-color: darkgray;}
 .btn{background-color:#0C356A;}
 </style>
 
   
-    <h4 >TOTAL QUANTITY PROCURED  MADE</h4><hr>
+    <h4 >ALL ITEMS ISSUED OUT</h4><hr>
 
 
   <table class="table">
@@ -32,9 +33,9 @@ body{background-color: darkgray;}
     </tbody>
   </table>
 </div>
-<br><br>
 
-  <table class="table">
+
+  <table class="table"  style="text-align:center;">
     <thead class="thead-dark">
       <tr>
         <th scope="col">item name</th>
@@ -45,7 +46,7 @@ body{background-color: darkgray;}
       </tr>
     </thead>
     {% for issue  in issues %}
-    <tbody>
+    <tbody style="text-align:center;"  >
       <tr> 
         <td>{{issue.item | title}}</td>
         <td>{{issue.quantity_issued}}</td>

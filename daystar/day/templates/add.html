@@ -1,96 +1,113 @@
-{% extends 'base.html'%}
-
-{% load static %}
-{% load crispy_forms_tags %}
-{% block content %}
+{% extends 'base.html'%} {% load static %} {% load crispy_forms_tags %}
+ {% block content %}
 <body>
-<style>
-    
+  <style>
     .babe-form {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-       max-width: 50%;
-        margin: auto;
-        border-radius: 5px;
-border: solid black;
-    margin-bottom: 6px;
-    border-radius: 10px;
-    padding-left: 20px;
-    padding-bottom: 15px;
-    padding-top: 15px;
-    padding-right: 15px;
-    background-color:white;
-
-    
-        
-       
-    }
-
-    h4 {
-        text-align: center;
-        font-family: sans-serif;
-        color: #0C356A;
-        text-shadow: 2px 2px 4px #000000;
-    }
-    
-    label {
-        font-weight: bold;
-        margin-top: 7px;
-        margin-bottom:5px ;
-    }
-
-    button[type="submit"] {
-        margin-top: 33px;
-        background-color:#0c356a ;
-        color: white;
-        border: none;
-        width:110%;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        max-width: 200px;
-        height: 40px;
-        padding: 10px;
-        transition: background-color 0.8s, color 0.7s; /* Adding transition effect */
-    }
-    
-    button[type="submit"]:hover {
-        /* Changing background color on hover */
-      background-color: #094f9f; /* Changing text color on hover */
-    }
-    
-    
-    body {background-color: darkgray;}
-
-    
-        
-    
-    </style>
-    <h4>REGISTRATION FORM OF BABIES </h4>
-    <hr>
-    <div class=" formfeild">
-    <div class="container">
-        <form method="POST" action="" class="babe-form">
-            {% csrf_token %}
-            {{ form|crispy}}
-
-            <button type="submit" class="btn btn-primary">Save</button>
-        </form>
-    </div>
-</div>
-    {% endblock %}
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+     max-width: 47%;
+      margin: auto;
+      border-radius: 5px;
+  border-radius: 10px;
+  padding-left: 20px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  padding-right: 15px;
+  background-color:white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 5px solid rgba(0, 128, 255, 0.2);
+  box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  }
   
-        
-       
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  select {
+      border: 2px solid rgba(0, 128, 255, 0.2);
+      box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+      transition: border-color 0.3s, box-shadow 0.3s;
+      padding: 10px; /* Added padding */
+      border-radius: 5px; /* Added border radius */   
+  }
+
+  h4 {
+      text-align: center;
+      font-family: sans-serif;
+      color: #0C356A;
+      text-shadow: 2px 2px 4px #000000;
+      margin-top:85px;
+  }
 
 
+  
+  
+  
+  
 
+  label {
+      font-weight: bold;
+      margin-top: 2px;
+      margin-bottom:3px ;
+  }
 
+ 
+      
+  button[type="submit"] {
+      margin-top: 2px;
+      background-color:#0c356a ;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      max-width: 250px;
+      height: 40px;
+      padding: 10px;
+      transition: background-color 0.8s, color 0.7s; /* Adding transition effect */
+  }
+  
+  button[type="submit"]:hover {
+      /* Changing background color on hover */
+    background-color: #094f9f; /* Changing text color on hover */
+  }
+  
+  body {background-color: darkgray}
+      
+  .container select[name="gender"] {
+      border: 2px solid rgba(0, 128, 255, 0.2);
+      box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+      transition: border-color 0.3s, box-shadow 0.3s; }
+      
+      .container select[name="Assigned_to"] {
+          border: 2px solid rgba(0, 128, 255, 0.2);
+          box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+          transition: border-color 0.3s, box-shadow 0.3s; }
+          .container select[name="c_stay"] {
+              border: 2px solid rgba(0, 128, 255, 0.2);
+              box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+              transition: border-color 0.3s, box-shadow 0.3s; }
 
+              input[type="datetime-local"],
+select {
+  border: 2px solid rgba(0, 128, 255, 0.2);
+  box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  border-radius: 5px; /* Added border radius */}
+           
+  </style>
+  <div class="container">
+    <h4>REGISTRATION FORM OF BABIES</h4>
+    <hr>
 
+    <form method="POST" action="" class="babe-form">
+      {% csrf_token %} {{ form|crispy}}
 
+      <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+  </div>
+</body>
 
-
-
-
+{% endblock %}
