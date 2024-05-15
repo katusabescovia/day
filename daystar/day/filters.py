@@ -41,7 +41,7 @@ class payment_Filter(django_filters.FilterSet):
 class Departure_Filter(django_filters.FilterSet):
     class Meta:
         model = Departure
-        fields = ['babys_name']   
+        fields = ['babyname']   
 
 class ProcurementFilter(django_filters.FilterSet):
     class Meta:

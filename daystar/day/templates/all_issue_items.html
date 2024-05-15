@@ -10,14 +10,33 @@ margin-top:60px;
 }
 body{background-color: darkgray;}
 .btn{background-color:#0C356A;}
+
+.table-container {
+  box-shadow: 1px 0px 20px -1px rgba(0,0,0,0.65);
+  overflow-x: auto;
+  max-width: 100%;
+  border-radius: i5px;
+  background-color: white;
+  border-radius: 15px;
+  font-family:sans-serif;
+
+
+}
+
+.frame th {
+  background-color: #0c356a;
+  color:white;
+}
+
 </style>
 
   
     <h4 >ALL ITEMS ISSUED OUT</h4><hr>
 
-
-  <table class="table">
-    <thead class="thead-dark">
+<div class="container">
+  <div class="table-container">
+  <table class="table table-stripped table-hover">
+    <thead class="frame" style="text-align:center;">
       <tr>
         <th scope="col">Total Quantity  Received</th>
         <th scope="col">Total Quantity issued</th>
@@ -25,7 +44,7 @@ body{background-color: darkgray;}
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr style="text-align:center;">
         <td>{{total_received_quantity}}</td>
         <td>{{total_issued_quantity}}</td>
         <td>{{net_quantity}}</td>
@@ -33,10 +52,12 @@ body{background-color: darkgray;}
     </tbody>
   </table>
 </div>
-
-
+</div>
+<br>
+<div class="container">
+  <div class="table-container">
   <table class="table"  style="text-align:center;">
-    <thead class="thead-dark">
+    <thead class="frame">
       <tr>
         <th scope="col">item name</th>
         <th scope="col">Quantity_issued</th>
@@ -56,7 +77,9 @@ body{background-color: darkgray;}
     {% endfor %}
   </table>
 </div>
-<a href="{% url 'inventories'  %}"  class="hover-button"><input type= "submit" value="Go back" class="btn btn-primary" type="button"/></a>
+<a href="{% url 'inventories'  %}"  class="hover-button"><input type= "submit" value="Go back" class="btn btn-primary m-2" type="button"/></a>
+</div>
+</div>
 </div>
 {% endblock%}
 

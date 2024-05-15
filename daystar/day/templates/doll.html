@@ -86,15 +86,17 @@
         color:white;
     }
     .table-container {
-        box-shadow: 0 11px 34px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: 1px 0px 20px -1px rgba(0,0,0,0.65);
         overflow-x: auto;
         max-width: 100%;
         border-radius: i5px;
         background-color: white;
         border-radius: 15px;
+        font-family:sans-serif;
     
       
       }
+    
  </style>
 
 
@@ -109,19 +111,20 @@
             <input type="submit" value="Search doll" class="btn btn-primary" style="width:130px;margin-top:28px;padding:6px;"/>
             </form> 
         </div>            
-
+ <div class="container">
 <div class="button-container" style="margin-bottom:5px;">
-    <a style="margin-left:10px;" href="/dolladd" class="btn btn-primary hover_button">Add doll</a>
+    <a style="margin-left:27px;" href="/dolladd" class="btn btn-primary hover_button">Add doll</a>
     <a href="{% url 'receipt' %}" class="btn btn-primary hover_button">Receipts</a>
     <a href="{% url 'all_sales' %}" class="btn btn-primary hover-button">All Sales</a>
 </div>
 
     
-</div>
+
+
 <div class="table-container">
 <table  id="dataTable" class="table table-stripped table-hover">
     
-    <thead  class="frame">
+    <thead  class="frame text-center" >
         <tr>
             <th scope="col" class="project-h1">Category</th>
             <th scope="col" class="project-h1">Dolls name</th>
@@ -135,7 +138,7 @@
     </thead>
     {% for dolls in dolls %}
     <tbody>
-        <tr style="font-family: sans-serif;">
+        <tr style="font-family: sans-serif; text-align:center;">
             <td>{{dolls.c_doll}}</td>
             <td>{{dolls.name_of_the_doll}}</td>
             <td>{{dolls.size}}</td>
@@ -148,6 +151,9 @@
             
             <td >
                 <a href="{% url 'dollscorner' doll_id=dolls.id %}" class="btn btn-primary">View doll</a>
+            
+
+
             </td>
 
 
@@ -159,6 +165,7 @@
     </tbody>
     {% endfor %}
 </table>
+</div>
 </div>
 </div>
 </div>

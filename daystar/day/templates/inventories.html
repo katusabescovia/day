@@ -20,7 +20,7 @@
         color: #0C356A;
         text-shadow: 2px 2px 4px #000000;
         margin-left: 480px;
-        margin-top: 80px;
+        margin-top: 83px;
     }
 
     button {
@@ -50,38 +50,72 @@
         border: 4px solid rgba(0, 128, 255, 0.2);
         box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
         transition: border-color 0.3s, box-shadow 0.3s;
-        border-radius: 2px;
-    }
+        border-radius: 4px;
+        padding:0.3rem 0;
+    } 
     
     input[type="text"]:focus {
         border-color: rgba(0, 128, 255, 0.5);
         box-shadow: 0 0 0.2rem rgba(0, 128, 255, 0.5);
     }
-        
+    .frame th {
+        background-color: #0c356a;
+        color:white;
+       
+    }  
+    .table-container {
+        box-shadow: 1px 0px 20px -1px rgba(0,0,0,0.65);
+        overflow-x: auto;
+        max-width: 100%;
+        border-radius: i5px;
+        background-color: white;
+        border-radius: 15px;
+        font-family:sans-serif;
     
+      
+      }
+      .search {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-right: 450px;
+      }
+      .search form {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0; /* Remove default margin */
+      }.search form input[type="submit"] {
+        margin-left: 10px; /* Adjust spacing between input and button */
+        
+      }
+
+
  </style>
 
   
-<div class="table-container">
+
     
         <h4 >PRODUCTS  IN  STOCK</h4><hr>
-        <form action="" method="GET"style="margin-right:450px;">
+        <div class="search">
+        <form action="" method="GET"style="">
             {{product_filters.form}}<br>
             <input type="submit" value="Search item name" class="btn btn-primary" style="width:170px,border-"/>
             </form>
-         <br>    
-        
-         <div class="button-container">
+        </div>
+            
+         <div class="container"> 
+         <div class="button-container mb-3"style="margin-left:27px;" >
             <a href="/inventoryform" class="btn btn-primary">Add Items</a>
             <a href="/all_issue_items" class="btn btn-primary">All Items Issued</a>
+            
         </div>
     
 
         <div class="table-container">
-</div>
-<table class="table table-bordered">
+
+<table  id= "dataTable" class="table table-stripped table-hover">
     
-    <thead class="thead-dark table-bordered" style="text-align:center;">
+    <thead class="frame" style="text-align:center;">
         <tr>
             <th scope="col" class="project-h1" style="text-align:center;">Category</th>
             <th scope="col" class="project-h1" style="text-align:center;">Item name</th>
@@ -100,16 +134,17 @@
              <td>UGX{{product.Unit_price}}</td>
              <td> {{product.date}}</td>
            
-           <div> <!-- here we are hadling the buy item link n its handled by product_detail view -->
-            
-            <td >
+          
+        <td>
                 <a href="{% url 'issue' pk=product.id %}" class="btn btn-primary">Issue item</a>
 
                 <a href="{% url 'add_to_stocks' pk=product.id %}" class="btn btn-primary">Add to stock</a>
-
+                
+                    <a href="{% url 'inventoryedit' id=product.pk %}" class="btn btn-primary">Edit item</a>
+                
 
             </td>
-        </div>
+    
 
         </tr>
     </tbody>

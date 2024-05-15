@@ -9,48 +9,43 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
-       max-width: 50%;
+       max-width: 45%;
         margin: auto;
         border-radius: 5px;
+
     border-radius: 10px;
     padding-left: 20px;
     padding-bottom: 15px;
     padding-top: 15px;
     padding-right: 15px;
     background-color:white;
-    margin-top: 50px;
-    margin-bottom: 50px;
     border: 5px solid rgba(0, 128, 255, 0.2);
-    box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s, box-shadow 0.3s;
+     box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+     transition: border-color 0.3s, box-shadow 0.3s;
+     
+       
+        
+       
     }
-    
+
+    h4 {
+        margin-left: 520px;
+        font-family: sans-serif;
+        color: #0C356A;
+        text-shadow: 2px 2px 4px #000000;
+        margin-top: 86px;
+    }
+
     input[type="text"],
     input[type="number"],
     input[type="date"],
     select {
         border: 2px solid rgba(0, 128, 255, 0.2);
         box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
-        transition: border-color 0.3s, box-shadow 0.3s;
-        padding: 10px; /* Added padding */
-        border-radius: 5px; /* Added border radius */   
-    }
-
-    h4 {
-        text-align: center;
-        font-family: sans-serif;
-        color: #0C356A;
-        text-shadow: 2px 2px 4px #000000;
-        margin-top:85px;
-    }
-
-  
-    .container select[name="sitter_name"] {
-        border: 2px solid rgba(0, 128, 255, 0.2);
-        box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
-        transition: border-color 0.3s, box-shadow 0.3s; }
+        transition: border-color 0.3s, box-shadow 0.3s;}
     
     
+    body {background-color: darkgray;}
     
 
     label {
@@ -58,18 +53,20 @@
         margin-top: 7px;
         margin-bottom:5px ;
     }
+    .container select[name="c_doll"] {
+        border: 2px solid rgba(0, 128, 255, 0.2);
+        box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s, box-shadow 0.3s; }
 
-   
-        
     button[type="submit"] {
-        margin-top: 8px;
+        margin-top: 33px;
         background-color:#0c356a ;
         color: white;
         border: none;
         border-radius: 5px;
         font-size: 16px;
         cursor: pointer;
-        max-width: 250px;
+        max-width: 100%;
         height: 40px;
         padding: 10px;
         transition: background-color 0.8s, color 0.7s; /* Adding transition effect */
@@ -80,11 +77,11 @@
       background-color: #094f9f; /* Changing text color on hover */
     }
     
-    body {background-color: darkgray}
         
     
 </style>  
-    <h4 class="" style="text-transform:uppercase"> {{ payment.sitter_name}}'S paymentS</h4>
+
+<h4 style="text-transform:uppercase" >EDIT  {{ doll.name_of_the_doll }}'S DETAILS</h4><hr>
 <div class="container">
     <form method="POST" class="sitter-form">
 

@@ -79,7 +79,7 @@
     
     body {background-color: darkgray}
         
-    .container select[name="babys_name"] {
+    .container select[name="babyname"] {
         border: 2px solid rgba(0, 128, 255, 0.2);
         box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
         transition: border-color 0.3s, box-shadow 0.3s; }
@@ -99,11 +99,35 @@ select {
     box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
     transition: border-color 0.3s, box-shadow 0.3s;
     border-radius: 5px; /* Added border radius */}
-             
+     
+    @media (max-width: 768px) {
+        .container {
+            padding-top: 20px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            max-width: 500px;
+            padding: 20px;
+            margin-left: 10px;
+        }
+
+
+        .sitter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sitter-form button {
+            align-self: center;
+            width: 100%;
+        }
+    }
+
+
     
 </style>  
 
-<h4 >DEPARTURE FORM OF SITTERS </h4><hr>
+<h4 >DEPARTURE FORM OF BABIES </h4><hr>
 <div class="container" style="margin-top:30px; margin-bottom:30px;">
     <form method="POST" class="sitter-form">
 

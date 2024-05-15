@@ -25,7 +25,7 @@ urlpatterns = [
     path('issue_item/<str:pk>',views.issue_item,name='issue_item'),
     path('receipt/',views.receipt,name='receipt'),
     path('receipt_detail/<int:receipt_id>',views.receipt_detail,name='receipt_detail'),
-
+    path('dolledit/<int:id>/',views.dolledit,name='dolledit'),
 
     path('departure/', views.departure, name='departure'),
     path('adddeparture/', views.adddeparture, name='adddeparture'),
@@ -44,6 +44,7 @@ urlpatterns = [
     path('all_issue_items/',views.all_issue_items,name='all_issue_items'),
     path('issue/<str:pk>',views.issue,name='issue'),
     path('inventoryform/', views.inventoryform, name='inventoryform'),
+    path('inventoryedit/<int:id>/', views.inventoryedit, name='inventoryedit'),
     
 #sitterpayment
     path('create_payment/', views.create_payment, name='create_payment'),

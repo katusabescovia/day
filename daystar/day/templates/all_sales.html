@@ -5,7 +5,8 @@
   h4{ color:#0C356A;
     text-shadow: 2px 2px 4px #000000;
 margin-left: 466px;
-font-family: sans-serif;}
+font-family: sans-serif;
+margin-top:58px;}
 body{ background-color: darkgray;}
 
 button {
@@ -45,17 +46,17 @@ button {
 
   
     <h4 >TOTAL SALES MADE</h4><hr>
-
-
+<div class="container">
+<div class="table-container">
   <table class="table" style="margin-top:40px;">
-    <thead class="thead-dark">
+    <thead class="frame text-center">
       <tr>
         <th scope="col">Total Amount Received</th>
         <th scope="col">Total change Given</th>
         <th scope="col">Net Amount</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="text-center">
       <tr>
         <td>UGX{{total}}</td>
         <td>UGX{{change}}</td>
@@ -64,8 +65,9 @@ button {
     </tbody>
   </table>
 </div>
-<br><br>
-
+</div>
+</div>
+<br>
 <div class="container">
   <div class="table-container">
   <table class=" table">

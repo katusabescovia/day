@@ -1,85 +1,72 @@
 {% extends 'base.html' %}
-
 {% load static %}
-
 {% block content%}
 
 <style>
+    .card {
+        background-color: white;
+        box-shadow: 0 11px 34px 0 rgba(0, 0, 0, 0.2);
+        max-width: 500px; /* Adjust max-width as needed */
+        margin: 0 auto; /* Center the card horizontally */
+        margin-top: 20px; /* Add some top margin */
+        padding: 20px; /* Add padding for content */
+        border-radius: 10px; /* Add border radius for rounded corners */
+        border: 5px solid rgba(0, 128, 255, 0.2);
+        box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s, box-shadow 0.3s;
+        font-family: sans-serif;
     
-    input {width: 50%;}
-    .table-responsive {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
     }
-    h4 {margin-left: 500px;
-        color:#0C356A;
-        text-shadow: 2px 2px 4px #000000;}
-        body{background-color: darkgray;}
-        button {
-            background-color: #0c356a;
-          }
-          .btn-primary {
-            background-color: #094f9f;
-          }
-          .btn {
-              background-color: #0c356a;
-              color: white;
-              transition: background-color 0.7s;
-              text-decoration: none;
-              padding: 8px 16px;
-              border-radius: 4px;
-          }
-      
-          .btn:hover {
-              background-color: #094f9f; /* Change to a darker shade for hover */
-          }        
-        
+
+    h4 {
+        font-family: sans-serif;
+        color: #0C356A;
+        text-shadow: 2px 2px 4px #000000;
+        text-align: center; /* Center the heading */
+        margin-top:85px;
+    }
+
+    button {
+        background-color: #0c356a;
+    }
+
+    .btn-primary {
+        background-color: #094f9f;
+    }
+
+    .btn {
+        background-color: #0c356a;
+        color: white;
+        transition: background-color 0.7s;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+    }
+
+    .btn:hover {
+        background-color: #094f9f;
+    }
+
+    .info-item {
+        margin-bottom: 10px;
+    }
+body { background-color: darkgray;}    
+  
 </style>
 </head>
 <body>
-<h4 class="mb-3">LISTS OF SITTERS </h4><hr>
-
-<!-- <a style="margin-left: 900px;" href="/arrival" class="btn btn-primary mb-3">DAILY DEPARTURE REGISTER</a> -->
-
-
-<div class="table-responsive">
-    <table class="table table-bordered table-hover">
-        <thead class="table-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Sitters number</th>
-                <th scope="col"> Arrival Date and Time</th>
-                <th scope="col">Attendancestatus</th>
-                <th scope=>Action</th>  
-            </tr>
-        </thead>
-        <tbody>
-
-           
-            <tr>
-                <td>{{ sitter_info.id }}</td>
-                <td>{{ sitter_info.sitter_name}}</td>
-                <td>{{ sitter_info.sitter_number }}</td>
-                <td>{{ sitter_info.date_of_arrival }}</td>
-                <td>{{ sitter_info.Attendancestatus}}</td>
-                <td>
-                    <div>
-                        <a href="{% url 'editonduty' id=sitter_info.id %}" class="btn btn-primary mb-3">Edit </a>
-
-                    </div>
-                </td>
-            </tr>
-          
-        </tbody>
-    </table>
+    <h4 style="text-transform:uppercase;">{{ sitter_info.sitter_name }}'S DETAILS</h4><hr>
+<div class="card" style="margin-top:56px; margin-bottom:56px;">
+    <div class="info-item"><strong>#:</strong> {{ sitter_info.id }}</div>
+    <div class="info-item"><strong>Name:</strong>{{ sitter_info.sitter_name}}</div>
+    <div class="info-item"><strong>Sitters number:</strong> {{ sitter_info.sitter_number }}</div>
+    <div class="info-item"><strong>Arrival Date and Time</strong> {{ sitter_info.date_of_arrival }}</div>
+    <div class="info-item"><strong>Attendancestatus</strong> {{ sitter_info.Attendancestatus}}</div>
+    <div class="text-center d-flex" >
+        <a  href="{% url 'editonduty' id=sitter_info.id %}" class="btn btn-primary m-2 ">Edit Sitters</a>
+        <a href="/onduty"><button class="btn btn-primary m-2">Go back</button></a>
+    </div>
 </div>
-
-
-
-
-
-
-
 
 
 {% endblock %}

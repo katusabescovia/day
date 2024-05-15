@@ -79,7 +79,7 @@
     
     body {background-color: darkgray}
         
-    .container select[name="babys_name"] {
+    .container select[name="babyname"] {
         border: 2px solid rgba(0, 128, 255, 0.2);
         box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
         transition: border-color 0.3s, box-shadow 0.3s; }
@@ -100,9 +100,10 @@ select {
     transition: border-color 0.3s, box-shadow 0.3s;
     border-radius: 5px; /* Added border radius */}
 </style>  
+<h4 class="" style="text-transform:uppercase"> edit {{ departures.babyname}}'S DETAILS</h4><hr>
 
-<h4 >EDIT DEPARTURE FORM </h4><hr>
-<div class="container" style="margin-top:30px; margin-bottom:30px;">
+
+<div class="container" style="margin-top:30px; margin-bottom:37px;">
     <form method="POST" class="sitter-form">
 
         {% csrf_token %}

@@ -32,9 +32,9 @@ button {
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="card" style="margin-top:80px;">
+            <div class="card" style="margin:auto; width:60%; margin-top:80px; font-family:sans-serif;">
                 <div class="card-header">
-                    <h4 class="">Daystar Daycare, Kabalagala</h4>
+                    <h5 class="" style="font-weight:bold;">Daystar Daycare, Kabalagala</h5>
                     <p class="">Kampala, Uganda</p>
                     <p class="">Contact us: +256789728298</p>
                     <p class="">Date: {{ receipt.sale_date }}</p>
@@ -56,14 +56,14 @@ button {
                                 <tr style="font-family: sans-serif;">
                                     <td>{{ receipt.doll | title }}</td>
                                     <td class="text-center">{{ receipt.quantity_sold }}</td>
-                                    <td class="text-right">Ugx{{ receipt.get_total }}</td>
-                                    <td class="text-right">Ugx{{ receipt.amount_received }}</td>
-                                    <td class="text-right">Ugx{{ receipt.get_change }}</td>
+                                    <td class="text-right">Ugx {{ receipt.get_total }}</td>
+                                    <td class="text-right">Ugx {{ receipt.amount_received }}</td>
+                                    <td class="text-right">Ugx {{ receipt.get_change }}</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <p class="text-center" style="font-family: sans-serif;">Thank you for choosing Daystar daycare</p>
+                    <p class="text-center" style="font-family: sans-serif;"><em>Thank you for choosing Daystar daycare</em></p>
                 </div>
             </div>
         </div>

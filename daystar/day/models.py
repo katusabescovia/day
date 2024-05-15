@@ -65,7 +65,7 @@ class Babiesform(models.Model):
     age=models.IntegerField(default=0)
     parents_name=models.CharField(max_length=200)
     location=models.CharField(max_length=50)
-    babys_number=models.CharField(max_length=100,unique=True)
+    babynumber=models.CharField(max_length=100,unique=True)
     arrival_time=models.DateTimeField()
     care_taker=models.CharField(max_length=200)
     Assigned_to=models.ForeignKey(Sitter_arrival,on_delete=models.CASCADE)
@@ -78,14 +78,14 @@ class Babiesform(models.Model):
         return self.name_of_the_baby
 
 class Departure(models.Model):
-    babys_name=models.ForeignKey(Babiesform,on_delete=models.CASCADE)
+    babyname=models.ForeignKey(Babiesform,on_delete=models.CASCADE)
     baby_number=models.CharField(max_length=100,unique=True) 
     date_of_departure=models.DateTimeField(null=True)
     pickers_name=models.CharField(max_length=200)
     comment=models.CharField(max_length=200,null=True, blank=True)
     created_at=models.DateTimeField(auto_now_add=True, null=True)
     def __str__(self):
-        return self.babys_name
+        return self.babyname
 class  Payment(models.Model):
     payee = models.ForeignKey(Babiesform,on_delete=models.CASCADE)
     Period_of_stay=models.ForeignKey(Categorystay,on_delete=models.CASCADE,null=True)

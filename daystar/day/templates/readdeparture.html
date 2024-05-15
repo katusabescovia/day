@@ -6,73 +6,94 @@
 
 <style>
     
-    input {width: 50%;}
-    .table-responsive {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+    h4 {
+        text-align: center;
+        color: #0c356a;
+        text-shadow: 2px 2px 4px #000000;
+        margin-top: 5.5rem;
+      }
+    
+      .card {
+        background-color: white;
+        box-shadow: 0 11px 34px 0 rgba(0, 0, 0, 0.2);
+        max-width: 500px; /* Adjust max-width as needed */
+        margin: 0 auto; /* Center the card horizontally */
+        margin-top: 20px; /* Add some top margin */
+        padding: 20px; /* Add padding for content */
+        border-radius: 10px; /* Add border radius for rounded corners */
+        border: 5px solid rgba(0, 128, 255, 0.2);
+        box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s, box-shadow 0.3s;
+        font-family:sans-serif;
     }
-    h4 {margin-left: 500px;
-        color:#0C356A;
-        text-shadow: 2px 2px 4px #000000;}
-        body{background-color: darkgray;}
-        button {
-            background-color: #0c356a;
-          }
-          .btn-primary {
-            background-color: #094f9f;
-          }
-          .btn {
-              background-color: #0c356a;
-              color: white;
-              transition: background-color 0.7s;
-              text-decoration: none;
-              padding: 8px 16px;
-              border-radius: 4px;
-          }
-      
-          .btn:hover {
-              background-color: #094f9f; /* Change to a darker shade for hover */
-          }        
+      .card-body {
+        padding: 20px;
+      }
+    
+      body {
+        background-color: darkgray;
+        font-family: Arial, sans-serif;
+      }
+    
+      .card-body p {
+        margin-bottom: 8px;
+        font-size: 16px;
+        color: #333333;
+      }
+    
+      .card-body strong {
+      }
+    
+      .btn-container {
+        text-align: center;
+        margin-top: 20px;
+      }
+    
+      button {
+        background-color: #0c356a;
+      }
+      .btn-primary {
+        background-color: #094f9f;
+      }
+      .btn {
+        background-color: #0c356a;
+        color: white;
+        transition: background-color 0.7s;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+      }
+    
+      .btn:hover {
+        background-color: #094f9f; /* Change to a darker shade for hover */
+      }
 </style>
 </head>
 <body>
-<h4 class="mb-3">LISTS OF BABIES</h4><hr>
-
-<!-- <a style="margin-left: 900px;" href="/arrival" class="btn btn-primary mb-3">DAILY DEPARTURE REGISTER</a> -->
+    <h4 class="" style="text-transform:uppercase"> {{ departure_info.babyname}}'S DETAILS</h4><hr>
 
 
-<div class="table-responsive">
-    <table class="table table-bordered table-hover">
-        <thead class="table-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col"> Sitter Name</th>
-                <th scope="col">Sitter Number</th>
-                <th scope="col">Departure Date and Time</th>
-                <th scope="col">pickers_name</th>
-                <th scope="col">Comment</th>
-                <th scope=>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{ departure_info.id }}</td>
-                <td>{{ departure_info.babys_name}}</td>
-                <td>{{ departure_info.baby_number }}</td>
-                <td>{{departure_info.date_of_departure }}</td>
-                <td>{{ departure_info.pickers_name}}</td>
-                <td>{{ departure_info.comment}}</td>
-                
-                <td>
-                    <div>
-                        <a href="{% url 'editdeparture' id=departure_info.id %}" class="btn btn-primary mb-3">Edit </a>
-
-                    </div>
-                </td>
-            </tr>
+    <div class="card" style="font-family:sans-serif; margin-top:33px;margin-bottom:33px;">
+        <div class="card-body">
+          <p><strong>#:</strong> {{ departure_info.id }}</p>
+          <p><strong>Baby name:</strong> {{ departure_info.babyname}}</p>
+          <p><strong>Baby number:</strong>{{ departure_info.baby_number }}</p>
+          <p><strong>Departure Date and Time:</strong> {{departure_info.date_of_departure }}</p>
+          <p><strong>Pickers_name:</strong> {{ departure_info.pickers_name}}</p> 
+          <p><strong>Comment:</strong> {{ departure_info.comment}}</p>    
+          <div class="btn-container d-flex">
           
-        </tbody>
-    </table>
-</div>
+            <a href="{% url 'editdeparture' id=departure_info.id %}"
+              class="btn btn-primary m-2"
+              >Edit Babies</a>
+            <a href="/departure" class="btn btn-primary m-2">Go back</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    {% endblock %}
+    
 
 
 
@@ -82,4 +103,3 @@
 
 
 
-{% endblock %}

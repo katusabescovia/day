@@ -3,14 +3,21 @@
 {% load static %}
 {% block content%}
 <style>
-
+    .frame th {
+        background-color: #0c356a;
+        color:white;
+    }
     input {width: 50%;}
     .table-responsive {
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
     }
-    h4 {margin-left: 500px;
-        color:#0C356A;
-        text-shadow: 2px 2px 4px #000000;}
+    h4 {
+        margin-left: 520px;
+        margin-top: 5.5rem;
+        color: #0c356a;
+        text-shadow: 2px 2px 4px #000000;
+      }
+    
         body{background-color: darkgray;}
         button {
             background-color: #0c356a;
@@ -36,23 +43,71 @@
           .table td:nth-child(5) {
               width: 150px; /* Adjust this width as needed */
           }
+
+          .table-container {
+            box-shadow: 1px 0px 20px -1px rgba(0,0,0,0.65);
+            overflow-x: auto;
+            max-width: 100%;
+            border-radius: i5px;
+            background-color: white;
+            border-radius: 15px;
+            font-family:sans-serif;
+            
+        
+          
+          }
+
+          .search {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-right: 450px;
+          }
+
+          .search form {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0; /* Remove default margin */
+          }
+
+          .search form input[type="submit"] {
+            margin-left: 10px; /* Adjust spacing between input and button */
+            
+          }
+          
+          select[name="sitters_name"] {
+            border: 3px solid rgba(0, 128, 255, 0.2);
+            box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            border-radius: 4px;
+            padding:0.4rem 0;
+        }
+        
+        
+        select[name="sitters_name"]:focus {
+            border-color: rgba(0, 128, 255, 0.5);
+            box-shadow: 0 0 0.2rem rgba(0, 128, 255, 0.5);
+        }
+        
 </style>
 
 </head>
 <body>
 <h4 class="mb-3">LIST OF SITTERS </h4><hr>
-<form action="" method="GET"style="margin-right:450px;">
+<div class="search">
+<form action="" method="GET"style="">
     {{sitter_filters.form}}
-    <input type="submit" value="Search sitter name" class="btn btn-primary" style="width:150px"/>
+    <input type="submit" value="Search by name" class="btn btn-primary" style="width:150px"/>
     </form>
-<br>
-<a href="/addsitter" class="btn btn-primary mb-3">Add new Sitter</a>
+</div>
+<div class="container">
+<a href="/addsitter" class="btn btn-primary mb-2" style="margin-left:25px;">Add new Sitter</a>
 <!-- <a style="margin-left: 900px;" href="/arrival" class="btn btn-primary mb-3">DAILY DEPARTURE REGISTER</a> -->
 
-
+<div class="table-container">
 <div class="table-responsive">
-    <table class="table table-bordered table-hover">
-        <thead class="table-dark">
+    <table id="dataTable" class="table table-stripped table-hover">
+        <thead class="frame">
             <tr>
                 <th scope="col">#</th>
                 <th scope="col"> Sitter Name</th>
@@ -79,5 +134,7 @@
             {% endfor %}
         </tbody>
     </table>
+</div>
+</div>
 </div>
 {% endblock %}

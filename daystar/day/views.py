@@ -206,6 +206,18 @@ def dolladd(request):
         form=Address_form()
     return render(request,'dolladd.html',{'form':form})
 
+def dolledit(request,id):
+    doll=get_object_or_404(Doll,id=id)
+    if request.method == 'POST':
+       form=Address_form (request.POST,instance=doll)
+       if form.is_valid():
+           form.save()
+           return redirect('doll')
+    else:
+        form=Address_form(instance=doll)
+    return render(request,'dolledit.html',{'form':form,'doll':doll})     
+
+
 #babies departure
 @login_required
 def departure(request):
@@ -351,6 +363,16 @@ def inventoryform(request):
     else:
         form = Add_form()
     return render(request, 'inventoryform.html', {'form': form})
+def inventoryedit(request,id):
+    inventory=get_object_or_404(Procurement,pk=id)
+    if request.method == 'POST':
+       form=Add_form (request.POST,instance=inventory)
+       if form.is_valid():
+           form.save()
+           return redirect('inventories')
+    else:
+        form=Add_form(instance=inventory)
+    return render(request,'inventoryedit.html',{'form':form,'inventory':inventory})     
  
 
 #sitterpayment
@@ -384,7 +406,7 @@ def edit_paymentsitter(request,id):
            return redirect('payment_list')
     else:
             form=SitterpaymentForm(instance=payment) 
-    return render(request,'edit_paymentsitter.html',{'form':form,'paymentsitter':payment})
+    return render(request,'edit_paymentsitter.html',{'form':form,'payment':payment})
 
 #payment for babies
 def payment_lists(request):
