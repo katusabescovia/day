@@ -100,7 +100,6 @@ def adds(request):
 def reads(request,id):
     sitters_info=Sitterform.objects.get(id=id)
     return render(request,'reads.html',{'sitters_info':sitters_info})
-    
 
 
 
@@ -115,6 +114,7 @@ def edits(request,id):
     else:
         form=SitterformForm(instance=sitter)
     return render(request,'edits.html',{'form':form,'sitter':sitter})     
+
 
 
  #dollscorner

@@ -13,8 +13,7 @@
     text-shadow: 2px 2px 4px #000000;
   }
 
-  body {
-    background-color: darkgray;
+  body{    background-color: #c8beb5;
   }
 
   button {
@@ -135,7 +134,7 @@ input[type="text"]:focus {
           {% comment %} <td>{{ sitter.recommenders_name }}</td> {% endcomment %}
           <td>{{ sitter.religon }}</td>
           <td class="text-center">{{ sitter.level_of_education }}</td>
-          <td class="text-center">{{ sitter.sitter_number }}</td> 
+          <td class="text-center">S0{{ sitter.id }}</td> 
         <td>{{ sitter.contacts }}</td>
           <td>
             <a href="{% url 'reads' id=sitter.id %}" class="btn btn-primary"

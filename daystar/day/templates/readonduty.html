@@ -50,8 +50,8 @@
     .info-item {
         margin-bottom: 10px;
     }
-body { background-color: darkgray;}    
-  
+    body{    background-color: #c8beb5;
+    }
 </style>
 </head>
 <body>
@@ -59,7 +59,7 @@ body { background-color: darkgray;}
 <div class="card" style="margin-top:56px; margin-bottom:56px;">
     <div class="info-item"><strong>#:</strong> {{ sitter_info.id }}</div>
     <div class="info-item"><strong>Name:</strong>{{ sitter_info.sitter_name}}</div>
-    <div class="info-item"><strong>Sitters number:</strong> {{ sitter_info.sitter_number }}</div>
+    <div class="info-item"><strong>Sitters number:</strong> S0{{ sitter_info.id }}</div>
     <div class="info-item"><strong>Arrival Date and Time</strong> {{ sitter_info.date_of_arrival }}</div>
     <div class="info-item"><strong>Attendancestatus</strong> {{ sitter_info.Attendancestatus}}</div>
     <div class="text-center d-flex" >

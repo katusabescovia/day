@@ -50,6 +50,7 @@
         height: 40px;
         padding: 10px;
         transition: background-color 0.8s, color 0.7s; /* Adding transition effect */
+        margin-top: 30px;
     }
     
     button[type="submit"]:hover {
@@ -70,7 +71,8 @@
 
   
     
-   body {background-color: darkgray;}   
+   body {    background-color: #c8beb5;
+   }   
    
    
    input[type="text"],
@@ -99,7 +101,7 @@ select {
     <h4>ATTEDANCE FORM OF  SITTERS</h4><hr>
     
     <div class=" formfeild">
-    <div class="container" style="margin-top:40px; margin-left:40px;">
+    <div class="container" style="margin-top:80px; margin-left:40px; margin-bottom: 80px;">
         <form method="POST" action="" class="sitter-form">
             {% csrf_token %}
             {{ form|crispy}}

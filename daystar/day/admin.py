@@ -17,5 +17,7 @@ admin.site.register(Departure)
 admin.site.register(Sitter_arrival)
 admin.site.register(Sitterpayment)
 admin.site.register(Sitter_departure)
+admin.site.register(Usedlog)
+
 
 

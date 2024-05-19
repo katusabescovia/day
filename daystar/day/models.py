@@ -27,7 +27,6 @@ class Sitterform(models.Model):
     recommenders_name=models.CharField(max_length=200)
     religon=models.CharField(max_length=200,null=True, blank=True)
     level_of_education=models.CharField( choices=[('Diploma','Diploma'),('Highschool certificate','Highschool certificate'),('Others','Others')],max_length=200)
-    sitter_number=models.CharField(unique=True,max_length=100)
     contacts=models.CharField(max_length=100,validators=[contactvalidate]) 
     date=models.DateField(default=timezone.now)
     def __str__(self):
@@ -35,7 +34,6 @@ class Sitterform(models.Model):
 
 class Sitter_arrival(models.Model):
     sitter_name=models.ForeignKey(Sitterform, on_delete=models.CASCADE) 
-    sitter_number=models.CharField(max_length=100,unique=True)
     date_of_arrival=models.DateTimeField()   
     Attendancestatus=models.CharField(choices=[('onduty', 'onduty')], max_length=100)
     created_at=models.DateTimeField(auto_now_add=True, null=True)
@@ -45,7 +43,6 @@ class Sitter_arrival(models.Model):
 
 class Sitter_departure(models.Model):
     sitters_name=models.ForeignKey(Sitter_arrival, on_delete=models.CASCADE) 
-    sitter_number=models.CharField(max_length=100,unique=True)
     date_of_departure=models.DateTimeField()   
     created_at=models.DateTimeField(auto_now_add=True, null=True)
     status=models.CharField(choices=[('Offduty', 'Offduty')], max_length=100,null=True)
@@ -65,7 +62,6 @@ class Babiesform(models.Model):
     age=models.IntegerField(default=0)
     parents_name=models.CharField(max_length=200)
     location=models.CharField(max_length=50)
-    babynumber=models.CharField(max_length=100,unique=True)
     arrival_time=models.DateTimeField()
     care_taker=models.CharField(max_length=200)
     Assigned_to=models.ForeignKey(Sitter_arrival,on_delete=models.CASCADE)
@@ -78,8 +74,7 @@ class Babiesform(models.Model):
         return self.name_of_the_baby
 
 class Departure(models.Model):
-    babyname=models.ForeignKey(Babiesform,on_delete=models.CASCADE)
-    baby_number=models.CharField(max_length=100,unique=True) 
+    babyname=models.ForeignKey(Babiesform,on_delete=models.CASCADE) 
     date_of_departure=models.DateTimeField(null=True)
     pickers_name=models.CharField(max_length=200)
     comment=models.CharField(max_length=200,null=True, blank=True)
@@ -129,10 +124,6 @@ class Salesrecord(models.Model):
     sale_date=models.DateField(default=timezone.now)
     unit_price=models.IntegerField(default=0)
      
-
-
-     
-    
     def get_total(self):
         total= self.quantity_sold * self.unit_price
         return int( total)

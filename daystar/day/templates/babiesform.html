@@ -14,7 +14,8 @@
         color:#0C356A;
         text-shadow: 2px 2px 4px #000000;
     margin-top: 6rem;}
-        body{background-color: darkgray;}
+        body{    background-color: #c8beb5;
+        }
 
         button {
             background-color: #0c356a;
@@ -109,7 +110,7 @@
                     <th scope="col">Age</th>
                     {% comment %} <th scope="col">Parents_name</th> {% endcomment %}
                     <th scope="col">Location</th>
-                    <th scope="col">Baby number</th>
+                    <!-- <th scope="col">Baby number</th> -->
                     <th scope="col">Arrival Time and Date</th>
                     <th scope="col">Care_taker</th>
                     <th scope=>Assigned_to</th>
@@ -128,7 +129,7 @@
                     <td>{{ baby.age }}</td>
                     {% comment %} <td>{{ baby.parents_name }}</td> {% endcomment %}
                     <td>{{ baby.location }}</td>
-                    <td class="text-center">{{ baby.babynumber}}</td>
+                    <!-- <td  class="text-center">S0{{ baby.id}}</td> -->
                     <td>{{ baby.arrival_time }}</td>
                     <td>{{ baby.care_taker}}</td>
                     <td class="text-center">{{ baby.Assigned_to}}</td>

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block content  %}
+{% block content %}
 <style>
     .card {
         background-color: white;
@@ -21,7 +21,7 @@
         color: #0C356A;
         text-shadow: 2px 2px 4px #000000;
         text-align: center; /* Center the heading */
-        margin-top:85px;
+        margin-top: 85px;
     }
 
     button {
@@ -48,7 +48,10 @@
     .info-item {
         margin-bottom: 10px;
     }
-body { background-color: darkgray;}    
+
+    body {
+        background-color: #c8beb5;
+    }
 </style>
 <h3 style="text-transform:uppercase;">{{ sitters_info.name }}'S DETAILS</h3><hr>
 
@@ -63,16 +66,14 @@ body { background-color: darkgray;}
     <div class="info-item"><strong>Recommender's Name:</strong> {{ sitters_info.recommenders_name }}</div>
     <div class="info-item"><strong>Religion:</strong> {{ sitters_info.religon }}</div>
     <div class="info-item"><strong>Level of Education:</strong> {{ sitters_info.level_of_education }}</div>
-    <div class="info-item"><strong>Sitter's Number:</strong> {{ sitters_info.sitter_number }}</div>
+    <div class="info-item"><strong>Sitter's Number:</strong>S0{{ sitters_info.id }}</div>
     <div class="info-item"><strong>Contacts:</strong> {{ sitters_info.contacts }}</div>
+
     
-    <div class="text-center d-flex" >
-        <a  href="{% url 'edits' id=sitters_info.id %}" class="btn btn-primary m-2 ">Edit Sitters</a>
+    <div class="text-center d-flex">
+        <a href="{% url 'edits' id=sitters_info.id %}" class="btn btn-primary m-2">Edit Sitters</a>
         <a href="/sitterform"><button class="btn btn-primary m-2">Go back</button></a>
-    </div>
-    
-    
         
-   
+    </div>
 </div>
 {% endblock %}

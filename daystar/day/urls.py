@@ -15,6 +15,7 @@ urlpatterns = [
     path('adds/', views.adds, name='adds'),
     path('reads/<int:id>/', views.reads, name='reads'),
     path('edits/<int:id>/', views.edits, name='edits'),
+
    
     #dollscorner
     path('doll/',views.doll,name='doll'),
