@@ -37,6 +37,7 @@ urlpatterns = [
     path('addonduty/', views.addonduty, name='addonduty'),
     path('readonduty/<int:id>/', views.readonduty, name='readonduty'),
     path('editdontudy/<int:id>/', views.editonduty, name='editonduty'),
+    path('dashboard/', views.dashboard, name='dashboard'),
     
     
     #procurement

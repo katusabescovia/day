@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+{% block content %}
+<style>
+  .content{
+    margin-top:5rem;
+  }
+    .babies{
+        display: grid;
+        margin: auto;
+        flex-direction: row;
+        padding: 1rem;
+        border-radius: 15px;
+        background-color: rgb(158, 155, 155);
+        box-shadow: 0 11px 34px 0 rgba(0, 0, 0, 0.2);
+      }
+      
+      .babies h2{color: white;
+        font-weight: 700;
+        font-size: 30px;
+        text-transform: uppercase;
+        margin-top: 1rem;
+      }
+
+      .frame th {
+        background-color: #0c356a;
+        color:white;
+    }
+    .table-container {
+        box-shadow: 1px 0px 20px -1px rgba(0,0,0,0.65);
+        overflow-x: auto;
+        max-width: 100%;
+        border-radius: i5px;
+        background-color: white;
+        border-radius: 15px;
+        font-family:sans-serif;
+    
+      
+      }
+     
+    
+ </style>
+
+
+<div class="container content">
+    <div class="row">
+    <div class="babies col-md-2 d-md-block mt-5">
+        <h2 class="text-center baby"> {{count_babies}}</h2> <hr>
+        <h5 class= "text-center">
+          <strong>All Babies</strong>
+        </h5>
+    </div>
+
+    <div class="babies col-md-2 d-md-block mt-5">
+        <h2 class="text-center baby">{{count_sitters}}</h2> <hr>
+        <h5 class= "text-center">
+          <strong>All Sitters</strong>
+        </h5>
+    </div>
+
+    <div class="babies col-md-2 d-md-block mt-5">
+        <h2 class="text-center baby">{{ totalpayments }}</h2> <hr>
+        <h5 class= "text-center">
+          <strong>All Payments</strong>
+        </h5>
+    </div>
+    </div>
+    <hr>
+</div>
+  <div class="container content">
+  <div class="table-container">
+
+  <table  id="dataTable" class="table table-stripped table-hover">
+    <caption class="caption-top text-center"><h4>Recent Babies Today</h4></caption>
+      <thead  class="frame text-center" >
+          <tr>
+             <th scope="col" class="project-h1">Name of the baby</th>
+              <th scope="col" class="project-h1">Category Stay</th>
+              <th scope="col" class="project-h1">Parent Name</th>
+              <th scope="col" class="project-h1">Assigned_to</th>
+              
+          </tr>
+      </thead>
+      {% for baby in recent_babies %}
+      <tbody>
+          <tr style="font-family: sans-serif; text-align:center;">
+            <td>{{baby.name_of_the_baby}}</td>
+              <td>{{baby.c_stay}}</td>
+              <td>{{baby.parents_name}}</td>
+              <td>{{baby.Assigned_to}}</td>
+    
+          </tr>
+      </tbody>
+      {% endfor %}
+  </table>
+  </div>
+</div>
+</div>
+
+{% endblock %}

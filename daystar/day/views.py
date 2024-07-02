@@ -480,9 +480,23 @@ def editsitter(request,id):
             form=Sitter_departureform(instance=sitter) 
     return render(request,'editsitter.html',{'form':form,'sitter':sitter})     
 
+#dashboard
 
-
-
+def dashboard(request):
+    count_babies = Babiesform.objects.count()
+    count_sitters = Sitterform.objects.count()
+    babypayment=Payment.objects.aggregate(Sum('amount_paid'))
+    total_amount_paid = babypayment.get('amount_paid__sum', 0)
+    babypaymentfordoll=Salesrecord.objects.aggregate(Sum('amount_received'))
+    total_amount_received = babypaymentfordoll.get('amount_received__sum', 0)
+    totalpayments=total_amount_received+total_amount_paid
+    recent_babies = Babiesform.objects.all()[:3]  # Getting the two most recent Babyreg objects
+    recent_sitters = Sitterform.objects.all()[:3]  # Getting the two most recent 
+    context = {'count_babies': count_babies, 'count_sitters':count_sitters,
+               
+        'totalpayments': totalpayments,'recent_sitters': recent_sitters,'recent_babies': recent_babies}
+    
+    return render(request, 'dashboard.html', context)
 
 
  
