@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-9+-x-@)%(v=_a$4#9uvla#2_!yrr#1tk%z60!mx#!mczr&=03&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["day.onrender.com", "localhost", "127.0.0.1"]
 
 
 
@@ -47,7 +47,8 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
+    'django.middleware.common.CommonMiddleware', "whitenoise.middleware.WhiteNoiseMiddleware",
+     "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -125,8 +126,8 @@ STATICFILES_DIR =[
     os.path.join(BASE_DIR, 'static')
     
                   ]
-
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
