@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: daystar
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn daystar.daystar.wsgi:application"
+    port: 8000
